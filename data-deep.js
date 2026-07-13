@@ -1386,3 +1386,345 @@ sol:"Step 1 — apply the binomial expansion with $a=1,\\,b=2x,\\,n=6$ for $r=0,
 a:"$d=2$, $r=2$",
 sol:"Step 1 — write the three AP terms: $u_1=6$, $u_4=6+3d$, $u_{10}=6+9d$. Step 2 — 'form a GP' means the middle term squared equals the product of the outer two (the GP crossover rule): $(6+3d)^2=6(6+9d)$. Step 3 — expand: $36+36d+9d^2=36+54d$. Step 4 — simplify: $9d^2=18d \\Rightarrow 9d(d-2)=0 \\Rightarrow d=0$ or $d=2$; reject $d=0$ (given $d\\neq0$), so $d=2$. Step 5 — the GP is $6,\\,12,\\,24$, giving common ratio $r=\\dfrac{12}{6}=2$."}
 ]};
+
+
+// ============================================================ ADD MATH CH 12: DIFFERENTIATION
+ADDMATH[11] = {
+title:"Differentiation",
+syl:"0606 §12 — Calculus: differentiation",
+yt:["what is differentiation explained from zero","chain rule product rule quotient rule explained","stationary points second derivative test","optimisation calculus word problems"],
+body:`
+<div class="scenario"><div class="schead">Real-life scenario — start here</div>
+<p>A Milo tin factory needs to design a cylindrical can holding exactly $250\\pi\\text{ cm}^3$ of powder. Tin costs money, so the factory wants to use the <b>least possible material</b> (minimum surface area) while still holding that fixed volume. There's a whole family of cylinder shapes (tall & thin, short & wide) that all hold $250\\pi$ — which ONE uses the least metal? Differentiation — the mathematics of rates of change — is exactly the tool that finds this optimal shape, and we'll solve this exact problem by the end of the chapter.</p></div>
+
+<h2>1. What does $\\dfrac{dy}{dx}$ actually measure?</h2>
+<p>$\\dfrac{dy}{dx}$ is the <b>gradient of the tangent</b> to the curve $y=f(x)$ at a point — equivalently, the <b>instantaneous rate of change</b> of $y$ with respect to $x$ right at that point.</p>
+<div class="fig">
+<svg viewBox="0 0 460 220" xmlns="http://www.w3.org/2000/svg">
+<path d="M 40 190 Q 200 20 420 60" fill="none" stroke="#5246D9" stroke-width="3"/>
+<line x1="60" y1="150" x2="380" y2="70" stroke="#C2571B" stroke-width="1.5" stroke-dasharray="4 3"/>
+<line x1="140" y1="128" x2="280" y2="95" stroke="#C2571B" stroke-width="2" stroke-dasharray="3 2"/>
+<line x1="185" y1="117" x2="235" y2="105" stroke="#1D7A4F" stroke-width="3"/>
+<circle cx="210" cy="111" r="5" fill="#1D7A4F"/>
+<text x="60" y="205" font-size="11.5" fill="#555">secant lines approach the TANGENT</text>
+<text x="230" y="100" font-size="12" fill="#1D7A4F" font-weight="bold">tangent at this point</text>
+</svg>
+<div class="figcap">As the two points defining a "secant" (chord) line squeeze closer together, the secant's gradient approaches the tangent's gradient — that limiting value IS the derivative.</div></div>
+
+<h2>2. The power rule (recap) and the chain rule (new)</h2>
+<div class="formula">Power rule: $$\\frac{d}{dx}(x^n) = nx^{n-1}$$
+Chain rule (for composite functions $y=f(g(x))$ — recall composite functions from Chapter 1!): $$\\frac{dy}{dx} = \\frac{dy}{du}\\times\\frac{du}{dx}$$</div>
+<p><b>In practice</b> — for $y=(\\text{inside})^n$: bring the power down, reduce it by 1, then multiply by the derivative of the inside expression.</p>
+<div class="example"><div class="exhead">Worked example 1</div>
+<p>Differentiate $y=(2x-5)^7$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Treat $(2x-5)$ as "the inside."</span> Bring the power 7 down and reduce it by 1: $7(2x-5)^6$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Multiply by the derivative of the inside</span> ($\\frac{d}{dx}(2x-5)=2$): $$\\frac{dy}{dx}=7(2x-5)^6\\times2=14(2x-5)^6$$</span></div>
+</div></div>
+
+<h2>3. Product and quotient rules</h2>
+<div class="formula">
+Product rule: for $y=uv$: $$\\frac{dy}{dx}=u\\frac{dv}{dx}+v\\frac{du}{dx}$$
+Quotient rule: for $y=\\dfrac{u}{v}$: $$\\frac{dy}{dx}=\\frac{v\\frac{du}{dx}-u\\frac{dv}{dx}}{v^2}$$
+Also needed: $$\\frac{d}{dx}(\\ln x)=\\frac{1}{x} \\qquad \\frac{d}{dx}(e^x)=e^x$$</div>
+<div class="example"><div class="exhead">Worked example 2 — product rule</div>
+<p>Differentiate $y=x\\ln x$, then find the $x$-coordinate of its stationary point.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Identify $u$ and $v$:</span> $u=x$ (so $\\frac{du}{dx}=1$), $v=\\ln x$ (so $\\frac{dv}{dx}=\\frac1x$).</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Apply the product rule:</span> $$\\frac{dy}{dx}=x\\cdot\\frac1x+\\ln x\\cdot1=1+\\ln x$$</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">A stationary point has $\\frac{dy}{dx}=0$:</span> $1+\\ln x=0 \\Rightarrow \\ln x=-1 \\Rightarrow x=e^{-1}=\\dfrac1e$.</span></div>
+</div></div>
+<div class="mistake"><b>Common mistake:</b> in the product rule, forgetting one of the two terms (only writing $u\\frac{dv}{dx}$ and stopping) — both terms are compulsory, always.</div>
+
+<h2>4. Tangents and normals</h2>
+<p>Once you have $\\dfrac{dy}{dx}$ at a specific point, you have the gradient — build the tangent line the same way as Chapter 7 (point + gradient). The <b>normal</b> is perpendicular to the tangent, so its gradient is the negative reciprocal.</p>
+<div class="example"><div class="exhead">Worked example 3</div>
+<p>Find the equation of the tangent to $y=x^3-3x+2$ at $x=2$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Differentiate:</span> $\\dfrac{dy}{dx}=3x^2-3$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Find the gradient at $x=2$:</span> $3(4)-3=9$.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Find the $y$-coordinate at $x=2$</span> (substitute into the ORIGINAL function, not the derivative): $y=8-6+2=4$. Point $(2,4)$.</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Build the tangent line:</span> $y-4=9(x-2) \\Rightarrow y=9x-14$.</span></div>
+</div></div>
+
+<h2>5. Stationary points — where the gradient is zero</h2>
+<div class="fig">
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+<line x1="20" y1="170" x2="460" y2="170" stroke="#888"/>
+<path d="M 30 150 Q 130 40 220 90 Q 310 140 400 30" fill="none" stroke="#5246D9" stroke-width="3"/>
+<circle cx="132" cy="53" r="5" fill="#1D7A4F"/><text x="90" y="35" font-size="12" fill="#1D7A4F">maximum</text>
+<circle cx="300" cy="128" r="5" fill="#C2571B"/><text x="255" y="150" font-size="12" fill="#C2571B">minimum</text>
+</svg>
+<div class="figcap">At a maximum, gradient goes $+\\to0\\to-$. At a minimum, gradient goes $-\\to0\\to+$. Both are "stationary" because $\\frac{dy}{dx}=0$ there.</div></div>
+<div class="formula">Second derivative test: at a stationary point, if $\\dfrac{d^2y}{dx^2}<0$ it's a <b>maximum</b>; if $\\dfrac{d^2y}{dx^2}>0$ it's a <b>minimum</b>.</div>
+<div class="example"><div class="exhead">Worked example 4</div>
+<p>Find and classify the stationary points of $y=x^3-6x^2+9x+1$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Set the first derivative to zero:</span> $\\dfrac{dy}{dx}=3x^2-12x+9=3(x-1)(x-3)=0 \\Rightarrow x=1,3$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Find the second derivative:</span> $\\dfrac{d^2y}{dx^2}=6x-12$.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Test $x=1$:</span> $6(1)-12=-6<0$ → maximum. $y(1)=1-6+9+1=5$. Point $(1,5)$.</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Test $x=3$:</span> $6(3)-12=6>0$ → minimum. $y(3)=27-54+27+1=1$. Point $(3,1)$.</span></div>
+</div></div>
+
+<h2>6. Connected rates of change — the chain rule in disguise</h2>
+<p>When two quantities both change with time, the chain rule links their rates: $\\dfrac{dV}{dt}=\\dfrac{dV}{dx}\\times\\dfrac{dx}{dt}$ — this connects "the rate you know" to "the rate you want" via a shared variable.</p>
+<div class="example"><div class="exhead">Worked example 5</div>
+<p>The side of a cube increases at $0.05$ cm/s. Find the rate of increase of the volume when the side is $4$ cm.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Set up the volume-side relationship:</span> $V=x^3 \\Rightarrow \\dfrac{dV}{dx}=3x^2$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Chain the rates together:</span> $$\\frac{dV}{dt}=\\frac{dV}{dx}\\times\\frac{dx}{dt}=3x^2\\times0.05$$</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Substitute $x=4$:</span> $3(16)(0.05)=2.4$ cm³/s.</span></div>
+</div></div>
+
+<h2>7. Optimisation — solving the Milo tin problem</h2>
+<div class="example"><div class="exhead">Worked example 6 — the scenario, solved</div>
+<p>Find the radius that minimises the total surface area of a closed cylindrical can with volume $250\\pi\\text{ cm}^3$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Write down what you're minimising, and the constraint:</span> $S=2\\pi r^2+2\\pi rh$ (total surface area — two circular ends plus the curved side), with constraint $V=\\pi r^2h=250\\pi$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Use the constraint to eliminate $h$</span> — you can only differentiate a function of ONE variable: $h=\\dfrac{250}{r^2}$.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Substitute into $S$:</span> $$S=2\\pi r^2+2\\pi r\\left(\\frac{250}{r^2}\\right)=2\\pi r^2+\\frac{500\\pi}{r}$$</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Differentiate and set to zero:</span> $$\\frac{dS}{dr}=4\\pi r-\\frac{500\\pi}{r^2}=0 \\;\\Rightarrow\\; 4\\pi r=\\frac{500\\pi}{r^2} \\;\\Rightarrow\\; r^3=125 \\;\\Rightarrow\\; r=5$$</span></div>
+<div class="st"><span class="n">5</span><span><span class="stlabel">Confirm it's a minimum:</span> $\\dfrac{d^2S}{dr^2}=4\\pi+\\dfrac{1000\\pi}{r^3}$, which is positive for any $r>0$ — confirmed minimum. So $r=5$ cm (giving $h=10$ cm).</span></div>
+</div></div>
+<div class="note"><b>Exam tip — the optimisation recipe:</b> (1) write the quantity to optimise in terms of TWO variables, (2) use the given constraint to eliminate one variable, (3) differentiate the one-variable version and set to zero, (4) always check max/min with the second derivative.</div>
+`,
+quiz:[
+{lvl:'basic',q:"Differentiate $y=5x^3-2x+7$.",
+a:"$15x^2-2$",
+sol:"Step 1 — apply the power rule term by term: $\\dfrac{d}{dx}(5x^3)=15x^2$, $\\dfrac{d}{dx}(-2x)=-2$. Step 2 — the constant $7$ has zero derivative (it never changes, so its rate of change is zero). Final: $15x^2-2$."},
+{lvl:'inter',q:"Differentiate $y=(2x-5)^7$.",
+a:"$14(2x-5)^6$",
+sol:"Step 1 — chain rule: treat $(2x-5)$ as the inside function. Bring the power down and reduce by 1: $7(2x-5)^6$. Step 2 — multiply by the derivative of the inside, $\\frac{d}{dx}(2x-5)=2$: $7(2x-5)^6\\times2=14(2x-5)^6$."},
+{lvl:'inter',q:"Find the equation of the tangent to $y=x^3-3x+2$ at $x=2$.",
+a:"$y=9x-14$",
+sol:"Step 1 — differentiate: $\\dfrac{dy}{dx}=3x^2-3$. Step 2 — gradient at $x=2$: $3(4)-3=9$. Step 3 — find $y$ at $x=2$ using the ORIGINAL function: $y=8-6+2=4$. Step 4 — build the line: $y-4=9(x-2) \\Rightarrow y=9x-14$."},
+{lvl:'inter',q:"Find and classify the stationary points of $y=x^3-6x^2+9x+1$.",
+a:"Max $(1,5)$, min $(3,1)$",
+sol:"Step 1 — set $\\dfrac{dy}{dx}=3x^2-12x+9=3(x-1)(x-3)=0 \\Rightarrow x=1,3$. Step 2 — second derivative: $\\dfrac{d^2y}{dx^2}=6x-12$. Step 3 — test $x=1$: $6-12=-6<0 \\Rightarrow$ maximum; $y=1-6+9+1=5$. Step 4 — test $x=3$: $18-12=6>0 \\Rightarrow$ minimum; $y=27-54+27+1=1$."},
+{lvl:'inter',q:"Differentiate $y=x\\ln x$, then find the $x$-coordinate of its stationary point.",
+a:"$\\dfrac{dy}{dx}=\\ln x+1$; stationary at $x=\\dfrac1e$",
+sol:"Step 1 — product rule with $u=x$, $v=\\ln x$: $\\dfrac{dy}{dx}=x\\cdot\\dfrac1x+\\ln x\\cdot1=1+\\ln x$. Step 2 — set to zero: $1+\\ln x=0 \\Rightarrow \\ln x=-1 \\Rightarrow x=e^{-1}=\\dfrac1e$."},
+{lvl:'adv',q:"The side of a cube increases at $0.05$ cm/s. Find the rate of increase of the volume when the side is $4$ cm.",
+a:"$2.4$ cm³/s",
+sol:"Step 1 — relate volume to side: $V=x^3 \\Rightarrow \\dfrac{dV}{dx}=3x^2$. Step 2 — chain the known rate to the wanted rate: $\\dfrac{dV}{dt}=\\dfrac{dV}{dx}\\times\\dfrac{dx}{dt}=3x^2\\times0.05$. Step 3 — substitute $x=4$: $3(16)(0.05)=2.4$ cm³/s."},
+{lvl:'adv',q:"A closed cylindrical can has volume $250\\pi$ cm³. Find the radius that minimises its total surface area, and prove it is a minimum.",
+a:"$r=5$ cm ($h=10$ cm)",
+sol:"Step 1 — write $S=2\\pi r^2+2\\pi rh$ with constraint $V=\\pi r^2h=250\\pi \\Rightarrow h=\\dfrac{250}{r^2}$. Step 2 — substitute to get $S$ in terms of $r$ only: $S=2\\pi r^2+\\dfrac{500\\pi}{r}$. Step 3 — differentiate and set to zero: $\\dfrac{dS}{dr}=4\\pi r-\\dfrac{500\\pi}{r^2}=0 \\Rightarrow r^3=125 \\Rightarrow r=5$. Step 4 — confirm minimum: $\\dfrac{d^2S}{dr^2}=4\\pi+\\dfrac{1000\\pi}{r^3}>0$ for all $r>0$ — confirmed minimum."}
+]};
+
+
+// ============================================================ ADD MATH CH 13: INTEGRATION
+ADDMATH[12] = {
+title:"Integration",
+syl:"0606 §12 — Calculus: integration",
+yt:["what is integration explained from zero","area under curve integration explained","definite integral evaluating limits","area between two curves calculus"],
+body:`
+<div class="scenario"><div class="schead">Real-life scenario — start here</div>
+<p>During a monsoon downpour in Kuala Lumpur, rainwater flows into a drain at a rate $r(t)=4t-t^2$ litres/minute, where $t$ is minutes since the rain started ($0\\leq t\\leq4$). The drain has capacity $10$ litres before it overflows. Does it overflow? You know the RATE at every instant, but you need the TOTAL volume collected — and total-from-rate is exactly what <b>integration</b> computes. Integration is the reverse process of differentiation: if differentiation turns "position" into "velocity," integration turns "velocity" back into "position" (or here, "flow rate" into "total volume").</p></div>
+
+<h2>1. Integration is the reverse of differentiation</h2>
+<div class="formula">$$\\int x^n\\,dx = \\frac{x^{n+1}}{n+1}+c \\qquad (n\\neq-1)$$</div>
+<p><b>Why it works:</b> differentiating $\\dfrac{x^{n+1}}{n+1}$ brings the power $(n+1)$ down and reduces it by 1 — giving back exactly $x^n$. Integration just runs that process backwards: raise the power by 1, then divide by the NEW power.</p>
+<p><b>Why "$+c$"?</b> Differentiating any constant gives zero — so $x^2$, $x^2+5$, and $x^2-100$ all have the exact same derivative $2x$. Going backwards from $2x$, we can't know which constant was there originally, so we must always add an unknown constant $c$ to cover every possibility.</p>
+<div class="example"><div class="exhead">Worked example 1</div>
+<p>Find $\\int(6x^2-4x+1)\\,dx$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Apply the rule term by term:</span> raise each power by 1, divide by the new power.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Work through each term:</span> $\\dfrac{6x^3}{3}-\\dfrac{4x^2}{2}+x+c$</span></div>
+</div>
+$$=2x^3-2x^2+x+c$$</div>
+
+<h2>2. Integrating $(ax+b)^n$ — the reverse chain rule</h2>
+<div class="formula">$$\\int(ax+b)^n\\,dx = \\frac{(ax+b)^{n+1}}{a(n+1)}+c$$</div>
+<p>Compare to Chapter 12's chain rule: differentiating $(ax+b)^{n+1}$ brings the power down AND multiplies by $a$ (the inner derivative). Integration divides by BOTH of those — the new power, and $a$ — to undo them.</p>
+<div class="example"><div class="exhead">Worked example 2</div>
+<p>Find $\\int(2x+1)^5\\,dx$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Raise the power by 1:</span> $(2x+1)^6$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Divide by the NEW power (6) AND the inner derivative ($a=2$):</span> $$\\frac{(2x+1)^6}{6\\times2}+c = \\frac{(2x+1)^6}{12}+c$$</span></div>
+</div></div>
+<div class="mistake"><b>Common mistake:</b> forgetting to divide by $a$ as well as the new power — only dividing by $6$ gives an answer that's exactly double what it should be (since differentiating it would bring back an extra factor of 2 that shouldn't be there).</div>
+
+<h2>3. Finding a curve from its gradient</h2>
+<div class="example"><div class="exhead">Worked example 3</div>
+<p>The gradient of a curve is $\\dfrac{dy}{dx}=4x-5$ and the curve passes through $(1,2)$. Find $y$ when $x=3$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Integrate the gradient function</span> to recover $y$ (with an unknown constant): $$y=2x^2-5x+c$$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Use the given point to pin down $c$:</span> substitute $(1,2)$: $2=2(1)-5(1)+c=2-5+c \\Rightarrow c=5$.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Write the full equation, then evaluate</span> at $x=3$: $y=2x^2-5x+5 \\Rightarrow y=18-15+5=8$.</span></div>
+</div></div>
+
+<h2>4. Definite integrals — the area under a curve</h2>
+<div class="fig">
+<svg viewBox="0 0 460 200" xmlns="http://www.w3.org/2000/svg">
+<line x1="30" y1="170" x2="440" y2="170" stroke="#888"/>
+<path d="M 60 160 Q 200 20 400 90" fill="none" stroke="#5246D9" stroke-width="3"/>
+<rect x="60" y="150" width="30" height="15" fill="#EEECFC" stroke="#5246D9" opacity="0.8"/>
+<rect x="90" y="110" width="30" height="55" fill="#EEECFC" stroke="#5246D9" opacity="0.8"/>
+<rect x="120" y="75" width="30" height="90" fill="#EEECFC" stroke="#5246D9" opacity="0.8"/>
+<rect x="150" y="55" width="30" height="110" fill="#EEECFC" stroke="#5246D9" opacity="0.8"/>
+<rect x="180" y="45" width="30" height="120" fill="#EEECFC" stroke="#5246D9" opacity="0.8"/>
+<text x="220" y="185" font-size="12" fill="#555">thinner rectangles → exact area = ∫ f(x) dx</text>
+</svg>
+<div class="figcap">Approximate the area under the curve with thin rectangles; as they get infinitely thin, the sum of rectangle areas becomes exactly $\\int_a^b f(x)\\,dx$ — this is what a definite integral MEANS.</div></div>
+<div class="formula">$$\\int_a^b f(x)\\,dx = \\Big[F(x)\\Big]_a^b = F(b)-F(a)$$where $F(x)$ is any antiderivative of $f(x)$. Note: <b>no $+c$ needed</b> — it would cancel out anyway when you subtract $F(a)$ from $F(b)$.</div>
+<div class="example"><div class="exhead">Worked example 4</div>
+<p>Evaluate $\\displaystyle\\int_1^4 3\\sqrt{x}\\,dx$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Rewrite $\\sqrt{x}$ as $x^{1/2}$</span> so the power rule applies: $3x^{1/2}$ integrates to $\\dfrac{3x^{3/2}}{3/2}=2x^{3/2}$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Evaluate at the top limit</span> ($x=4$): $2(4)^{1.5}=2(8)=16$.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Evaluate at the bottom limit</span> ($x=1$): $2(1)^{1.5}=2$.</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Subtract (top minus bottom):</span> $16-2=14$.</span></div>
+</div></div>
+
+<h2>5. Area when the curve dips below the axis — signed area trap</h2>
+<div class="mistake"><b>Common mistake — huge exam trap:</b> a definite integral gives a NEGATIVE value for any region below the $x$-axis. If a curve crosses the axis within your interval, integrating straight through causes positive and negative parts to <em>cancel</em>, silently under-reporting the true (physical) area. Always: find where the curve crosses zero first, split the integral at that point, take the ABSOLUTE VALUE of each piece, then add.</p></div>
+<div class="example"><div class="exhead">Worked example 5</div>
+<p>Find the total area between $y=x(x-2)$ and the $x$-axis from $x=0$ to $x=3$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Find where the curve crosses zero</span> within the interval: $x(x-2)=0 \\Rightarrow x=0,2$. So the curve is below the axis on $(0,2)$ and above on $(2,3)$ — split there.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Integrate the first piece</span> $(0$ to $2)$: $$\\int_0^2(x^2-2x)\\,dx=\\left[\\frac{x^3}{3}-x^2\\right]_0^2=\\left(\\frac83-4\\right)-0=-\\frac43$$ Negative, as expected (below axis) — take the absolute value: area $=\\dfrac43$.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Integrate the second piece</span> $(2$ to $3)$: $$\\left[\\frac{x^3}{3}-x^2\\right]_2^3=(9-9)-\\left(\\frac83-4\\right)=0-\\left(-\\frac43\\right)=\\frac43$$ Positive (above axis) ✓.</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Add the two AREAS</span> (both taken as positive): $$\\frac43+\\frac43=\\frac83$$</span></div>
+</div></div>
+
+<h2>6. Area between two curves — line and parabola</h2>
+<div class="formula">$$\\text{Area between curves} = \\int_a^b\\big[(\\text{top curve})-(\\text{bottom curve})\\big]\\,dx$$where $a,b$ are the $x$-coordinates of the intersection points.</div>
+<div class="example"><div class="exhead">Worked example 6</div>
+<p>The curve $y=x^2$ and the line $y=kx$ ($k>0$) enclose a region of area $36$. Find $k$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Find the intersection points</span> (simultaneous equations, Chapter 5!): $x^2=kx \\Rightarrow x(x-k)=0 \\Rightarrow x=0,k$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Identify which curve is on top</span> between $0$ and $k$: the line $y=kx$ is above the parabola there (test any value, e.g. $x=\\tfrac{k}{2}$).</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Set up (top $-$ bottom) and integrate:</span> $$\\int_0^k(kx-x^2)\\,dx=\\left[\\frac{kx^2}{2}-\\frac{x^3}{3}\\right]_0^k=\\frac{k^3}{2}-\\frac{k^3}{3}=\\frac{k^3}{6}$$</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Set equal to the given area and solve:</span> $$\\frac{k^3}{6}=36 \\Rightarrow k^3=216 \\Rightarrow k=6$$</span></div>
+</div></div>
+`,
+quiz:[
+{lvl:'basic',q:"Find $\\int 4x\\,dx$.",
+a:"$2x^2+c$",
+sol:"Step 1 — raise the power of $x$ by 1 (from 1 to 2) and divide by the new power: $\\dfrac{4x^2}{2}=2x^2$. Step 2 — always add the constant of integration: $2x^2+c$."},
+{lvl:'inter',q:"Find $\\int(6x^2-4x+1)\\,dx$.",
+a:"$2x^3-2x^2+x+c$",
+sol:"Step 1 — apply the power rule to each term separately: $\\dfrac{6x^3}{3}=2x^3$, $\\dfrac{4x^2}{2}=2x^2$ (with the minus sign kept), and $x$ integrates to $x$ (since $x=x^1 \\to \\tfrac{x^2}{2}$... actually the constant term $1$ integrates to $x$). Step 2 — combine with $+c$: $2x^3-2x^2+x+c$."},
+{lvl:'inter',q:"Find $\\int(2x+1)^5\\,dx$.",
+a:"$\\dfrac{(2x+1)^6}{12}+c$",
+sol:"Step 1 — this is the reverse chain rule: raise the power to 6. Step 2 — divide by BOTH the new power (6) AND the derivative of the inside ($a=2$): $\\dfrac{(2x+1)^6}{6\\times2}+c=\\dfrac{(2x+1)^6}{12}+c$."},
+{lvl:'inter',q:"Evaluate $\\displaystyle\\int_1^4 3\\sqrt{x}\\,dx$.",
+a:"$14$",
+sol:"Step 1 — rewrite $3\\sqrt{x}=3x^{1/2}$ and integrate: $\\dfrac{3x^{3/2}}{3/2}=2x^{3/2}$. Step 2 — evaluate at the top limit $x=4$: $2(4)^{1.5}=2(8)=16$. Step 3 — evaluate at the bottom limit $x=1$: $2(1)^{1.5}=2$. Step 4 — subtract: $16-2=14$."},
+{lvl:'inter',q:"The gradient of a curve is $\\dfrac{dy}{dx}=4x-5$ and the curve passes through $(1,2)$. Find $y$ when $x=3$.",
+a:"$y=8$",
+sol:"Step 1 — integrate the gradient: $y=2x^2-5x+c$. Step 2 — use the point $(1,2)$ to find $c$: $2=2-5+c \\Rightarrow c=5$. Step 3 — write the full equation: $y=2x^2-5x+5$. Step 4 — evaluate at $x=3$: $18-15+5=8$."},
+{lvl:'adv',q:"Find the total area between $y=x(x-2)$ and the $x$-axis from $x=0$ to $x=3$.",
+a:"$\\dfrac83$",
+sol:"Step 1 — find where the curve crosses zero within the interval: $x=0,2$ — the curve dips below the axis on $(0,2)$ and rises above on $(2,3)$, so split there. Step 2 — integrate $(0,2)$: $\\left[\\dfrac{x^3}{3}-x^2\\right]_0^2=\\dfrac83-4=-\\dfrac43$ — negative confirms below-axis; take $\\left|-\\dfrac43\\right|=\\dfrac43$. Step 3 — integrate $(2,3)$: $\\left[\\dfrac{x^3}{3}-x^2\\right]_2^3=0-\\left(-\\dfrac43\\right)=\\dfrac43$ — positive, above axis. Step 4 — add the two AREAS (both positive): $\\dfrac43+\\dfrac43=\\dfrac83$."},
+{lvl:'adv',q:"The curve $y=x^2$ and the line $y=kx$ ($k>0$) enclose a region of area $36$. Find $k$.",
+a:"$k=6$",
+sol:"Step 1 — find intersections: $x^2=kx \\Rightarrow x(x-k)=0 \\Rightarrow x=0,k$. Step 2 — the line is above the parabola on this interval (check any point in between). Step 3 — integrate (top minus bottom): $\\int_0^k(kx-x^2)dx=\\left[\\dfrac{kx^2}{2}-\\dfrac{x^3}{3}\\right]_0^k=\\dfrac{k^3}{2}-\\dfrac{k^3}{3}=\\dfrac{k^3}{6}$. Step 4 — set equal to 36 and solve: $\\dfrac{k^3}{6}=36 \\Rightarrow k^3=216 \\Rightarrow k=6$."}
+]};
+
+
+// ============================================================ ADD MATH CH 14: KINEMATICS (CALCULUS)
+ADDMATH[13] = {
+title:"Kinematics (Calculus of Motion)",
+syl:"0606 §12 — Applications of calculus: kinematics",
+yt:["calculus kinematics displacement velocity acceleration","total distance vs displacement calculus","kinematics differentiation integration IGCSE","exponential velocity function kinematics"],
+body:`
+<div class="scenario"><div class="schead">Real-life scenario — start here</div>
+<p>An LRT train pulling out of KL Sentral along a straight section of track has displacement $s=2t^3-9t^2+12t$ (metres, $t$ in seconds) from the platform. The driver wants to know: when does the train come to a complete stop (e.g. at a signal)? How fast is it going at any moment? This chapter is Chapter 12–13's differentiation and integration, applied specifically to motion — the SAME calculus, one specific real-world use.</p></div>
+
+<h2>1. The calculus chain: displacement → velocity → acceleration</h2>
+<div class="formula">$$v=\\frac{ds}{dt} \\qquad a=\\frac{dv}{dt}=\\frac{d^2s}{dt^2}$$
+Differentiate to go displacement → velocity → acceleration. Integrate to go the other way: $$v=\\int a\\,dt \\qquad s=\\int v\\,dt$$</div>
+<div class="fig">
+<svg viewBox="0 0 460 130" xmlns="http://www.w3.org/2000/svg">
+<rect x="20" y="40" width="110" height="55" rx="10" fill="#EEECFC" stroke="#5246D9" stroke-width="2"/>
+<text x="40" y="72" font-size="14" fill="#5246D9" font-weight="bold">s (displacement)</text>
+<rect x="175" y="40" width="110" height="55" rx="10" fill="#FBEFE6" stroke="#C2571B" stroke-width="2"/>
+<text x="205" y="72" font-size="14" fill="#C2571B" font-weight="bold">v (velocity)</text>
+<rect x="330" y="40" width="110" height="55" rx="10" fill="#E3F4EA" stroke="#1D7A4F" stroke-width="2"/>
+<text x="350" y="72" font-size="14" fill="#1D7A4F" font-weight="bold">a (acceleration)</text>
+<path d="M 130 55 L 175 55" stroke="#1A2030" stroke-width="2" marker-end="url(#ka)"/>
+<text x="132" y="45" font-size="11">differentiate</text>
+<path d="M 285 55 L 330 55" stroke="#1A2030" stroke-width="2" marker-end="url(#ka)"/>
+<text x="287" y="45" font-size="11">differentiate</text>
+<path d="M 330 90 L 285 90" stroke="#999" stroke-width="2" marker-end="url(#ka)"/>
+<text x="292" y="112" font-size="11" fill="#999">integrate</text>
+<path d="M 175 90 L 130 90" stroke="#999" stroke-width="2" marker-end="url(#ka)"/>
+<text x="140" y="112" font-size="11" fill="#999">integrate</text>
+<defs><marker id="ka" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1A2030"/></marker></defs>
+</svg>
+<div class="figcap">Differentiation moves right (displacement → velocity → acceleration); integration moves left, restoring $+c$ from given initial conditions at each step.</div></div>
+
+<h2>2. "At rest" means $v=0$ — NOT $s=0$</h2>
+<div class="mistake"><b>Common mistake:</b> "at rest" is a statement about VELOCITY being zero, not about the particle being back at the starting point. A particle can be far from the origin and still momentarily at rest (e.g. at the top of a thrown ball's path).</div>
+<div class="example"><div class="exhead">Worked example 1 — the scenario, solved</div>
+<p>$s=2t^3-9t^2+12t$. Find the times when the particle is at rest.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Differentiate to get velocity:</span> $v=\\dfrac{ds}{dt}=6t^2-18t+12$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Set $v=0$</span> (at rest, NOT $s=0$): $$6t^2-18t+12=0 \\Rightarrow 6(t-1)(t-2)=0 \\Rightarrow t=1,2$$</span></div>
+</div></div>
+
+<h2>3. Working backwards — integrate, and use initial conditions</h2>
+<div class="example"><div class="exhead">Worked example 2</div>
+<p>A particle has $v=6t^2-4t+2$ and $s=3$ when $t=0$. Find $s$ when $t=2$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Integrate velocity to get displacement</span> (with unknown constant): $$s=\\int(6t^2-4t+2)\\,dt=2t^3-2t^2+2t+c$$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Use the given condition to find $c$:</span> at $t=0$, $s=3$: $0-0+0+c=3 \\Rightarrow c=3$.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Evaluate at $t=2$:</span> $s=2(8)-2(4)+2(2)+3=16-8+4+3=15$.</span></div>
+</div></div>
+<div class="example"><div class="exhead">Worked example 3 — integrate TWICE</div>
+<p>Given $a=6t-4$, $v=2$ when $t=0$, and $s=0$ when $t=0$, find $s$ in terms of $t$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Integrate acceleration to get velocity</span> (first unknown constant, $c_1$): $$v=\\int(6t-4)\\,dt=3t^2-4t+c_1$$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Use the velocity condition to find $c_1$:</span> at $t=0$, $v=2$: $c_1=2$.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Integrate velocity to get displacement</span> (second unknown constant, $c_2$): $$s=\\int(3t^2-4t+2)\\,dt=t^3-2t^2+2t+c_2$$</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Use the displacement condition to find $c_2$:</span> at $t=0$, $s=0$: $c_2=0$.</span></div>
+</div>
+$$s=t^3-2t^2+2t$$</div>
+
+<h2>4. Total distance vs. displacement — the reversal trap</h2>
+<p>This is the kinematics version of the "signed area" trap from Chapter 13. <b>Displacement</b> is the net change in position — direction-reversals cancel out. <b>Distance travelled</b> adds up every bit of movement regardless of direction, so you must split at every point where $v=0$ (a reversal) and take absolute values.</p>
+<div class="example"><div class="exhead">Worked example 4</div>
+<p>A particle starts from $O$ with $v=4t-t^2$. Find the total distance travelled in the first 5 seconds.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Find when the particle reverses</span> (velocity zero): $v=0 \\Rightarrow t(4-t)=0 \\Rightarrow t=0,4$. So it moves one way for $0\\leq t\\leq4$, then reverses for $4\\leq t\\leq5$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Integrate to get displacement:</span> $s=\\int(4t-t^2)\\,dt=2t^2-\\dfrac{t^3}{3}$ (starts from $O$ so $c=0$).</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Evaluate at each key time:</span> $s(0)=0$; $s(4)=32-\\dfrac{64}{3}=\\dfrac{32}{3}$; $s(5)=50-\\dfrac{125}{3}=\\dfrac{25}{3}$.</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Add the SIZE of each leg</span> (forward leg $0\\to4$, then reverse leg $4\\to5$): $$\\left|\\frac{32}{3}-0\\right|+\\left|\\frac{25}{3}-\\frac{32}{3}\\right|=\\frac{32}{3}+\\frac73=\\frac{39}{3}=13\\text{ m}$$</span></div>
+</div>
+<p>Compare: the NET displacement after 5 s is just $s(5)=\\dfrac{25}{3}\\approx8.33$ m — much less than the $13$ m actually travelled, because the particle backtracked partway.</p></div>
+
+<h2>5. Exponential velocity functions</h2>
+<div class="example"><div class="exhead">Worked example 5</div>
+<p>A particle's velocity is $v=12e^{-2t}-4$ m/s. Find (a) when it is at rest, (b) its acceleration then, (c) its displacement from $t=0$ to that instant.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">(a) Set $v=0$:</span> $12e^{-2t}=4 \\Rightarrow e^{-2t}=\\tfrac13 \\Rightarrow -2t=\\ln\\tfrac13=-\\ln3 \\Rightarrow t=\\tfrac12\\ln3\\approx0.549$ s (using logs, Chapter 6).</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">(b) Differentiate $v$ for acceleration:</span> $a=\\dfrac{dv}{dt}=-24e^{-2t}$. At $t=\\tfrac12\\ln3$: $e^{-2t}=\\tfrac13$, so $a=-24\\times\\tfrac13=-8$ m/s².</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">(c) Integrate $v$ for displacement:</span> $s=\\int(12e^{-2t}-4)\\,dt=-6e^{-2t}-4t+c$; with $s=0$ at $t=0$: $-6+c=0 \\Rightarrow c=6$.</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Evaluate at $t=\\tfrac12\\ln3$:</span> $$s=-6\\left(\\tfrac13\\right)-4\\left(\\tfrac12\\ln3\\right)+6=-2-2\\ln3+6=4-2\\ln3\\approx1.80\\text{ m}$$</span></div>
+</div></div>
+`,
+quiz:[
+{lvl:'basic',q:"$s=5t^2$. Find the velocity at $t=3$.",
+a:"$30$ m/s",
+sol:"Step 1 — differentiate to get velocity: $v=\\dfrac{ds}{dt}=10t$. Step 2 — substitute $t=3$: $v=30$ m/s."},
+{lvl:'inter',q:"$s=2t^3-9t^2+12t$. Find the times when the particle is at rest.",
+a:"$t=1$ s and $t=2$ s",
+sol:"Step 1 — differentiate: $v=\\dfrac{ds}{dt}=6t^2-18t+12$. Step 2 — 'at rest' means $v=0$ (NOT $s=0$): $6(t-1)(t-2)=0 \\Rightarrow t=1,2$."},
+{lvl:'inter',q:"A particle has $v=6t^2-4t+2$ and $s=3$ when $t=0$. Find $s$ when $t=2$.",
+a:"$s=15$",
+sol:"Step 1 — integrate: $s=2t^3-2t^2+2t+c$. Step 2 — use $s=3$ at $t=0$: $c=3$. Step 3 — evaluate at $t=2$: $s=16-8+4+3=15$."},
+{lvl:'inter',q:"$v=3t^2-12$. Find the acceleration when the particle is instantaneously at rest ($t>0$).",
+a:"$12$ m/s²",
+sol:"Step 1 — set $v=0$: $3t^2=12 \\Rightarrow t^2=4 \\Rightarrow t=2$ (taking $t>0$). Step 2 — differentiate $v$ for acceleration: $a=\\dfrac{dv}{dt}=6t$. Step 3 — evaluate at $t=2$: $a=12$ m/s²."},
+{lvl:'adv',q:"A particle starts from $O$ with $v=4t-t^2$. Find the total distance travelled in the first 5 seconds.",
+a:"$13$ m",
+sol:"Step 1 — find reversal points: $v=0 \\Rightarrow t=0,4$, so the particle reverses direction at $t=4$. Step 2 — integrate: $s=2t^2-\\dfrac{t^3}{3}$ (starting from $O$, $c=0$). Step 3 — evaluate: $s(4)=\\dfrac{32}{3}$, $s(5)=\\dfrac{25}{3}$. Step 4 — add the SIZE of each leg (not the net change): $\\left|\\dfrac{32}{3}\\right|+\\left|\\dfrac{25}{3}-\\dfrac{32}{3}\\right|=\\dfrac{32}{3}+\\dfrac73=13$ m."},
+{lvl:'adv',q:"Given $a=6t-4$, $v=2$ when $t=0$, and $s=0$ when $t=0$, find $s$ in terms of $t$.",
+a:"$s=t^3-2t^2+2t$",
+sol:"Step 1 — integrate acceleration to get velocity: $v=3t^2-4t+c_1$; using $v=2$ at $t=0$ gives $c_1=2$. Step 2 — integrate velocity to get displacement: $s=t^3-2t^2+2t+c_2$; using $s=0$ at $t=0$ gives $c_2=0$. Step 3 — final answer: $s=t^3-2t^2+2t$. Two integrations means two separate constants, each fixed by its own given condition."},
+{lvl:'adv',q:"A particle's velocity is $v=12e^{-2t}-4$ m/s. Find (a) when it is at rest, (b) its acceleration then, (c) the displacement from $t=0$ to that instant.",
+a:"(a) $t=\\tfrac12\\ln3\\approx0.549$ s (b) $a=-8$ m/s² (c) $s=4-2\\ln3\\approx1.80$ m",
+sol:"Step 1 (a) — set $v=0$: $12e^{-2t}=4 \\Rightarrow e^{-2t}=\\tfrac13 \\Rightarrow t=\\tfrac12\\ln3$ (taking logs, Chapter 6). Step 2 (b) — differentiate: $a=-24e^{-2t}$; at this $t$, $e^{-2t}=\\tfrac13$, so $a=-24\\times\\tfrac13=-8$ m/s². Step 3 (c) — integrate $v$: $s=-6e^{-2t}-4t+c$; using $s=0$ at $t=0$ gives $c=6$. Step 4 — evaluate at $t=\\tfrac12\\ln3$: $s=-6(\\tfrac13)-4(\\tfrac12\\ln3)+6=-2-2\\ln3+6=4-2\\ln3\\approx1.80$ m."}
+]};

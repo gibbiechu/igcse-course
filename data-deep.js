@@ -2707,3 +2707,211 @@ sol:"Step 1 — normally the metal casing is connected to earth (ground) via the
 a:"$2\\ \\Omega$: $3$ A; $3\\ \\Omega$: $2$ A; $6\\ \\Omega$: $1$ A",
 sol:"Step 1 — combine the parallel pair first: $\\dfrac1R=\\dfrac13+\\dfrac16=\\dfrac12 \\Rightarrow R=2\\ \\Omega$. Step 2 — add the series resistor: total $=2+2=4\\ \\Omega$. Step 3 — find supply current (this ALL flows through the series resistor, since it's the only path there): $I=\\dfrac{12}{4}=3$ A. Step 4 — find the p.d. across the parallel pair: $V=IR_{\\text{pair}}=3\\times2=6$ V (same across BOTH branches). Step 5 — find each branch current: $I_3=\\dfrac63=2$ A, $I_6=\\dfrac66=1$ A. Check: $2+1=3$ A matches the supply current ✓."}
 ]};
+
+
+// ============================================================ PHYSICS CH 10: MAGNETISM & ELECTROMAGNETISM
+PHYSICS[9] = {
+title:"Magnetism & Electromagnetism",
+syl:"0625 §4.5 (magnetism is §4.1 simple magnetism + electromagnetic effects)",
+yt:["electromagnet explained from zero","dc motor split ring commutator explained","transformer step up step down explained","national grid high voltage transmission explained"],
+body:`
+<div class="scenario"><div class="schead">Real-life scenario — start here</div>
+<p>Electricity from a TNB power station travels to your house through the national grid at a shockingly high voltage — hundreds of thousands of volts on the pylons you see along the highway — then gets stepped DOWN to a safe $230$ V by a transformer near your neighbourhood before reaching your wall socket. Why not just send it at $230$ V the whole way? The answer involves the SAME electromagnetic principles that make an electric motor spin — this chapter covers both.</p></div>
+
+<h2>1. Magnets — permanent vs. induced</h2>
+<p>Like poles repel; unlike poles attract. But an unmagnetised iron bar is also ATTRACTED to a magnet (induced magnetism) — so attraction alone doesn't prove something is a genuine magnet.</p>
+<div class="example"><div class="exhead">Worked example 1</div>
+<p>How can you prove a metal bar is a magnet and not just a magnetic material?</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Bring each end near a KNOWN magnet's pole</span> and observe.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Attraction is inconclusive</span> — any magnetic material (magnetised or not) would be attracted.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">REPULSION is the definitive test:</span> repulsion can only happen between two LIKE poles of two genuinely magnetised objects — an unmagnetised bar can never repel a magnet. So repulsion proves the bar is itself a magnet.</span></div>
+</div></div>
+
+<h2>2. Electromagnets — magnetism from current</h2>
+<div class="fig">
+<svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg">
+<rect x="150" y="50" width="100" height="60" fill="#888" rx="6"/>
+<text x="165" y="85" font-size="12" fill="#fff">iron core</text>
+<path d="M 130 40 Q 200 20 270 40" stroke="#5246D9" stroke-width="3" fill="none"/>
+<path d="M 130 60 Q 200 40 270 60" stroke="#5246D9" stroke-width="3" fill="none"/>
+<path d="M 130 100 Q 200 120 270 100" stroke="#5246D9" stroke-width="3" fill="none"/>
+<path d="M 130 120 Q 200 140 270 120" stroke="#5246D9" stroke-width="3" fill="none"/>
+<text x="60" y="20" font-size="11" fill="#555">coil (turns) wrapped around core →</text>
+</svg>
+<div class="figcap">A current-carrying coil wrapped around a soft-iron core is an electromagnet — its magnetism switches ON with the current and OFF the instant current stops.</div></div>
+<div class="example"><div class="exhead">Worked example 2</div>
+<p>State three ways to increase the strength of an electromagnet.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Increase the current</span> flowing through the coil.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Increase the number of turns</span> in the coil.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Add a SOFT-iron core</span> (not steel) — it concentrates the magnetic field lines and greatly magnifies the field strength, while still losing its magnetism instantly once the current stops (essential for a SWITCHABLE electromagnet — steel would stay magnetised).</span></div>
+</div></div>
+
+<h2>3. The motor effect and the DC motor</h2>
+<p>A current-carrying wire in a magnetic field experiences a force (found using Fleming's left-hand rule). In a DC motor, a rectangular coil in a magnetic field experiences forces on opposite sides in OPPOSITE directions — creating a turning couple.</p>
+<div class="example"><div class="exhead">Worked example 3</div>
+<p>In a DC motor, what is the purpose of the split-ring commutator?</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Without it, the problem:</span> as the coil rotates past the halfway point, the side that was moving "up" is now moving "down" relative to the field — the force on it would REVERSE, which would reverse the coil's spin direction every half-turn instead of continuing.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">The commutator's job:</span> it swaps which side of the coil connects to which battery terminal, exactly at the moment the coil passes the halfway point.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Net effect:</span> the CURRENT direction through that side of the coil reverses at the same instant the coil's physical orientation flips — so the FORCE direction (and hence the turning couple) stays consistently in one rotational sense, giving continuous spinning.</span></div>
+</div></div>
+
+<h2>4. Electromagnetic induction and transformers</h2>
+<div class="formula">Induction requires a CHANGING magnetic field (or changing flux linkage) — a steady, unchanging field induces nothing. Transformer equation: $$\\frac{V_p}{V_s}=\\frac{N_p}{N_s}$$</div>
+<div class="example"><div class="exhead">Worked example 4</div>
+<p>A transformer has $500$ primary turns and $2500$ secondary turns, with a $230$ V a.c. input. Find the output voltage. Why won't it work with d.c.?</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Apply the transformer equation:</span> $$V_s=V_p\\times\\frac{N_s}{N_p}=230\\times\\frac{2500}{500}=1150\\text{ V (step-up)}$$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Why not d.c.:</span> a transformer works by INDUCTION, which needs a continuously CHANGING magnetic field in the iron core. A.C. current constantly changes direction, generating exactly this changing field. Steady d.c. produces a CONSTANT field once established — with nothing changing, no e.m.f. is induced in the secondary coil at all.</span></div>
+</div></div>
+
+<h2>5. Why transmit at high voltage? (The scenario, explained)</h2>
+<div class="example"><div class="exhead">Worked example 5</div>
+<p>Explain why electrical power is transmitted through the national grid at very high voltage.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Start from the power formula:</span> $P=VI$. For a FIXED power being delivered, raising the voltage $V$ means the current $I$ must correspondingly DROP.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Heat wasted in cables follows a different formula:</span> $P_{\\text{loss}}=I^2R$ — this depends on the SQUARE of the current, not voltage.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Combine the two:</span> even a modest reduction in current (from raising voltage) causes a MUCH bigger reduction in wasted heat, because of the squaring. Halving the current, for instance, cuts the cable losses to a quarter.</span></div>
+</div>
+<p>Transformers step voltage UP for efficient transmission across the country, then step it back DOWN to a safe $230$ V near your home.</p></div>
+`,
+quiz:[
+{lvl:'basic',q:"Which of iron and steel suits (a) an electromagnet core, (b) a permanent magnet?",
+a:"(a) iron (soft) (b) steel (hard)",
+sol:"Step 1 — iron magnetises and demagnetises almost instantly (a 'soft' magnetic material) — perfect for an electromagnet that must switch off completely when its current stops. Step 2 — steel retains its magnetism once magnetised (a 'hard' magnetic material) — suited to permanent magnets that must stay magnetic indefinitely."},
+{lvl:'inter',q:"How can you prove a metal bar is a magnet and not just a magnetic material?",
+a:"Show it can REPEL a known magnet",
+sol:"Step 1 — bring each end of the bar near a known magnet's pole. Step 2 — attraction alone proves nothing, since ANY magnetic material (magnetised or not) is attracted to a magnet. Step 3 — repulsion, however, can only occur between two genuinely LIKE poles of two real magnets, so observing repulsion is the definitive proof the bar is itself magnetised."},
+{lvl:'inter',q:"State three ways to increase the strength of an electromagnet.",
+a:"More turns, larger current, soft-iron core",
+sol:"Step 1 — increase the current through the coil. Step 2 — increase the number of turns in the coil. Step 3 — insert a SOFT-iron core (not steel), which concentrates and magnifies the field while still losing its magnetism the instant the current stops."},
+{lvl:'inter',q:"In a DC motor, what is the purpose of the split-ring commutator?",
+a:"Reverses the coil current every half revolution so the turning force stays in one direction",
+sol:"Step 1 — without it, the force on each side of the coil would naturally reverse every half-turn as the coil's orientation in the field flips, which would reverse the motor's spin direction. Step 2 — the commutator swaps the electrical connections to the coil at exactly that halfway point. Step 3 — this reverses the current direction in sync with the coil's physical flip, keeping the resulting force (and hence the turning couple) consistently in ONE rotational direction — continuous spinning."},
+{lvl:'inter',q:"A transformer has $500$ primary turns and $2500$ secondary turns, with a $230$ V a.c. input. Find the output voltage. Why won't it work with d.c.?",
+a:"$1150$ V; d.c. gives a constant field → no induction",
+sol:"Step 1 — apply the transformer equation: $V_s=V_p\\times\\dfrac{N_s}{N_p}=230\\times\\dfrac{2500}{500}=1150$ V (a step-up transformer). Step 2 — transformers rely on induction, which needs a CHANGING magnetic field. A.c. constantly reverses direction, creating this changing field; steady d.c. settles into a constant field with nothing changing, so no e.m.f. would be induced at all."},
+{lvl:'adv',q:"Explain why electrical power is transmitted through the national grid at very high voltage.",
+a:"Same power at higher V means lower I; cable heat loss = I²R is greatly reduced",
+sol:"Step 1 — from $P=VI$, delivering the same power at a higher voltage requires a correspondingly LOWER current. Step 2 — heat wasted in transmission cables follows $P_{\\text{loss}}=I^2R$, which depends on the SQUARE of the current. Step 3 — even a modest drop in current (from raising voltage) causes a much larger drop in wasted heat because of this squaring — e.g. halving current quarters the cable losses. Transformers step voltage up for transmission, then back down for safe domestic use."},
+{lvl:'adv',q:"An ideal transformer steps $11\\,000$ V down to $240$ V and delivers $6.0$ kW to homes. Find the turns ratio and the current in the primary and secondary coils.",
+a:"Ratio $\\approx45.8:1$; $I_p\\approx0.545$ A; $I_s=25$ A",
+sol:"Step 1 — turns ratio equals the voltage ratio: $\\dfrac{N_p}{N_s}=\\dfrac{11\\,000}{240}\\approx45.8$. Step 2 — secondary current from power: $I_s=\\dfrac{P}{V_s}=\\dfrac{6000}{240}=25$ A. Step 3 — for an IDEAL transformer, power in equals power out, so primary current: $I_p=\\dfrac{P}{V_p}=\\dfrac{6000}{11\\,000}\\approx0.545$ A. Step 4 — note the high-voltage side carries a tiny current — exactly the point of high-voltage transmission."}
+]};
+
+
+// ============================================================ PHYSICS CH 11: NUCLEAR PHYSICS
+PHYSICS[10] = {
+title:"Nuclear Physics",
+syl:"0625 §5 — The nuclear atom; radioactivity",
+yt:["alpha beta gamma radiation explained","nuclear equations balancing explained","half life explained from zero","carbon dating explained physics"],
+body:`
+<div class="scenario"><div class="schead">Real-life scenario — start here</div>
+<p>At Lenggong Valley in Perak — a UNESCO World Heritage Site — archaeologists dated ancient stone tools and the famous "Perak Man" skeleton using <b>carbon-14 dating</b>. Every living thing absorbs a small, steady amount of radioactive carbon-14 while alive; once it dies, the carbon-14 inside it decays away at a known, fixed rate with no more being absorbed. Measuring how MUCH is left tells you how long ago the organism died. This whole technique rests on one concept: <b>half-life</b>.</p></div>
+
+<h2>1. Inside the atom — protons, neutrons, and isotope notation</h2>
+<div class="formula">$$^{A}_{Z}\\text{X}$$ where $A$ = mass number (protons $+$ neutrons), $Z$ = atomic (proton) number.
+Number of neutrons $= A-Z$. A neutral atom has electrons $=$ protons $=Z$.</div>
+<div class="example"><div class="exhead">Worked example 1</div>
+<p>An isotope is written $^{210}_{84}$Po. State its number of protons, neutrons and electrons (neutral atom).</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Protons:</span> read directly from $Z$: $84$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Neutrons:</span> $A-Z=210-84=126$.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Electrons</span> (neutral atom, so equal to protons): $84$.</span></div>
+</div></div>
+
+<h2>2. Alpha, beta, gamma — three very different penetrating powers</h2>
+<div class="fig">
+<svg viewBox="0 0 460 160" xmlns="http://www.w3.org/2000/svg">
+<rect x="20" y="30" width="10" height="100" fill="#EEECFC" stroke="#5246D9"/>
+<text x="5" y="145" font-size="10">paper</text>
+<line x1="60" y1="60" x2="25" y2="60" stroke="#C2571B" stroke-width="3" marker-end="url(#kn)"/>
+<text x="60" y="55" font-size="11" fill="#C2571B">α stopped here</text>
+<rect x="170" y="30" width="20" height="100" fill="#FBEFE6" stroke="#C2571B"/>
+<text x="150" y="145" font-size="10">few mm Al</text>
+<line x1="230" y1="90" x2="195" y2="90" stroke="#5246D9" stroke-width="3" marker-end="url(#kn)"/>
+<text x="230" y="85" font-size="11" fill="#5246D9">β stopped here</text>
+<rect x="330" y="30" width="40" height="100" fill="#E3F4EA" stroke="#1D7A4F"/>
+<text x="300" y="145" font-size="10">thick lead</text>
+<line x1="420" y1="120" x2="375" y2="120" stroke="#1D7A4F" stroke-width="3" marker-end="url(#kn)"/>
+<text x="420" y="115" font-size="11" fill="#1D7A4F">γ mostly stopped here</text>
+<defs><marker id="kn" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1A2030"/></marker></defs>
+</svg>
+<div class="figcap"><b>Alpha</b>: stopped by paper (large, heavily-charged, most ionising). <b>Beta</b>: needs a few mm of aluminium. <b>Gamma</b>: needs thick lead to reduce substantially (never fully stopped, least ionising).</div></div>
+<div class="example"><div class="exhead">Worked example 2</div>
+<p>Which radiation is used in a paper-thickness gauge, and why?</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Rule out alpha:</span> it's stopped COMPLETELY by paper — the detector reading would never change no matter the thickness, giving no useful information.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Rule out gamma:</span> it passes through paper almost entirely unaffected — again, the reading barely changes with thickness.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Beta is the answer:</span> it's PARTIALLY absorbed by paper, so the amount getting through varies measurably as the paper thickness changes — exactly the sensitivity needed for a thickness gauge.</span></div>
+</div></div>
+
+<h2>3. Balancing nuclear equations</h2>
+<div class="formula">Alpha decay: mass number drops by 4, atomic number drops by 2. Beta-minus decay: a neutron converts to a proton $+$ electron — mass number UNCHANGED, atomic number rises by 1. In every equation, total $A$ and total $Z$ must balance on both sides.</div>
+<div class="example"><div class="exhead">Worked example 3</div>
+<p>$^{214}_{82}$Pb decays by $\\beta^-$ emission. Write the daughter nuclide.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Mass number is unchanged</span> by beta decay: stays $214$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Atomic number rises by 1</span> (a neutron became a proton): $82\\to83$, which is bismuth.</span></div>
+</div>
+$$^{214}_{82}\\text{Pb} \\to {}^{214}_{83}\\text{Bi} + {}^{0}_{-1}\\text{e}$$
+<p>Check the balance: mass numbers $214=214+0$ ✓; atomic numbers $82=83+(-1)$ ✓.</p></div>
+
+<h2>4. Half-life</h2>
+<div class="formula">The half-life is the time for the activity (or the number of undecayed nuclei) to fall to HALF its previous value — this fraction is the same regardless of the starting amount.</div>
+<div class="fig">
+<svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+<line x1="30" y1="160" x2="380" y2="160" stroke="#888"/><line x1="30" y1="20" x2="30" y2="170" stroke="#888"/>
+<path d="M 30 30 Q 90 60 130 95 Q 180 130 230 145 Q 280 155 330 158" fill="none" stroke="#5246D9" stroke-width="3"/>
+<line x1="30" y1="30" x2="130" y2="30" stroke="#C2571B" stroke-dasharray="3 2"/>
+<line x1="130" y1="30" x2="130" y2="95" stroke="#C2571B" stroke-dasharray="3 2"/>
+<line x1="30" y1="95" x2="130" y2="95" stroke="#C2571B" stroke-dasharray="3 2"/>
+<text x="10" y="25" font-size="10">100%</text><text x="0" y="99" font-size="10">50%</text>
+<text x="120" y="15" font-size="10" fill="#C2571B">1 half-life</text>
+</svg>
+<div class="figcap">Each half-life period halves whatever amount remains: $100\\%\\to50\\%\\to25\\%\\to12.5\\%\\ldots$ — an ever-shrinking curve that never quite reaches zero.</div></div>
+<div class="example"><div class="exhead">Worked example 4</div>
+<p>A radioactive source's corrected count rate falls from $480$ to $60$ counts/min in $24$ hours. Find the half-life.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Count the halvings</span> needed to get from $480$ to $60$: $480\\to240\\to120\\to60$ — that's $3$ halvings.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Divide the total time by the number of halvings:</span> $\\dfrac{24}{3}=8$ hours.</span></div>
+</div></div>
+<div class="example"><div class="exhead">Worked example 5 — the scenario, solved</div>
+<p>A sample of half-life $5730$ years (carbon-14) shows an activity $12.5\\%$ of that in living material. How old is the specimen?</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Express the fraction as a power of $\\tfrac12$:</span> $12.5\\%=\\dfrac18=\\left(\\dfrac12\\right)^3$ — exactly $3$ halvings.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Multiply by the half-life:</span> $3\\times5730=17\\,190$ years old.</span></div>
+</div>
+<p><b>Why background radiation matters:</b> in real measurements, the detector also picks up background radiation from cosmic rays and naturally radioactive rocks — this must be measured separately (with no sample present) and SUBTRACTED from every reading, or the "corrected" activity (and hence the calculated age) comes out wrong.</p></div>
+
+<h2>5. Fission vs. fusion</h2>
+<div class="formula">
+<b>Fission:</b> a HEAVY nucleus (e.g. uranium-235) splits into smaller nuclei after absorbing a neutron — used in nuclear power stations, produces radioactive waste.<br>
+<b>Fusion:</b> LIGHT nuclei (e.g. hydrogen) combine into a heavier one (helium) under extreme temperature and pressure — powers the Sun and other stars, and produces very little long-lived waste.
+</div>
+`,
+quiz:[
+{lvl:'basic',q:"Which radiation is stopped by a sheet of paper?",
+a:"Alpha",
+sol:"Step 1 — recall the penetrating powers of the three types. Step 2 — alpha particles are large and doubly-charged, making them highly ionising but very easily stopped — a single sheet of paper (or a few cm of air) is enough. Beta needs aluminium; gamma needs thick lead."},
+{lvl:'inter',q:"An isotope is written $^{210}_{84}$Po. State its number of protons, neutrons and electrons (neutral atom).",
+a:"$84$ p, $126$ n, $84$ e",
+sol:"Step 1 — protons $=Z=84$. Step 2 — neutrons $=A-Z=210-84=126$. Step 3 — a neutral atom has equal electrons and protons: $84$."},
+{lvl:'inter',q:"$^{214}_{82}$Pb decays by $\\beta^-$ emission. Write the daughter nuclide.",
+a:"$^{214}_{83}$Bi",
+sol:"Step 1 — in beta-minus decay, mass number $A$ is UNCHANGED (stays $214$). Step 2 — atomic number $Z$ INCREASES by 1 (a neutron converts to a proton): $82\\to83$, which is bismuth. Step 3 — the balanced equation: $^{214}_{82}\\text{Pb}\\to{}^{214}_{83}\\text{Bi}+{}^{0}_{-1}\\text{e}$."},
+{lvl:'inter',q:"A radioactive source's corrected count rate falls from $480$ to $60$ counts/min in $24$ hours. Find the half-life.",
+a:"$8$ hours",
+sol:"Step 1 — count the halvings from $480$ to $60$: $480\\to240\\to120\\to60$, which is 3 halvings. Step 2 — divide total time by the number of halvings: $\\dfrac{24}{3}=8$ hours."},
+{lvl:'inter',q:"Which radiation is used in a paper-thickness gauge, and why?",
+a:"Beta — alpha would be fully blocked, gamma barely affected",
+sol:"Step 1 — alpha is ruled out: fully stopped by paper regardless of thickness, giving no varying signal. Step 2 — gamma is ruled out: passes through paper almost entirely, again giving little variation. Step 3 — beta is ideal: PARTIALLY absorbed by paper, so the detected count varies measurably and sensitively with thickness."},
+{lvl:'adv',q:"State two differences between nuclear fission and fusion, and identify which powers the Sun.",
+a:"Fission splits heavy nuclei (reactors); fusion joins light nuclei at extreme temperatures — fusion powers the Sun",
+sol:"Step 1 — fission involves a HEAVY nucleus (e.g. uranium-235) splitting into smaller fragments after neutron capture, used in nuclear power stations, and produces radioactive waste. Step 2 — fusion involves LIGHT nuclei (e.g. hydrogen) combining into a heavier one, requiring enormous temperature and pressure, and produces comparatively little long-lived waste. Step 3 — fusion is the process powering the Sun and other stars."},
+{lvl:'adv',q:"A sample of half-life $5730$ years (carbon-14) shows an activity $12.5\\%$ of that in living material. How old is the specimen? State why background radiation matters in real measurements.",
+a:"$\\approx17\\,190$ years",
+sol:"Step 1 — express the remaining fraction as a power of $\\tfrac12$: $12.5\\%=\\dfrac18=\\left(\\tfrac12\\right)^3$, so 3 half-lives have passed. Step 2 — multiply: $3\\times5730=17\\,190$ years. Step 3 — background radiation (from cosmic rays, rocks) is always present alongside the sample's own radiation in a real detector; it must be measured separately with no sample present and subtracted from every reading, or the fraction remaining — and hence the calculated age — will be inaccurate."}
+]};

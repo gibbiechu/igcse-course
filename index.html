@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IGCSE Zero→Hero · Add Math 0606 + Physics 0625</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F5F6F2; --panel:#FFFFFF; --ink:#1A2030; --ink-soft:#5A6172;
+  --line:#E2E4DC; --math:#5246D9; --math-soft:#EEECFC; --phys:#C2571B; --phys-soft:#FBEFE6;
+  --ok:#1D7A4F; --flag:#C2331B; --accent:var(--math);
+  --mono:'IBM Plex Mono',monospace; --disp:'Space Grotesk',sans-serif; --body:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.65}
+button{font-family:var(--body);cursor:pointer}
+a{color:var(--accent)}
+.layout{display:grid;grid-template-columns:300px 1fr;min-height:100vh}
+/* ---------- sidebar ---------- */
+.side{border-right:1px solid var(--line);background:var(--panel);padding:22px 18px;position:sticky;top:0;height:100vh;overflow-y:auto}
+.brand{font-family:var(--disp);font-weight:700;font-size:1.15rem;letter-spacing:-.02em;margin-bottom:2px}
+.brand .zh{color:var(--math)}
+.sub{font-family:var(--mono);font-size:.68rem;color:var(--ink-soft);margin-bottom:18px}
+.navbtns{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.navbtn{border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:6px 10px;font-size:.78rem;font-weight:600;color:var(--ink)}
+.navbtn.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.subjhead{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;margin:16px 0 8px;display:flex;align-items:center;gap:8px}
+.subjhead .dot{width:8px;height:8px;border-radius:50%}
+.chlist{list-style:none}
+.chlist li{margin-bottom:2px}
+.chlink{display:flex;gap:8px;align-items:baseline;width:100%;text-align:left;border:0;background:none;padding:6px 8px;border-radius:7px;font-size:.83rem;color:var(--ink);line-height:1.35}
+.chlink:hover{background:var(--paper)}
+.chlink.active{background:var(--math-soft);font-weight:600}
+.chlink.phys.active{background:var(--phys-soft)}
+.chlink .num{font-family:var(--mono);font-size:.68rem;color:var(--ink-soft);min-width:22px}
+.chlink .tick{margin-left:auto;color:var(--ok);font-size:.75rem}
+/* ---------- main ---------- */
+.main{padding:36px 48px;max-width:920px}
+.crumb{font-family:var(--mono);font-size:.7rem;color:var(--ink-soft);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+h1.title{font-family:var(--disp);font-weight:700;font-size:2rem;letter-spacing:-.02em;line-height:1.15;margin-bottom:6px}
+.syltag{display:inline-block;font-family:var(--mono);font-size:.7rem;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:3px 9px;color:var(--ink-soft);margin:8px 8px 20px 0}
+h2{font-family:var(--disp);font-size:1.28rem;margin:34px 0 10px;letter-spacing:-.01em}
+h3{font-family:var(--disp);font-size:1.05rem;margin:22px 0 8px}
+p{margin-bottom:12px}
+ul,ol{margin:0 0 12px 22px}
+li{margin-bottom:5px}
+.formula{font-family:var(--mono);font-size:.92rem;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;padding:12px 16px;margin:14px 0;overflow-x:auto}
+.note{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:14px 0;font-size:.93rem}
+.note b:first-child{color:var(--accent)}
+.example{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:18px 0}
+.example .exhead{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.fig{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;margin:18px 0;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.figcap{font-size:.8rem;color:var(--ink-soft);margin-top:8px}
+table{border-collapse:collapse;margin:14px 0;width:100%;font-size:.9rem;background:var(--panel)}
+th,td{border:1px solid var(--line);padding:8px 12px;text-align:left}
+th{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;background:var(--paper)}
+.yt{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.yt a{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:7px 14px;font-size:.82rem;text-decoration:none;color:var(--ink);font-weight:500}
+.yt a::before{content:"▶";color:#E33;font-size:.7rem}
+.yt a:hover{border-color:var(--accent)}
+/* ---------- quiz ---------- */
+.quiz{margin-top:30px}
+.qcard{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:14px 0;position:relative}
+.qcard.flagged{border-color:var(--flag);box-shadow:0 0 0 1px var(--flag)}
+.qtop{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.qnum{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;margin-bottom:6px}
+.lvl{display:inline-block;font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:2px 9px;margin-left:8px;vertical-align:middle}
+.lvl.basic{background:#E3F4EA;color:#1D7A4F}
+.lvl.inter{background:#FBF3DC;color:#8A6410}
+.lvl.adv{background:#FBE5E1;color:#B02E14}
+.lvlfilter{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 4px}
+.lvlbtn{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:6px 14px;font-size:.78rem;font-weight:600;color:var(--ink-soft)}
+.lvlbtn.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.qtext{font-weight:500;margin-bottom:10px}
+.qbtns{display:flex;gap:8px;margin-top:10px}
+.solbtn{border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:6px 12px;font-size:.8rem;font-weight:600}
+.flagbtn{border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:6px 12px;font-size:.8rem;font-weight:600;color:var(--ink-soft)}
+.flagbtn.on{background:#FBE9E5;border-color:var(--flag);color:var(--flag)}
+.sol{display:none;margin-top:12px;border-top:1px dashed var(--line);padding-top:12px;font-size:.93rem}
+.sol.open{display:block}
+.sol .ans{font-weight:700;color:var(--ok)}
+/* ---------- footer controls ---------- */
+.chfoot{display:flex;gap:10px;flex-wrap:wrap;margin:38px 0 20px;border-top:1px solid var(--line);padding-top:20px}
+.bigbtn{border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:10px 16px;font-size:.88rem;font-weight:600}
+.bigbtn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+.bigbtn.done{background:var(--ok);color:#fff;border-color:var(--ok)}
+/* ---------- home ---------- */
+.hero{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:30px;margin-bottom:24px}
+.hero h1{font-family:var(--disp);font-size:2.1rem;letter-spacing:-.02em;line-height:1.1;margin-bottom:10px}
+.hero p{color:var(--ink-soft);max-width:60ch}
+.resume{display:inline-block;margin-top:14px;background:var(--ink);color:#fff;border-radius:10px;padding:11px 18px;font-weight:600;text-decoration:none;border:0;font-size:.9rem}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.subjcard{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+.subjcard h2{margin-top:0}
+.subjcard .bar{height:6px;border-radius:99px;background:var(--paper);margin:12px 0;overflow:hidden}
+.subjcard .bar i{display:block;height:100%;border-radius:99px}
+.pct{font-family:var(--mono);font-size:.72rem;color:var(--ink-soft)}
+/* ---------- flagged page ---------- */
+.flagitem{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:12px 0}
+.flagitem .meta{font-family:var(--mono);font-size:.7rem;color:var(--ink-soft);margin-bottom:6px}
+.flagitem button{margin-top:8px}
+.empty{color:var(--ink-soft);font-style:italic;padding:20px 0}
+mark.hl{background:#FFF3B0;padding:0 2px}
+.highlightQ{animation:pulse 2s ease 1}
+@keyframes pulse{0%{box-shadow:0 0 0 4px var(--math-soft)}100%{box-shadow:none}}
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .side{position:static;height:auto;max-height:45vh}
+  .main{padding:22px 18px}
+  .grid2{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.highlightQ{animation:none}}
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="side">
+    <div class="brand">IGCSE <span class="zh">Zero→Hero</span></div>
+    <div class="sub">Add Math 0606 · Physics 0625</div>
+    <div class="navbtns">
+      <button class="navbtn" data-view="home" onclick="go('home')">Home</button>
+      <button class="navbtn" data-view="flags" onclick="go('flags')">🚩 Flagged <span id="flagCount"></span></button>
+      <button class="navbtn" data-view="bookmark" onclick="goBookmark()">🔖 Resume</button>
+    </div>
+    <div class="subjhead"><span class="dot" style="background:var(--math)"></span> Additional Mathematics</div>
+    <ul class="chlist" id="navMath"></ul>
+    <div class="subjhead"><span class="dot" style="background:var(--phys)"></span> Physics</div>
+    <ul class="chlist" id="navPhys"></ul>
+  </aside>
+  <main class="main" id="main"></main>
+</div>
+
+<script src="data-addmath.js"></script>
+<script src="data-physics.js"></script>
+<script src="data-extra.js"></script>
+<script>
+const SUBJ = {
+  math: {label:"Additional Mathematics", code:"Cambridge IGCSE 0606", color:"var(--math)", chapters: ADDMATH},
+  phys: {label:"Physics", code:"Cambridge IGCSE 0625", color:"var(--phys)", chapters: PHYSICS}
+};
+const store = {
+  get(k,d){ try{return JSON.parse(localStorage.getItem(k)) ?? d}catch(e){return d} },
+  set(k,v){ localStorage.setItem(k, JSON.stringify(v)) }
+};
+let flags = store.get('igcse_flags', []);        // [{s,ci,qi}]
+let done  = store.get('igcse_done', {});          // {"math-0":true}
+let bookmark = store.get('igcse_bookmark', null); // {s,ci}
+let last = store.get('igcse_last', null);
+
+function flagKey(s,ci,qi){return s+'-'+ci+'-'+qi}
+function isFlagged(s,ci,qi){return flags.some(f=>f.s===s&&f.ci===ci&&f.qi===qi)}
+function updateFlagCount(){document.getElementById('flagCount').textContent = flags.length? '('+flags.length+')' : ''}
+
+function buildNav(){
+  ['math','phys'].forEach(s=>{
+    const ul = document.getElementById(s==='math'?'navMath':'navPhys');
+    ul.innerHTML='';
+    SUBJ[s].chapters.forEach((ch,i)=>{
+      const li=document.createElement('li');
+      const b=document.createElement('button');
+      b.className='chlink'+(s==='phys'?' phys':'');
+      b.dataset.view=s+'-'+i;
+      b.innerHTML='<span class="num">'+String(i+1).padStart(2,'0')+'</span><span>'+ch.title+'</span>'+(done[s+'-'+i]?'<span class="tick">✓</span>':'');
+      b.onclick=()=>go(s+'-'+i);
+      li.appendChild(b); ul.appendChild(li);
+    });
+  });
+}
+function setActive(view){
+  document.querySelectorAll('[data-view]').forEach(el=>el.classList.toggle('active',el.dataset.view===view));
+}
+function ytLinks(arr){
+  if(!arr||!arr.length)return'';
+  return '<h2>📺 Watch &amp; reinforce</h2><div class="yt">'+arr.map(y=>'<a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query='+encodeURIComponent(y)+'">'+y+'</a>').join('')+'</div>';
+}
+function renderChapter(s,ci){
+  const ch=SUBJ[s].chapters[ci];
+  document.documentElement.style.setProperty('--accent', SUBJ[s].color);
+  let h='<div class="crumb">'+SUBJ[s].label+' · Chapter '+(ci+1)+' of '+SUBJ[s].chapters.length+'</div>';
+  h+='<h1 class="title">'+ch.title+'</h1>';
+  h+='<span class="syltag">Syllabus: '+ch.syl+'</span>';
+  h+=ch.body;
+  h+=ytLinks(ch.yt);
+  h+='<div class="quiz"><h2>✏️ Check yourself ('+ch.quiz.length+' questions)</h2>'
+    +'<div class="lvlfilter">'
+    +'<button class="lvlbtn active" onclick="filterLvl(this,\'all\')">All</button>'
+    +'<button class="lvlbtn" onclick="filterLvl(this,\'basic\')">🟢 Basic</button>'
+    +'<button class="lvlbtn" onclick="filterLvl(this,\'inter\')">🟡 Intermediate</button>'
+    +'<button class="lvlbtn" onclick="filterLvl(this,\'adv\')">🔴 Advanced</button>'
+    +'</div>';
+  ch.quiz.forEach((q,qi)=>{
+    const fl=isFlagged(s,ci,qi);
+    const lvl=q.lvl||(qi===0?'basic':qi<=2?'inter':'adv');
+    const lvlName={basic:'Basic',inter:'Intermediate',adv:'Advanced'}[lvl];
+    h+='<div class="qcard'+(fl?' flagged':'')+'" id="q-'+qi+'" data-lvl="'+lvl+'">'
+      +'<div class="qnum">Question '+(qi+1)+'<span class="lvl '+lvl+'">'+lvlName+'</span></div>'
+      +'<div class="qtext">'+q.q+'</div>'
+      +'<div class="qbtns">'
+      +'<button class="solbtn" onclick="toggleSol(this)">Show solution</button>'
+      +'<button class="flagbtn'+(fl?' on':'')+'" onclick="toggleFlag(\''+s+'\','+ci+','+qi+',this)">'+(fl?'🚩 Flagged':'🏳 Flag for review')+'</button>'
+      +'</div>'
+      +'<div class="sol"><div class="ans">Answer: '+q.a+'</div><div>'+q.sol+'</div></div>'
+      +'</div>';
+  });
+  h+='</div>';
+  const prev=ci>0, next=ci<SUBJ[s].chapters.length-1;
+  h+='<div class="chfoot">';
+  if(prev)h+='<button class="bigbtn" onclick="go(\''+s+'-'+(ci-1)+'\')">← Previous</button>';
+  h+='<button class="bigbtn" onclick="setBookmark(\''+s+'\','+ci+')">🔖 Bookmark here</button>';
+  h+='<button class="bigbtn '+(done[s+'-'+ci]?'done':'')+'" onclick="toggleDone(\''+s+'\','+ci+',this)">'+(done[s+'-'+ci]?'✓ Completed':'Mark complete')+'</button>';
+  if(next)h+='<button class="bigbtn primary" onclick="go(\''+s+'-'+(ci+1)+'\')">Next chapter →</button>';
+  h+='</div>';
+  return h;
+}
+function pct(s){
+  const t=SUBJ[s].chapters.length;
+  const d=SUBJ[s].chapters.filter((_,i)=>done[s+'-'+i]).length;
+  return Math.round(100*d/t);
+}
+function renderHome(){
+  document.documentElement.style.setProperty('--accent','var(--math)');
+  let h='<div class="hero"><h1>Your full IGCSE course, from zero.</h1>'
+   +'<p>Two complete Cambridge courses following the official syllabus order: <b>Additional Mathematics (0606)</b> and <b>Physics (0625)</b>. Every chapter teaches from scratch, then tests you. Flag anything you are unsure of and it collects in the 🚩 Flagged tab for revision. Bookmark where you stop and resume any time.</p>';
+  if(bookmark)h+='<button class="resume" onclick="goBookmark()">🔖 Continue: '+SUBJ[bookmark.s].chapters[bookmark.ci].title+'</button>';
+  else if(last)h+='<button class="resume" onclick="go(\''+last+'\')">Continue where you left off</button>';
+  h+='</div><div class="grid2">';
+  ['math','phys'].forEach(s=>{
+    h+='<div class="subjcard"><h2>'+SUBJ[s].label+'</h2><div class="pct">'+SUBJ[s].code+' · '+SUBJ[s].chapters.length+' chapters · '+pct(s)+'% complete</div>'
+     +'<div class="bar"><i style="width:'+pct(s)+'%;background:'+SUBJ[s].color+'"></i></div>'
+     +'<button class="bigbtn primary" onclick="go(\''+s+'-0\')">Start / continue →</button></div>';
+  });
+  h+='</div>';
+  h+='<div class="note" style="margin-top:22px"><b>How to use this course:</b> Study one chapter at a time in order — later chapters build on earlier ones. Attempt every quiz question on paper <i>before</i> opening the solution. Flag any question you want to come back to — flags are yours to use however you like, and everything you flag collects in the 🚩 Flagged tab for later review.</div>';
+  return h;
+}
+function renderFlags(){
+  document.documentElement.style.setProperty('--accent','var(--flag)');
+  let h='<div class="crumb">Revision list</div><h1 class="title">🚩 Flagged questions</h1><p>Every question you flagged, collected in one place for review whenever you have time. Unflag when you are done with one.</p>';
+  if(!flags.length){h+='<div class="empty">Nothing flagged yet. While doing chapter quizzes, hit "Flag for review" on any question you could not solve confidently.</div>';return h}
+  flags.forEach(f=>{
+    const ch=SUBJ[f.s].chapters[f.ci], q=ch.quiz[f.qi];
+    h+='<div class="flagitem"><div class="meta">'+SUBJ[f.s].label+' · Ch '+(f.ci+1)+' · '+ch.title+' · Q'+(f.qi+1)+'</div>'
+     +'<div>'+q.q+'</div>'
+     +'<button class="bigbtn" onclick="jumpTo(\''+f.s+'\','+f.ci+','+f.qi+')">Open in chapter →</button></div>';
+  });
+  return h;
+}
+function go(view){
+  const main=document.getElementById('main');
+  if(view==='home')main.innerHTML=renderHome();
+  else if(view==='flags')main.innerHTML=renderFlags();
+  else{const [s,ci]=view.split('-');main.innerHTML=renderChapter(s,+ci);last=view;store.set('igcse_last',view);}
+  setActive(view);updateFlagCount();window.scrollTo({top:0});
+}
+function jumpTo(s,ci,qi){
+  go(s+'-'+ci);
+  setTimeout(()=>{const el=document.getElementById('q-'+qi);if(el){el.scrollIntoView({block:'center'});el.classList.add('highlightQ')}},60);
+}
+function goBookmark(){
+  if(bookmark)go(bookmark.s+'-'+bookmark.ci);
+  else if(last)go(last);
+  else go('home');
+}
+function setBookmark(s,ci){bookmark={s,ci};store.set('igcse_bookmark',bookmark);alert('Bookmarked: '+SUBJ[s].chapters[ci].title)}
+function filterLvl(btn,lvl){
+  document.querySelectorAll('.lvlbtn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.qcard').forEach(c=>{c.style.display=(lvl==='all'||c.dataset.lvl===lvl)?'':'none'});
+}
+function toggleSol(btn){const sol=btn.closest('.qcard').querySelector('.sol');sol.classList.toggle('open');btn.textContent=sol.classList.contains('open')?'Hide solution':'Show solution'}
+function toggleFlag(s,ci,qi,btn){
+  if(isFlagged(s,ci,qi))flags=flags.filter(f=>!(f.s===s&&f.ci===ci&&f.qi===qi));
+  else flags.push({s,ci,qi});
+  store.set('igcse_flags',flags);
+  btn.classList.toggle('on');btn.textContent=btn.classList.contains('on')?'🚩 Flagged':'🏳 Flag for review';
+  btn.closest('.qcard').classList.toggle('flagged');updateFlagCount();
+}
+function toggleDone(s,ci,btn){
+  const k=s+'-'+ci;done[k]=!done[k];if(!done[k])delete done[k];
+  store.set('igcse_done',done);
+  btn.classList.toggle('done');btn.textContent=done[k]?'✓ Completed':'Mark complete';buildNav();setActive(s+'-'+ci);
+}
+buildNav();go(last||'home');
+</script>
+</body>
+</html>

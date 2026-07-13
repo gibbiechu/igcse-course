@@ -1289,3 +1289,100 @@ sol:"Step 1 — 'at most one' is fastest via the complement: total minus 'both i
 a:"$360$ total; $240$ separated",
 sol:"Step 1 — 6 letters with I repeated twice, so divide out the identical swap: $\\dfrac{6!}{2!}=360$. Step 2 — count 'I's together' via the block method: glue the two I's, giving 5 objects to arrange: $5!=120$ (no extra $\\times2!$ since the I's are identical — swapping them changes nothing visible). Step 3 — subtract for 'separated': $360-120=240$."}
 ]};
+
+
+// ============================================================ ADD MATH CH 11: SERIES
+ADDMATH[10] = {
+title:"Series: Binomial, AP & GP",
+syl:"0606 §11 — Series",
+yt:["arithmetic series sum formula derivation","geometric series sum to infinity explained","binomial theorem explained from zero","pascal's triangle and binomial coefficients"],
+body:`
+<div class="scenario"><div class="schead">Real-life scenario — start here</div>
+<p>You forward a funny video to $5$ friends on WhatsApp. Each of them forwards it to $5$ more friends, who each forward it to $5$ more... After $6$ rounds, how many people have seen it? This is a <b>geometric</b> pattern — each stage multiplies by a constant factor. Compare that to stadium seating for a Merdeka Day parade, where row 1 has $20$ seats, row 2 has $23$, row 3 has $26$ — each row adds a constant amount. That's an <b>arithmetic</b> pattern. Both are "series" — and this chapter also covers a third, seemingly unrelated skill (expanding $(1+x)^n$) that turns out to share the same $^nC_r$ counting tool from last chapter.</p></div>
+
+<h2>1. Sequence vs. series — one word each</h2>
+<p>A <b>sequence</b> is a list: $4,9,14,19,\\ldots$ A <b>series</b> is what you get by <em>adding</em> the terms of a sequence: $4+9+14+19+\\cdots$. "Find the sum" always means series; "find the $n$th term" always means sequence.</p>
+
+<h2>2. Arithmetic progressions (AP) — constant difference</h2>
+<div class="formula">
+$n$th term: $$u_n = a+(n-1)d$$
+Sum of first $n$ terms: $$S_n = \\frac{n}{2}\\big[2a+(n-1)d\\big]$$
+where $a=$ first term, $d=$ common difference.</div>
+<p><b>Where the sum formula comes from (Gauss's trick):</b> write the sum forwards and backwards, then add the two versions term by term — every pair adds to the SAME total ($a+l$, first plus last), and there are $n$ such pairs:</p>
+<div class="fig">
+<svg viewBox="0 0 480 150" xmlns="http://www.w3.org/2000/svg">
+<text x="20" y="35" font-size="13">S = a + (a+d) + (a+2d) + ... + l</text>
+<text x="20" y="65" font-size="13">S = l + (l−d) + (l−2d) + ... + a</text>
+<line x1="20" y1="80" x2="460" y2="80" stroke="#888"/>
+<text x="20" y="105" font-size="13" fill="#5246D9" font-weight="bold">2S = (a+l) + (a+l) + (a+l) + ... + (a+l)  [n times]</text>
+<text x="20" y="135" font-size="13" fill="#1D7A4F" font-weight="bold">⟹ S = n(a+l)/2</text>
+</svg>
+<div class="figcap">Adding the sum to its own reverse makes every column equal to $(a+l)$ — the "first + last" pairing gives the sum formula directly.</div></div>
+<div class="example"><div class="exhead">Worked example 1</div>
+<p>An AP has first term $5$ and 12th term $49$. Find $d$ and $S_{20}$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Use the $n$th term formula</span> with $n=12$: $$a+11d=49 \\Rightarrow 5+11d=49 \\Rightarrow 11d=44 \\Rightarrow d=4$$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Substitute into the sum formula</span> with $n=20$: $$S_{20}=\\frac{20}{2}\\big[2(5)+19(4)\\big]=10\\big[10+76\\big]=10(86)=860$$</span></div>
+</div></div>
+<div class="mistake"><b>Common mistake:</b> individual terms are DIFFERENCES of consecutive sums: $u_n=S_n-S_{n-1}$ (not $S_n$ itself). Given a formula for $S_n$, find $u_1$ by evaluating $S_1$ directly, and find later terms by subtracting.</div>
+
+<h2>3. Geometric progressions (GP) — constant ratio</h2>
+<div class="formula">
+$n$th term: $$u_n = ar^{n-1}$$
+Sum of first $n$ terms: $$S_n = \\frac{a(1-r^n)}{1-r} \\quad(r\\neq1)$$
+Sum to infinity (only exists if $|r|<1$): $$S_\\infty = \\frac{a}{1-r}$$
+where $a=$ first term, $r=$ common ratio.</div>
+<p><b>Why $S_\\infty$ needs $|r|<1$:</b> if $|r|<1$, each new term is smaller than the last, so $r^n\\to0$ as $n$ grows and the sum settles toward a fixed value. If $|r|\\geq1$, terms don't shrink and the sum grows without bound — there's nothing to converge to.</p>
+<div class="example"><div class="exhead">Worked example 2</div>
+<p>A GP has first term $81$ and common ratio $\\tfrac23$. Find the sum to infinity.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Check convergence first:</span> $|r|=\\tfrac23<1$ ✓ so $S_\\infty$ exists.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Substitute:</span> $$S_\\infty=\\frac{81}{1-\\tfrac23}=\\frac{81}{\\tfrac13}=81\\times3=243$$</span></div>
+</div></div>
+
+<h2>4. The binomial theorem — expanding $(a+b)^n$ without brute force</h2>
+<p>Multiplying out $(1+x)^9$ term-by-term by hand would take forever. The binomial theorem gives every term directly using the SAME $^nC_r$ combinations you met last chapter:</p>
+<div class="formula">$$(1+x)^n = \\sum_{r=0}^{n} {}^nC_r\\,x^r = {}^nC_0+{}^nC_1x+{}^nC_2x^2+\\cdots+{}^nC_nx^n$$
+More generally: $$(a+b)^n=\\sum_{r=0}^{n}{}^nC_r\\,a^{n-r}b^r$$
+General term (the $(r+1)$th term): $$T_{r+1} = {}^nC_r\\,a^{n-r}b^r$$</div>
+<p><b>Why $^nC_r$ appears:</b> expanding $(a+b)^n$ means choosing, from each of the $n$ brackets, either an $a$ or a $b$. The coefficient of $a^{n-r}b^r$ counts how many ways to choose exactly $r$ of the $n$ brackets to contribute a $b$ — precisely $^nC_r$, the same "choose $r$ from $n$, order irrelevant" idea from Chapter 9.</p>
+<div class="example"><div class="exhead">Worked example 3 — expansion and approximation</div>
+<p>Expand $(1+2x)^6$ up to the $x^3$ term, and use it to estimate $1.02^6$ to 4 d.p.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Apply the general term formula</span> with $a=1$, $b=2x$, $n=6$, for $r=0,1,2,3$: $$^6C_0+{}^6C_1(2x)+{}^6C_2(2x)^2+{}^6C_3(2x)^3$$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Compute each coefficient</span> ($^6C_1=6$, $^6C_2=15$, $^6C_3=20$) and simplify the powers of $2x$: $$1+12x+15(4x^2)+20(8x^3) = 1+12x+60x^2+160x^3$$</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Match the approximation to the expansion:</span> $1.02=1+2x \\Rightarrow 2x=0.02 \\Rightarrow x=0.01$.</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Substitute $x=0.01$</span> into the expansion (higher terms are tiny and can be dropped): $$1+12(0.01)+60(0.0001)+160(0.000001) = 1+0.12+0.006+0.00016 \\approx 1.1262$$</span></div>
+</div></div>
+<div class="example"><div class="exhead">Worked example 4 — finding one specific term</div>
+<p>Find the term independent of $x$ (the constant term) in the expansion of $\\left(x+\\dfrac{2}{x^2}\\right)^9$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Write the general term</span> with $a=x$, $b=\\dfrac{2}{x^2}=2x^{-2}$, $n=9$: $$T_{r+1}={}^9C_r\\,x^{9-r}(2x^{-2})^r={}^9C_r\\,2^r\\,x^{9-r-2r}={}^9C_r\\,2^r\\,x^{9-3r}$$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">"Independent of $x$"</span> means the power of $x$ is zero: $9-3r=0 \\Rightarrow r=3$.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Substitute $r=3$</span> to get that specific term's coefficient: $$^9C_3\\times2^3 = 84\\times8=672$$</span></div>
+</div></div>
+<div class="note"><b>Exam tip:</b> never expand the whole thing when a question only asks for ONE term (e.g. "independent of $x$," "coefficient of $x^5$") — set up the general term, solve for the needed $r$, then substitute only that one value.</div>
+`,
+quiz:[
+{lvl:'basic',q:"Find the 10th term of the AP $4, 9, 14, \\ldots$",
+a:"$49$",
+sol:"Step 1 — identify $a=4$, $d=5$. Step 2 — apply $u_n=a+(n-1)d$ with $n=10$: $u_{10}=4+9(5)=4+45=49$."},
+{lvl:'inter',q:"An AP has first term $5$ and 12th term $49$. Find $d$ and $S_{20}$.",
+a:"$d=4$; $S_{20}=860$",
+sol:"Step 1 — use the 12th term to find $d$: $a+11d=49 \\Rightarrow 5+11d=49 \\Rightarrow d=4$. Step 2 — substitute into the sum formula with $n=20$: $S_{20}=\\dfrac{20}{2}[2(5)+19(4)]=10(10+76)=10(86)=860$."},
+{lvl:'inter',q:"A GP has first term $81$ and common ratio $\\dfrac23$. Find the sum to infinity.",
+a:"$243$",
+sol:"Step 1 — check convergence: $|r|=\\tfrac23<1$ ✓, so $S_\\infty$ exists. Step 2 — substitute: $S_\\infty=\\dfrac{81}{1-\\tfrac23}=\\dfrac{81}{\\tfrac13}=243$."},
+{lvl:'inter',q:"The sum of the first $n$ terms of an AP is $S_n=3n^2+2n$. Find the first term and the common difference.",
+a:"$a=5$, $d=6$",
+sol:"Step 1 — the first term is just $S_1$: $a=S_1=3(1)^2+2(1)=5$. Step 2 — find $S_2$: $S_2=3(4)+2(2)=16$. Step 3 — the second term is $u_2=S_2-S_1=16-5=11$. Step 4 — common difference: $d=u_2-u_1=11-5=6$."},
+{lvl:'adv',q:"Find the term independent of $x$ in the expansion of $\\left(x+\\dfrac{2}{x^2}\\right)^9$.",
+a:"$672$",
+sol:"Step 1 — general term with $a=x$, $b=2x^{-2}$: $T_{r+1}={}^9C_r\\,x^{9-r}(2x^{-2})^r={}^9C_r\\,2^r\\,x^{9-3r}$. Step 2 — set the power of $x$ to zero: $9-3r=0 \\Rightarrow r=3$. Step 3 — substitute $r=3$: $^9C_3\\times2^3=84\\times8=672$."},
+{lvl:'adv',q:"Expand $(1+2x)^6$ up to the $x^3$ term, and use it to estimate $1.02^6$ to 4 d.p.",
+a:"$1+12x+60x^2+160x^3$; $1.02^6\\approx1.1262$",
+sol:"Step 1 — apply the binomial expansion with $a=1,\\,b=2x,\\,n=6$ for $r=0,1,2,3$: coefficients $^6C_1=6,\\,^6C_2=15,\\,^6C_3=20$, giving $1+12x+60x^2+160x^3$. Step 2 — match to the target: $1.02=1+2x \\Rightarrow x=0.01$. Step 3 — substitute (later terms negligible): $1+12(0.01)+60(0.0001)+160(0.000001)=1+0.12+0.006+0.00016\\approx1.1262$."},
+{lvl:'adv',q:"The 1st, 4th and 10th terms of an AP ($d\\neq0$) form a GP. Given the AP's first term is $6$, find $d$ and the GP's common ratio.",
+a:"$d=2$, $r=2$",
+sol:"Step 1 — write the three AP terms: $u_1=6$, $u_4=6+3d$, $u_{10}=6+9d$. Step 2 — 'form a GP' means the middle term squared equals the product of the outer two (the GP crossover rule): $(6+3d)^2=6(6+9d)$. Step 3 — expand: $36+36d+9d^2=36+54d$. Step 4 — simplify: $9d^2=18d \\Rightarrow 9d(d-2)=0 \\Rightarrow d=0$ or $d=2$; reject $d=0$ (given $d\\neq0$), so $d=2$. Step 5 — the GP is $6,\\,12,\\,24$, giving common ratio $r=\\dfrac{12}{6}=2$."}
+]};

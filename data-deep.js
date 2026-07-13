@@ -2915,3 +2915,116 @@ sol:"Step 1 — fission involves a HEAVY nucleus (e.g. uranium-235) splitting in
 a:"$\\approx17\\,190$ years",
 sol:"Step 1 — express the remaining fraction as a power of $\\tfrac12$: $12.5\\%=\\dfrac18=\\left(\\tfrac12\\right)^3$, so 3 half-lives have passed. Step 2 — multiply: $3\\times5730=17\\,190$ years. Step 3 — background radiation (from cosmic rays, rocks) is always present alongside the sample's own radiation in a real detector; it must be measured separately with no sample present and subtracted from every reading, or the fraction remaining — and hence the calculated age — will be inaccurate."}
 ]};
+
+
+// ============================================================ PHYSICS CH 12: SPACE PHYSICS
+PHYSICS[11] = {
+title:"Space Physics",
+syl:"0625 §6 — Earth & Solar System; stars & the Universe",
+yt:["why we have seasons explained from zero","geostationary satellite orbit explained","life cycle of a star explained","redshift and expanding universe explained"],
+body:`
+<div class="scenario"><div class="schead">Real-life scenario — start here</div>
+<p>Astro satellite TV in Malaysia works because MEASAT satellites sit in a very special orbit — <b>geostationary</b> orbit — always hovering above the exact same spot on Earth's surface, so your satellite dish never needs to move to track it. What makes an orbit geostationary, and how fast must such a satellite actually travel? This chapter covers orbital motion, along with two of the biggest-picture topics in the whole IGCSE syllabus: why Earth has seasons, and how we know the Universe itself is expanding.</p></div>
+
+<h2>1. Why we have seasons — it's the TILT, not the distance</h2>
+<div class="fig">
+<svg viewBox="0 0 460 190" xmlns="http://www.w3.org/2000/svg">
+<circle cx="230" cy="95" r="18" fill="#FBEFE6" stroke="#C2571B" stroke-width="2"/>
+<ellipse cx="230" cy="95" rx="180" ry="70" fill="none" stroke="#ccc" stroke-dasharray="3 3"/>
+<circle cx="50" cy="95" r="14" fill="#5246D9" transform="rotate(-23 50 95)"/>
+<line x1="50" y1="80" x2="50" y2="110" stroke="#1A2030" stroke-width="1.5" transform="rotate(-23 50 95)"/>
+<text x="20" y="130" font-size="11">tilted toward Sun: summer (N)</text>
+<circle cx="410" cy="95" r="14" fill="#5246D9" transform="rotate(-23 410 95)"/>
+<line x1="410" y1="80" x2="410" y2="110" stroke="#1A2030" stroke-width="1.5" transform="rotate(-23 410 95)"/>
+<text x="330" y="55" font-size="11">tilted away: winter (N)</text>
+</svg>
+<div class="figcap">Earth's axis stays tilted at $23.5°$ in the SAME direction all year as it orbits — so each hemisphere spends part of the year leaning toward the Sun (more direct sunlight, longer days: summer) and part leaning away (winter).</div></div>
+<div class="example"><div class="exhead">Worked example 1</div>
+<p>Explain why we have seasons.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Earth's axis is tilted</span> at about $23.5°$ relative to its orbital plane, and this tilt direction stays FIXED in space throughout the year.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">As Earth orbits, different hemispheres face the Sun more directly</span> at different points: when the Northern Hemisphere tilts toward the Sun, it receives more direct (concentrated) sunlight and longer daylight hours — summer.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Half an orbit later,</span> that same hemisphere tilts AWAY from the Sun — less direct sunlight, shorter days — winter.</span></div>
+</div>
+<p><b>Common misconception to explicitly reject:</b> it is NOT because Earth is closer to the Sun in summer — Earth's orbit is nearly circular, and both hemispheres experience opposite seasons at the same Earth-Sun distance.</p></div>
+
+<h2>2. Satellite orbits and geostationary satellites</h2>
+<div class="formula">$$v=\\frac{2\\pi r}{T}$$ (circumference of the orbit divided by the time for one orbit)</div>
+<div class="example"><div class="exhead">Worked example 2 — the scenario, in numbers</div>
+<p>A satellite orbits at radius $4.2\\times10^7$ m with a period of $24$ hours. Find its orbital speed.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Convert the period to seconds:</span> $24$ h $=86\\,400$ s.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Apply the formula:</span> $$v=\\frac{2\\pi\\times4.2\\times10^7}{86\\,400}\\approx3.05\\times10^3\\text{ m/s}$$</span></div>
+</div>
+<p>A $24$-hour period exactly matches Earth's own rotation period — so a satellite orbiting at this specific radius, above the equator, appears to hover motionless over ONE fixed point on the ground. This is exactly what makes it geostationary, and exactly why MEASAT satellites for Astro TV use this orbit.</p></div>
+
+<h2>3. Life cycle of a star</h2>
+<div class="formula">Sun-sized star: main sequence (fusing hydrogen, billions of years) $\\to$ red giant (core hydrogen runs low, star swells) $\\to$ planetary nebula (outer layers shed) $\\to$ white dwarf (hot, dense remnant core, slowly cools). (Much MORE massive stars instead end in a supernova, leaving a neutron star or black hole.)</div>
+<div class="example"><div class="exhead">Worked example 3</div>
+<p>Describe the remaining life cycle of the Sun from now.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Currently:</span> the Sun is in its main-sequence stage, steadily fusing hydrogen into helium — it will continue this for billions more years.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Next:</span> once core hydrogen runs low, the core contracts and the outer layers expand and cool — the Sun becomes a red giant.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Then:</span> the outer layers are shed into space as a planetary nebula, leaving behind the hot, dense core.</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Finally:</span> that remaining core is a white dwarf, which then cools and dims over an extremely long time.</span></div>
+</div></div>
+
+<h2>4. Redshift and the expanding Universe</h2>
+<div class="fig">
+<svg viewBox="0 0 460 130" xmlns="http://www.w3.org/2000/svg">
+<text x="10" y="30" font-size="11">reference (lab source):</text>
+<line x1="180" y1="20" x2="184" y2="20" stroke="#5246D9" stroke-width="3"/>
+<line x1="220" y1="20" x2="224" y2="20" stroke="#5246D9" stroke-width="3"/>
+<line x1="260" y1="20" x2="264" y2="20" stroke="#5246D9" stroke-width="3"/>
+<text x="10" y="80" font-size="11">distant galaxy (redshifted):</text>
+<line x1="180" y1="70" x2="184" y2="70" stroke="#C2571B" stroke-width="3"/>
+<line x1="235" y1="70" x2="239" y2="70" stroke="#C2571B" stroke-width="3"/>
+<line x1="290" y1="70" x2="294" y2="70" stroke="#C2571B" stroke-width="3"/>
+<path d="M 200 40 L 250 55" stroke="#1A2030" stroke-width="1.5" marker-end="url(#kr)"/>
+<text x="200" y="105" font-size="11" fill="#C2571B">lines shifted toward the RED (longer wavelength) end</text>
+<defs><marker id="kr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1A2030"/></marker></defs>
+</svg>
+<div class="figcap">Spectral lines from distant galaxies are shifted to LONGER wavelengths compared to the same lines measured in a lab — the galaxy's light has been "stretched" as space itself expands during its journey to us.</div></div>
+<div class="example"><div class="exhead">Worked example 4</div>
+<p>What is redshift, and what does it tell us about the Universe?</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Definition:</span> light from distant galaxies shows its characteristic spectral lines shifted toward longer (redder) wavelengths, compared to the same lines measured from a source in the lab.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Interpretation:</span> this shift means the galaxies are moving AWAY from us — and crucially, the FURTHER away a galaxy is, the BIGGER its redshift, meaning recession speed grows with distance.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Conclusion:</span> this is exactly the pattern an expanding Universe would produce — everything moving apart from everything else, supporting the Big Bang theory.</span></div>
+</div></div>
+<div class="example"><div class="exhead">Worked example 5 — Hubble's law and the age of the Universe</div>
+<p>Light from a galaxy $9.5\\times10^{24}$ m away shows strong redshift. (a) How many light-years away is it? (b) If its recession speed is $2.1\\times10^4$ km/s, estimate the Hubble constant in s⁻¹ and hence the approximate age of the Universe.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">(a) Convert using 1 light-year $\\approx9.5\\times10^{15}$ m:</span> $$\\frac{9.5\\times10^{24}}{9.5\\times10^{15}}=10^9\\text{ light-years}$$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">(b) Convert speed to m/s:</span> $2.1\\times10^4$ km/s $=2.1\\times10^7$ m/s.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Apply Hubble's law</span> $H_0=\\dfrac{v}{d}$: $$H_0=\\frac{2.1\\times10^7}{9.5\\times10^{24}}\\approx2.2\\times10^{-18}\\text{ s}^{-1}$$</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Estimate the age</span> as $\\dfrac{1}{H_0}$ (running the expansion backward to when everything was together): $$\\frac{1}{2.2\\times10^{-18}}\\approx4.5\\times10^{17}\\text{ s}\\approx1.4\\times10^{10}\\text{ years}$$</span></div>
+</div>
+<p>This estimate ($\\approx14$ billion years) matches closely with the accepted age of the Universe, $13.8$ billion years.</p></div>
+
+<h2>5. Evidence for the Big Bang</h2>
+<div class="note"><b>Two key pieces of evidence:</b> (1) galactic redshift — everything appears to be moving apart, and running that expansion backward converges to a single point in the past; (2) the cosmic microwave background radiation (CMBR) — faint, uniform microwave radiation detected from every direction in the sky, understood as the cooled, stretched "afterglow" of the hot, dense early Universe.</div>
+`,
+quiz:[
+{lvl:'basic',q:"What force keeps the planets in orbit around the Sun?",
+a:"Gravity (gravitational attraction)",
+sol:"Step 1 — recall that circular motion requires a centre-pointing (centripetal) force. Step 2 — the Sun's gravitational pull provides exactly this force for each orbiting planet, continuously pulling it toward the Sun and keeping it on a curved path rather than moving off in a straight line."},
+{lvl:'inter',q:"Explain why we have seasons.",
+a:"Earth's axis is tilted $23.5°$, so each hemisphere leans toward the Sun for part of the orbit",
+sol:"Step 1 — Earth's axis is tilted about $23.5°$ and stays pointed in the same fixed direction throughout the year. Step 2 — as Earth orbits, this fixed tilt means each hemisphere alternately faces more directly toward the Sun (more concentrated sunlight, longer days: summer) or away from it (winter). Step 3 — this is NOT caused by changing distance from the Sun, which stays roughly constant all year."},
+{lvl:'inter',q:"A satellite orbits at radius $4.2\\times10^7$ m with a period of $24$ hours. Find its orbital speed.",
+a:"$\\approx3050$ m/s",
+sol:"Step 1 — convert the period to seconds: $24\\times3600=86\\,400$ s. Step 2 — apply $v=\\dfrac{2\\pi r}{T}$: $v=\\dfrac{2\\pi\\times4.2\\times10^7}{86\\,400}\\approx3.05\\times10^3$ m/s. A 24-hour period at this radius means the satellite stays above one fixed point on Earth — geostationary, used for satellite TV."},
+{lvl:'inter',q:"Describe the remaining life cycle of the Sun from now.",
+a:"Main sequence → red giant → planetary nebula → white dwarf",
+sol:"Step 1 — the Sun continues fusing hydrogen for billions more years (main sequence). Step 2 — once core hydrogen runs low, the star swells into a red giant. Step 3 — the outer layers are shed as a planetary nebula. Step 4 — the remaining hot, dense core is left as a white dwarf, which then cools very slowly over an extremely long time."},
+{lvl:'inter',q:"What is redshift, and what does it tell us about the Universe?",
+a:"Wavelengths of light from distant galaxies are stretched toward the red end → galaxies recede → Universe is expanding",
+sol:"Step 1 — spectral lines in light from distant galaxies are shifted to longer (redder) wavelengths compared to a lab source. Step 2 — the further away a galaxy is, the larger this shift, meaning recession speed increases with distance. Step 3 — this pattern is exactly what an expanding Universe would produce, supporting the Big Bang theory."},
+{lvl:'adv',q:"State two pieces of evidence for the Big Bang theory.",
+a:"Redshift of distant galaxies; cosmic microwave background radiation",
+sol:"Step 1 — galactic redshift shows that essentially all distant galaxies are moving away from us, with recession speed increasing with distance; tracing this expansion backward in time converges toward a single point of origin. Step 2 — the cosmic microwave background radiation (CMBR) is faint, near-uniform microwave radiation detected from every direction in space, interpreted as the cooled and stretched 'afterglow' light from the hot, dense early Universe."},
+{lvl:'adv',q:"Light from a galaxy $9.5\\times10^{24}$ m away shows strong redshift. (a) How many light-years away is it? (b) If its recession speed is $2.1\\times10^4$ km/s, estimate the Hubble constant in s⁻¹ and hence the approximate age of the Universe.",
+a:"(a) $10^9$ light-years (b) $H_0\\approx2.2\\times10^{-18}\\text{ s}^{-1}$ → age $\\approx4.5\\times10^{17}$ s $\\approx14$ billion years",
+sol:"Step 1 (a) — using $1$ light-year $\\approx9.5\\times10^{15}$ m: $\\dfrac{9.5\\times10^{24}}{9.5\\times10^{15}}=10^9$ light-years. Step 2 (b) — convert speed to SI: $2.1\\times10^4$ km/s $=2.1\\times10^7$ m/s. Step 3 — apply Hubble's law $H_0=\\dfrac{v}{d}=\\dfrac{2.1\\times10^7}{9.5\\times10^{24}}\\approx2.2\\times10^{-18}\\text{ s}^{-1}$. Step 4 — the age of the Universe is approximated as $\\dfrac1{H_0}\\approx4.5\\times10^{17}$ s $\\approx1.4\\times10^{10}$ years, closely matching the accepted $13.8$ billion years."}
+]};

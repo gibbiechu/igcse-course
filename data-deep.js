@@ -1853,3 +1853,320 @@ sol:"Step 1 — route to $P$ via $A$: $\\overrightarrow{OP}=\\overrightarrow{OA}
 a:"Collide at 4 pm at $(18\\mathbf{i}+7\\mathbf{j})$ km",
 sol:"Step 1 — write position as a function of $t$ for each ship: $\\mathbf{r}_A=(2+4t)\\mathbf{i}+(3+t)\\mathbf{j}$; $\\mathbf{r}_B=(10+2t)\\mathbf{i}+(-1+2t)\\mathbf{j}$. Step 2 — equate $\\mathbf{i}$-components: $2+4t=10+2t \\Rightarrow t=4$. Step 3 — CHECK the $\\mathbf{j}$-components at this same $t$ (compulsory step): $3+4=7$ and $-1+2(4)=7$ — both match ✓. Step 4 — since both components agree at the same $t$, a genuine collision occurs at $t=4$ h (4 pm) at position $18\\mathbf{i}+7\\mathbf{j}$ km."}
 ]};
+
+
+// ============================================================ PHYSICS CH 1: MEASUREMENT
+PHYSICS[0] = {
+title:"Physical Quantities & Measurement",
+syl:"0625 §1.1 — Physical quantities and measurement techniques",
+yt:["vernier caliper reading explained from zero","micrometer screw gauge explained","density experiment water displacement","scalars and vectors explained simply"],
+body:`
+<div class="scenario"><div class="schead">Real-life scenario — start here</div>
+<p>A pawnshop in Petaling Street is offered a "gold" ring. Pure gold has density $19.3\\text{ g/cm}^3$ — a fake (brass-coated) ring will read noticeably lower. The shopkeeper can't melt the ring down to check, but there's a clean physics trick: measure its mass on a balance, dunk it in a measuring cylinder to find its volume by how much the water level rises, then compute $\\rho=\\dfrac{m}{V}$. Get an unexpected number, and the ring is fake. This chapter is about doing exactly this kind of measurement carefully and correctly.</p></div>
+
+<h2>1. Base quantities and units — the SI system</h2>
+<p>All physical quantities in this course are built from a small set of <b>base quantities</b>, each with its own SI unit:</p>
+<div class="formula">Length — metre (m) &nbsp;•&nbsp; Mass — kilogram (kg) &nbsp;•&nbsp; Time — second (s) &nbsp;•&nbsp; Current — ampere (A) &nbsp;•&nbsp; Temperature — kelvin (K)</div>
+<p>Everything else (speed, force, density, energy...) is a <b>derived quantity</b>, built by combining base units, e.g. speed $=\\dfrac{\\text{distance}}{\\text{time}}$ has unit m/s.</p>
+<div class="mistake"><b>Common mistake:</b> mixing units within one calculation (e.g. cm with m, or g with kg) — ALWAYS convert everything to consistent (usually SI base) units before calculating, not after.</div>
+
+<h2>2. Scalars and vectors</h2>
+<p>A <b>scalar</b> has magnitude only (e.g. mass, distance, speed, temperature). A <b>vector</b> has magnitude AND direction (e.g. displacement, velocity, force, acceleration).</p>
+<div class="example"><div class="exhead">Worked example 1 — combining perpendicular vectors</div>
+<p>A plane flies $400$ km east then $300$ km north. Find its displacement.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">The two legs are perpendicular</span> — sketch a right triangle with legs $400$ and $300$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Apply Pythagoras for the resultant magnitude:</span> $$\\sqrt{400^2+300^2}=\\sqrt{160000+90000}=\\sqrt{250000}=500\\text{ km}$$</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Find the direction</span> using $\\tan^{-1}$: $$\\tan^{-1}\\left(\\frac{300}{400}\\right)=36.9° \\text{ north of east}$$</span></div>
+</div>
+<p><b>Note the distinction:</b> total DISTANCE flown is $400+300=700$ km (a scalar, just adds up), but the DISPLACEMENT (a vector, straight-line shortcut) is only $500$ km — always smaller unless the path is a straight line.</p></div>
+
+<h2>3. Measuring length precisely — vernier calipers and micrometers</h2>
+<div class="fig">
+<svg viewBox="0 0 460 150" xmlns="http://www.w3.org/2000/svg">
+<rect x="30" y="50" width="380" height="18" fill="#EEECFC" stroke="#5246D9"/>
+<line x1="30" y1="50" x2="30" y2="68" stroke="#5246D9"/>
+<line x1="70" y1="50" x2="70" y2="68" stroke="#5246D9"/>
+<line x1="110" y1="50" x2="110" y2="68" stroke="#5246D9"/>
+<text x="25" y="45" font-size="10">0</text><text x="65" y="45" font-size="10">1</text><text x="105" y="45" font-size="10">2 cm (main scale)</text>
+<rect x="82" y="68" width="150" height="14" fill="#FBEFE6" stroke="#C2571B"/>
+<text x="85" y="95" font-size="10" fill="#C2571B">sliding vernier scale — find where a line matches the main scale</text>
+</svg>
+<div class="figcap">Reading a vernier caliper: (1) read the main scale at the ZERO of the vernier (gives whole + one decimal), (2) find which vernier line aligns EXACTLY with a main-scale line (gives the next decimal), (3) add the two readings.</div></div>
+<p>A <b>micrometer screw gauge</b> works similarly but for very small objects (e.g. wire diameter): a main scale (whole mm and half-mm) plus a rotating thimble scale (hundredths of a mm) read together. Both instruments must be checked for <b>zero error</b> first — close the jaws/gap on nothing and read; if it doesn't read exactly zero, subtract that zero error from every subsequent reading.</p>
+
+<h2>4. Measuring time — why we time MANY oscillations</h2>
+<div class="example"><div class="exhead">Worked example 2</div>
+<p>Why do we time 30 oscillations of a pendulum instead of 1?</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Human reaction time is a fixed error</span> — roughly $0.2$ s — no matter how long the thing you're timing takes.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Spread that same fixed error over many swings:</span> timing 1 swing of $\\sim2$ s gives a percentage error of $\\dfrac{0.2}{2}=10\\%$. Timing 30 swings ($\\sim60$ s) gives the SAME $0.2$ s absolute error, but now as a percentage of a much bigger number: $\\dfrac{0.2}{60}\\approx0.3\\%$.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Divide the total time by 30</span> to get an accurate period per swing — the percentage error has shrunk roughly 30-fold.</span></div>
+</div></div>
+<div class="note"><b>Exam tip:</b> this "measure many, divide by the count" trick applies to ANY quantity too small to measure accurately once — thickness of one sheet of paper (measure a stack of 100), mass of one grain of rice, etc.</div>
+
+<h2>5. Density — mass packed into a given volume</h2>
+<div class="formula">$$\\rho = \\frac{m}{V}$$</div>
+<p><b>Regular shapes</b> (cubes, cylinders): measure dimensions with a ruler/caliper and calculate $V$ from a geometry formula. <b>Irregular shapes</b> (a stone, a ring): use the <b>displacement method</b>.</p>
+<div class="fig">
+<svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+<rect x="60" y="30" width="80" height="140" fill="none" stroke="#5246D9" stroke-width="2"/>
+<rect x="62" y="90" width="76" height="78" fill="#EEECFC"/>
+<text x="20" y="94" font-size="11" fill="#5246D9">V₁</text>
+<line x1="55" y1="90" x2="65" y2="90" stroke="#5246D9"/>
+<rect x="250" y="30" width="80" height="140" fill="none" stroke="#C2571B" stroke-width="2"/>
+<rect x="252" y="60" width="76" height="108" fill="#FBEFE6"/>
+<ellipse cx="290" cy="80" rx="18" ry="12" fill="#888"/>
+<text x="210" y="64" font-size="11" fill="#C2571B">V₂</text>
+<line x1="245" y1="60" x2="255" y2="60" stroke="#C2571B"/>
+<text x="150" y="100" font-size="13" fill="#1A2030">object added →</text>
+</svg>
+<div class="figcap">Volume of the irregular object $=V_2-V_1$ (the rise in water level). Read the meniscus at eye level to avoid parallax error.</div></div>
+<div class="example"><div class="exhead">Worked example 3</div>
+<p>A block measures $4\\text{ cm}\\times5\\text{ cm}\\times2\\text{ cm}$ and has mass $108$ g. Find its density and state whether it floats in water.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Find the volume</span> (regular shape — multiply dimensions): $V=4\\times5\\times2=40\\text{ cm}^3$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Apply the density formula:</span> $\\rho=\\dfrac{108}{40}=2.7\\text{ g/cm}^3$.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Compare to water's density</span> ($1.0\\text{ g/cm}^3$): since $2.7>1.0$, the block SINKS. An object floats only if its density is LESS than the liquid's.</span></div>
+</div></div>
+
+<h2>6. Mass vs. weight — a classic confusion</h2>
+<div class="formula">Mass ($m$, kg): amount of matter — a SCALAR, measured with a balance, the SAME everywhere in the universe. Weight ($W=mg$, N): the gravitational FORCE on that mass — a VECTOR, measured with a force meter (spring balance), and SMALLER on the Moon (where $g$ is smaller) even though mass hasn't changed.</div>
+`,
+quiz:[
+{lvl:'basic',q:"Convert $2.5\\text{ g/cm}^3$ to $\\text{kg/m}^3$.",
+a:"$2500\\text{ kg/m}^3$",
+sol:"Step 1 — recall the conversion factor: $1\\text{ g/cm}^3=1000\\text{ kg/m}^3$ (because 1 g = 0.001 kg and 1 cm³ = 0.000001 m³, and dividing those conversions gives a net factor of 1000). Step 2 — apply it: $2.5\\times1000=2500\\text{ kg/m}^3$."},
+{lvl:'basic',q:"Why do we time 30 oscillations of a pendulum instead of 1?",
+a:"To reduce the percentage error from reaction time",
+sol:"Step 1 — human reaction time (~0.2 s) is a fixed error, whatever you're timing. Step 2 — spread over 30 swings, that same 0.2 s becomes a much smaller fraction of the total time measured: $\\dfrac{0.2}{30\\times(\\text{one period})}$, drastically shrinking the PERCENTAGE error compared to timing just one swing."},
+{lvl:'inter',q:"A block measures $4\\text{ cm}\\times5\\text{ cm}\\times2\\text{ cm}$ and has mass $108$ g. Find its density and state whether it floats in water.",
+a:"$2.7\\text{ g/cm}^3$; sinks",
+sol:"Step 1 — find the volume: $V=4\\times5\\times2=40\\text{ cm}^3$. Step 2 — apply $\\rho=\\dfrac{m}{V}=\\dfrac{108}{40}=2.7\\text{ g/cm}^3$. Step 3 — compare to water ($1.0\\text{ g/cm}^3$): since the block's density is greater, it sinks."},
+{lvl:'inter',q:"State two differences between mass and weight.",
+a:"Mass: scalar, kg, constant everywhere. Weight: vector (force), N, varies with gravitational field",
+sol:"Step 1 — mass is the amount of matter in an object, measured in kg with a balance — it is a SCALAR and stays the same anywhere in the universe. Step 2 — weight is the gravitational FORCE on that mass ($W=mg$), measured in newtons with a force meter — it is a VECTOR and CHANGES depending on the local gravitational field strength (e.g. smaller on the Moon)."},
+{lvl:'inter',q:"A plane flies $400$ km east then $300$ km north. Find its displacement.",
+a:"$500$ km at $37°$ north of east",
+sol:"Step 1 — the two legs are perpendicular, forming a right triangle: apply Pythagoras: $\\sqrt{400^2+300^2}=\\sqrt{250000}=500$ km. Step 2 — find the direction with $\\tan^{-1}$: $\\tan^{-1}\\left(\\dfrac{300}{400}\\right)\\approx36.9°$ north of east. Step 3 — note: total DISTANCE travelled is $400+300=700$ km, but displacement (the straight-line vector) is only $500$ km."},
+{lvl:'adv',q:"Describe how to find the density of an irregular stone.",
+a:"Mass by balance; volume by water displacement; $\\rho=m/V$",
+sol:"Step 1 — measure the mass $m$ using a balance. Step 2 — part-fill a measuring cylinder with water and record the level $V_1$. Step 3 — lower the stone in fully (submerged, not touching the sides) and record the new level $V_2$. Step 4 — the stone's volume is $V_2-V_1$ (the rise caused purely by the stone displacing its own volume of water). Step 5 — compute density: $\\rho=\\dfrac{m}{V_2-V_1}$. Reading the meniscus at eye level avoids parallax error."},
+{lvl:'adv',q:"A measuring cylinder reads $48.0\\text{ cm}^3$ of liquid of mass $38.4$ g. 20 identical ball bearings (total mass $54.0$ g) are added and the level rises to $54.0\\text{ cm}^3$. Find the density of the liquid AND of the bearing metal.",
+a:"Liquid $0.80\\text{ g/cm}^3$; metal $9.0\\text{ g/cm}^3$",
+sol:"Step 1 — liquid density needs only the first reading: $\\rho_{\\text{liquid}}=\\dfrac{38.4}{48.0}=0.80\\text{ g/cm}^3$. Step 2 — the bearings' TOTAL volume is the rise in level: $54.0-48.0=6.0\\text{ cm}^3$ for all 20 balls together. Step 3 — bearing metal density uses the bearings' own mass and this combined volume: $\\rho_{\\text{metal}}=\\dfrac{54.0}{6.0}=9.0\\text{ g/cm}^3$. Measuring 20 at once (rather than 1 tiny ball) massively improves accuracy — same 'measure many, divide' trick as the pendulum."}
+]};
+
+
+// ============================================================ PHYSICS CH 3: FORCES & MOMENTUM
+PHYSICS[2] = {
+title:"Forces & Momentum",
+syl:"0625 §1.3, §1.5, §1.6 — Mass/weight, forces, momentum",
+yt:["newton's laws explained from zero","hooke's law explained simply","principle of moments explained","momentum conservation collisions explained"],
+body:`
+<div class="scenario"><div class="schead">Real-life scenario — start here</div>
+<p>Car safety engineers design crumple zones and airbags for a reason grounded entirely in this chapter's physics. In a crash, a car's momentum must drop to zero either way — but a rigid car stops in a fraction of a second (tiny $\\Delta t$), while a crumple zone stretches that same momentum-change over a longer time. Since force $=\\dfrac{\\text{change in momentum}}{\\text{time}}$, a LONGER stopping time means a SMALLER force on the passengers. This single idea — connecting force, momentum, and time — is the heart of the whole chapter.</p></div>
+
+<h2>1. Newton's three laws — the rules for how forces cause motion</h2>
+<div class="formula">
+<b>1st law:</b> an object stays at rest or moving at constant velocity UNLESS acted on by a resultant (unbalanced) force.<br>
+<b>2nd law:</b> $$F=ma$$ a resultant force causes acceleration in its own direction, proportional to the force and inversely proportional to mass.<br>
+<b>3rd law:</b> every force has an equal and opposite reaction force, acting on the OTHER object (never cancelling, since they act on different bodies).
+</div>
+<div class="example"><div class="exhead">Worked example 1</div>
+<p>A resultant force of $12$ N acts on a $4$ kg mass. Find the acceleration. What is the object's weight on Earth?</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Apply Newton's second law:</span> $a=\\dfrac{F}{m}=\\dfrac{12}{4}=3\\text{ m/s}^2$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Weight is a SEPARATE force</span> ($W=mg$, always present due to gravity, distinct from the given resultant): $W=4\\times9.8=39.2$ N.</span></div>
+</div></div>
+<div class="mistake"><b>Common mistake:</b> weight and "resultant force" are not automatically the same thing — weight is only one of possibly several forces acting; the resultant is whatever is left after all forces combine.</div>
+
+<h2>2. Hooke's law — springs stretch proportionally (until they don't)</h2>
+<div class="formula">$$F=kx$$ (within the "limit of proportionality"), where $k$ is the spring constant (N/m) and $x$ is the extension.</div>
+<div class="example"><div class="exhead">Worked example 2</div>
+<p>A spring extends $4$ cm under a $10$ N load. Find $k$ and the extension under $25$ N.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Convert to consistent units and find $k$:</span> $4\\text{ cm}=0.04$ m; $k=\\dfrac{F}{x}=\\dfrac{10}{0.04}=250$ N/m.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Rearrange for the new extension:</span> $x=\\dfrac{F}{k}=\\dfrac{25}{250}=0.1\\text{ m}=10\\text{ cm}$.</span></div>
+</div>
+<p>Sense-check: force went up $2.5\\times$ ($10\\to25$), and extension went up $2.5\\times$ too ($4\\to10$ cm) — exactly proportional, as Hooke's law demands.</p></div>
+
+<h2>3. Moments — the turning effect of a force</h2>
+<div class="formula">$$\\text{moment} = F\\times d$$ (force times PERPENDICULAR distance from the pivot). Principle of moments: for equilibrium, sum of clockwise moments $=$ sum of anticlockwise moments.</div>
+<div class="fig">
+<svg viewBox="0 0 460 140" xmlns="http://www.w3.org/2000/svg">
+<line x1="40" y1="80" x2="420" y2="80" stroke="#5246D9" stroke-width="6"/>
+<polygon points="230,80 215,110 245,110" fill="#1A2030"/>
+<line x1="120" y1="80" x2="120" y2="40" stroke="#C2571B" stroke-width="2" marker-end="url(#kf)"/>
+<text x="90" y="30" font-size="12" fill="#C2571B">300 N</text>
+<line x1="380" y1="80" x2="380" y2="40" stroke="#1D7A4F" stroke-width="2" marker-end="url(#kf)"/>
+<text x="360" y="30" font-size="12" fill="#1D7A4F">F = ?</text>
+<text x="150" y="125" font-size="11">1.2 m</text>
+<text x="330" y="125" font-size="11">2 m</text>
+<defs><marker id="kf" markerWidth="8" markerHeight="8" refX="3" refY="6" orient="auto"><path d="M0,6 L6,6 L3,0 Z" fill="#1A2030"/></marker></defs>
+</svg>
+<div class="figcap">Balancing a plank: clockwise moment (left load) must equal anticlockwise moment (right force) about the pivot.</div></div>
+<div class="example"><div class="exhead">Worked example 3</div>
+<p>A uniform $4$ m plank (weight $200$ N) is pivoted at its centre. A $300$ N load hangs $1.2$ m from the pivot. What force applied at the far end ($2$ m) balances it?</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">The plank's own weight acts at the pivot</span> (its centre, since it's uniform) — zero distance means zero moment, so it doesn't enter the balance.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Set clockwise = anticlockwise moments:</span> $$F\\times2 = 300\\times1.2$$</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Solve:</span> $F=\\dfrac{360}{2}=180$ N.</span></div>
+</div></div>
+
+<h2>4. Momentum — mass in motion, and why airbags work</h2>
+<div class="formula">$$p=mv \\qquad F=\\frac{\\Delta p}{\\Delta t}$$ (Newton's second law, in its more general momentum form)</div>
+<div class="example"><div class="exhead">Worked example 4 — the scenario, in numbers</div>
+<p>A $1500$ kg car travelling at $20$ m/s brakes to rest in $5$ s. Find the momentum change and average braking force.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Find the momentum change:</span> $\\Delta p=m(v-u)=1500(0-20)=-30\\,000\\text{ kg·m/s}$ (size $30\\,000$).</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Divide by the TIME taken</span> to get the force: $F=\\dfrac{\\Delta p}{\\Delta t}=\\dfrac{30\\,000}{5}=6000$ N.</span></div>
+</div>
+<p>If the SAME momentum change happened in $0.5$ s instead (a rigid, non-crumpling collision), the force would be $\\dfrac{30\\,000}{0.5}=60\\,000$ N — ten times bigger. Longer stopping time genuinely means smaller force.</p></div>
+
+<h2>5. Conservation of momentum — collisions</h2>
+<div class="formula">Total momentum before $=$ total momentum after, PROVIDED no external force acts. This holds for EVERY collision. Kinetic energy is only conserved in <b>elastic</b> collisions — most real collisions (like this one) are <b>inelastic</b>, and KE is "lost" to heat, sound, or deformation.</div>
+<div class="example"><div class="exhead">Worked example 5</div>
+<p>A $0.05$ kg bullet travelling at $400$ m/s embeds in a $1.95$ kg wooden block hanging at rest. Find the block's speed just after impact, and the kinetic energy lost.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Momentum before = momentum after</span> (bullet+block now move together, combined mass $2.00$ kg): $$0.05\\times400 = 2.00\\times v \\;\\Rightarrow\\; v=\\frac{20}{2.00}=10\\text{ m/s}$$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Find KE before</span> (bullet only, block at rest contributes nothing): $\\tfrac12(0.05)(400)^2=4000$ J.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Find KE after</span> (combined mass, shared velocity): $\\tfrac12(2)(10)^2=100$ J.</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Subtract:</span> $4000-100=3900$ J lost — converted to heat and deformation as the bullet embeds.</span></div>
+</div></div>
+<div class="mistake"><b>Common mistake:</b> assuming kinetic energy is always conserved, like momentum. It ISN'T — momentum conservation is universal, energy conservation only holds if you count ALL forms of energy (here, most became heat, not just KE).</div>
+
+<h2>6. Circular motion — accelerating without speeding up</h2>
+<div class="example"><div class="exhead">Worked example 6</div>
+<p>Explain why a satellite in circular orbit at constant SPEED is accelerating, and name the force responsible.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Recall: acceleration is change of VELOCITY,</span> a vector — and velocity includes direction, not just speed.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">In a circle, direction changes continuously</span> even while speed stays fixed — so velocity IS changing, meaning there IS acceleration, pointing toward the centre of the circle.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">The force responsible</span> is Earth's gravitational pull, which supplies this centre-pointing ("centripetal") force.</span></div>
+</div></div>
+`,
+quiz:[
+{lvl:'basic',q:"Find the weight of a $3$ kg bag on Earth ($g=9.8$ N/kg).",
+a:"$29.4$ N",
+sol:"Step 1 — apply $W=mg$. Step 2: $W=3\\times9.8=29.4$ N."},
+{lvl:'inter',q:"A resultant force of $12$ N acts on a $4$ kg mass. Find the acceleration. What is the object's weight on Earth?",
+a:"$3\\text{ m/s}^2$; $39.2$ N",
+sol:"Step 1 — Newton's second law: $a=\\dfrac{F}{m}=\\dfrac{12}{4}=3\\text{ m/s}^2$. Step 2 — weight is a separate, always-present force: $W=mg=4\\times9.8=39.2$ N."},
+{lvl:'inter',q:"A spring extends $4$ cm under a $10$ N load. Find $k$ and the extension under $25$ N (within the limit of proportionality).",
+a:"$k=250$ N/m; $10$ cm",
+sol:"Step 1 — convert units and find $k$: $x=0.04$ m, so $k=\\dfrac{F}{x}=\\dfrac{10}{0.04}=250$ N/m. Step 2 — rearrange Hooke's law for the new force: $x=\\dfrac{F}{k}=\\dfrac{25}{250}=0.1$ m $=10$ cm."},
+{lvl:'inter',q:"A uniform $4$ m plank (weight $200$ N) is pivoted at its centre. A $300$ N load hangs $1.2$ m from the pivot. What force applied at the far end ($2$ m) balances it?",
+a:"$180$ N",
+sol:"Step 1 — the plank's weight acts through the pivot itself (uniform plank, centred pivot), so it contributes zero moment. Step 2 — balance clockwise and anticlockwise moments: $F\\times2=300\\times1.2=360$. Step 3 — solve: $F=180$ N."},
+{lvl:'adv',q:"A $1500$ kg car travelling at $20$ m/s brakes to rest in $5$ s. Find the momentum change and average braking force.",
+a:"$\\Delta p=30\\,000$ kg·m/s; $F=6000$ N",
+sol:"Step 1 — find the momentum change: $\\Delta p=m(v-u)=1500(0-20)=-30\\,000$ kg·m/s (magnitude $30\\,000$). Step 2 — divide by the time to get force: $F=\\dfrac{\\Delta p}{\\Delta t}=\\dfrac{30\\,000}{5}=6000$ N, opposing the car's motion."},
+{lvl:'adv',q:"Explain why a satellite in circular orbit at constant speed is accelerating, and name the force responsible.",
+a:"Velocity direction constantly changes; gravity provides the centripetal force",
+sol:"Step 1 — acceleration is defined as the rate of change of VELOCITY, a vector quantity that includes direction as well as size. Step 2 — even at constant speed, a satellite's DIRECTION changes continuously as it goes around the circle, so its velocity is genuinely changing — meaning it is accelerating, toward the centre of the orbit. Step 3 — this centre-pointing force is supplied by Earth's gravitational pull."},
+{lvl:'adv',q:"A $0.05$ kg bullet travelling at $400$ m/s embeds in a $1.95$ kg wooden block hanging at rest. Find the block's speed just after impact, and the kinetic energy lost.",
+a:"$10$ m/s; $3900$ J lost",
+sol:"Step 1 — apply conservation of momentum (bullet+block move together after, combined mass $2.00$ kg): $0.05\\times400=2.00\\times v \\Rightarrow v=10$ m/s. Step 2 — find KE before (bullet only): $\\tfrac12(0.05)(400)^2=4000$ J. Step 3 — find KE after (combined mass): $\\tfrac12(2)(10)^2=100$ J. Step 4 — subtract to find the loss: $4000-100=3900$ J, converted to heat and deformation. Momentum is ALWAYS conserved in collisions; kinetic energy only in elastic ones."}
+]};
+
+
+// ============================================================ PHYSICS CH 4: ENERGY, WORK & POWER
+PHYSICS[3] = {
+title:"Energy, Work & Power",
+syl:"0625 §1.7 — Energy, work and power",
+yt:["work done and energy explained from zero","kinetic and potential energy explained","efficiency and power explained physics","roller coaster physics energy conservation"],
+body:`
+<div class="scenario"><div class="schead">Real-life scenario — start here</div>
+<p>On a roller coaster at Sunway Lagoon, the chain-lift drags the car slowly up to the highest point — doing WORK against gravity, storing energy as <b>gravitational potential energy (GPE)</b>. Then gravity takes over: as the car plunges down, that stored GPE converts into <b>kinetic energy (KE)</b>, and the car reaches its maximum speed at the LOWEST point of the track. This back-and-forth GPE $\\leftrightarrow$ KE exchange, and how fast the whole system can do work (power), is what this chapter is about.</p></div>
+
+<h2>1. Work done — force causing movement</h2>
+<div class="formula">$$W = Fd$$ (force in the SAME direction as the displacement, distance in metres, work in joules). Work done equals energy transferred.</div>
+<div class="example"><div class="exhead">Worked example 1</div>
+<p>How much work is done pushing a box $4$ m with a force of $50$ N?</p>
+<div class="steps"><div class="st"><span class="n">1</span><span>$W=Fd=50\\times4=200$ J — this is also the energy transferred to (or converted while moving) the box.</span></div></div></div>
+
+<h2>2. Kinetic energy — energy of motion</h2>
+<div class="formula">$$E_k=\\tfrac12mv^2$$</div>
+<div class="example"><div class="exhead">Worked example 2</div>
+<p>A $900$ kg car travels at $25$ m/s. Find its kinetic energy.</p>
+<div class="steps"><div class="st"><span class="n">1</span><span>$E_k=\\tfrac12(900)(25)^2=\\tfrac12(900)(625)=281\\,250$ J $\\approx280$ kJ.</span></div></div>
+<p><b>Road-safety note:</b> speed is SQUARED in this formula — doubling your speed doesn't double your kinetic energy, it QUADRUPLES it. A crash at 60 km/h carries 4× the energy of one at 30 km/h, not 2×.</p></div>
+
+<h2>3. Gravitational potential energy — energy of height</h2>
+<div class="formula">$$E_p=mgh$$</div>
+<div class="fig">
+<svg viewBox="0 0 460 200" xmlns="http://www.w3.org/2000/svg">
+<path d="M 40 30 L 40 170 L 200 170 Q 260 170 260 110 Q 260 60 340 60 L 440 100" fill="none" stroke="#5246D9" stroke-width="4"/>
+<circle cx="40" cy="30" r="8" fill="#C2571B"/>
+<text x="10" y="20" font-size="12" fill="#C2571B">top: all GPE</text>
+<circle cx="200" cy="170" r="8" fill="#1D7A4F"/>
+<text x="150" y="195" font-size="12" fill="#1D7A4F">bottom: all KE (max speed)</text>
+<line x1="30" y1="30" x2="30" y2="170" stroke="#888" stroke-dasharray="3 3"/>
+<text x="5" y="105" font-size="11" fill="#555">h</text>
+</svg>
+<div class="figcap">At the top, energy is entirely GPE (relative to the lowest point); at the bottom, all of that GPE has converted to KE (ignoring friction/air resistance) — this is energy conservation in action.</div></div>
+<div class="example"><div class="exhead">Worked example 3</div>
+<p>A pendulum bob is released from a height of $0.10$ m above its lowest point. Find its maximum speed (ignore air resistance).</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Apply conservation of energy:</span> ALL the GPE lost converts to KE at the lowest point (no other energy losses assumed): $$mgh=\\tfrac12mv^2$$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Notice mass cancels</span> — divide both sides by $m$: $gh=\\tfrac12v^2$.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Rearrange for $v$:</span> $$v=\\sqrt{2gh}=\\sqrt{2\\times9.8\\times0.10}=\\sqrt{1.96}=1.4\\text{ m/s}$$</span></div>
+</div></div>
+<div class="mistake"><b>Common mistake:</b> forgetting that mass cancels in this type of problem — you do NOT need to know the mass to find the speed at the bottom of a fall/swing, since both GPE and KE scale with mass identically.</div>
+
+<h2>4. Power — how FAST energy is transferred</h2>
+<div class="formula">$$P=\\frac{W}{t}=\\frac{E}{t} \\qquad(\\text{unit: watt, W} = \\text{J/s})$$</div>
+<div class="example"><div class="exhead">Worked example 4</div>
+<p>An electric kettle transfers $540\\,000$ J in $4$ minutes. Find its power in kW.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Convert time to seconds</span> (SI units): $4$ min $=240$ s.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Apply the formula:</span> $P=\\dfrac{540\\,000}{240}=2250$ W $=2.25$ kW.</span></div>
+</div></div>
+
+<h2>5. Efficiency — no machine is perfect</h2>
+<div class="formula">$$\\text{efficiency} = \\frac{\\text{useful energy output}}{\\text{total energy input}}\\times100\\%$$ ALWAYS less than $100\\%$ for a real machine — the rest is wasted, almost always as heat (and sometimes sound).</div>
+<div class="fig">
+<svg viewBox="0 0 420 160" xmlns="http://www.w3.org/2000/svg">
+<rect x="20" y="60" width="60" height="40" fill="#1A2030"/>
+<text x="25" y="55" font-size="11">input</text>
+<path d="M 80 75 L 200 45" stroke="#1D7A4F" stroke-width="18" fill="none"/>
+<text x="210" y="45" font-size="12" fill="#1D7A4F">useful output</text>
+<path d="M 80 90 L 200 130" stroke="#C2571B" stroke-width="8" fill="none"/>
+<text x="210" y="135" font-size="12" fill="#C2571B">wasted (heat/sound)</text>
+</svg>
+<div class="figcap">Energy input always splits between useful output and waste — efficiency measures what fraction made it to "useful."</div></div>
+<div class="example"><div class="exhead">Worked example 5</div>
+<p>A motor lifts a $50$ kg load through $12$ m in $20$ s using $8000$ J of electrical energy. Find (a) the useful work done, (b) the useful power output, (c) the efficiency.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">(a) Useful work</span> = energy gained as GPE by the load: $mgh=50\\times9.8\\times12=5880$ J.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">(b) Power output:</span> $P=\\dfrac{5880}{20}=294$ W.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">(c) Efficiency:</span> $\\dfrac{5880}{8000}\\times100=73.5\\%$.</span></div>
+</div>
+<p>The missing $8000-5880=2120$ J was wasted, mostly as heat in the motor's moving parts — useful output can never exceed the energy put in.</p></div>
+
+<h2>6. Renewable vs. non-renewable energy sources</h2>
+<div class="note"><b>Wind power</b> — advantage: renewable, no CO₂ emitted during operation. Disadvantage: unreliable (depends on wind speed, so needs backup or storage), and each turbine's output is small compared to a fossil-fuel power station of similar size.</div>
+`,
+quiz:[
+{lvl:'basic',q:"How much work is done pushing a box $4$ m with a force of $50$ N?",
+a:"$200$ J",
+sol:"Step 1 — apply $W=Fd$. Step 2: $W=50\\times4=200$ J."},
+{lvl:'inter',q:"A $900$ kg car travels at $25$ m/s. Find its kinetic energy.",
+a:"$281\\,250$ J $\\approx280$ kJ",
+sol:"Step 1 — apply $E_k=\\tfrac12mv^2$. Step 2: $\\tfrac12(900)(25)^2=\\tfrac12(900)(625)=281\\,250$ J. Note squaring the speed: doubling speed would quadruple this value."},
+{lvl:'inter',q:"An electric kettle transfers $540\\,000$ J in $4$ minutes. Find its power in kW.",
+a:"$2.25$ kW",
+sol:"Step 1 — convert time to seconds: $4\\times60=240$ s. Step 2 — apply $P=\\dfrac{E}{t}=\\dfrac{540\\,000}{240}=2250$ W. Step 3 — convert to kW: $2.25$ kW."},
+{lvl:'inter',q:"A pendulum bob is released from a height of $0.10$ m above its lowest point. Find its maximum speed (ignore air resistance).",
+a:"$1.4$ m/s",
+sol:"Step 1 — apply conservation of energy: all GPE lost becomes KE gained: $mgh=\\tfrac12mv^2$. Step 2 — mass cancels from both sides: $gh=\\tfrac12v^2$. Step 3 — rearrange: $v=\\sqrt{2gh}=\\sqrt{2\\times9.8\\times0.10}=\\sqrt{1.96}=1.4$ m/s."},
+{lvl:'inter',q:"State one advantage and one disadvantage of wind power compared with fossil fuels.",
+a:"Advantage: renewable / no CO₂. Disadvantage: unreliable / low output per turbine",
+sol:"Step 1 — advantage: wind is a renewable resource and produces no carbon dioxide during operation, unlike burning fossil fuels. Step 2 — disadvantage: wind speed is variable and unpredictable, so output is intermittent and needs backup or storage; also each turbine's power output is relatively small compared to a similarly-sized fossil-fuel power station."},
+{lvl:'adv',q:"A motor lifts a $50$ kg load through $12$ m in $20$ s using $8000$ J of electrical energy. Find (a) the useful work done, (b) the useful power output, (c) the efficiency.",
+a:"(a) $5880$ J (b) $294$ W (c) $73.5\\%$",
+sol:"Step 1 (a) — useful work is the GPE gained by the load: $mgh=50\\times9.8\\times12=5880$ J. Step 2 (b) — power is work over time: $P=\\dfrac{5880}{20}=294$ W. Step 3 (c) — efficiency is useful output over total input: $\\dfrac{5880}{8000}\\times100=73.5\\%$. The remaining $2120$ J is wasted, mainly as heat."},
+{lvl:'adv',q:"A $1200$ kg car climbs a hill $60$ m high at constant speed in $90$ s against a friction force of $400$ N acting over the $500$ m road. Find the useful output power of the engine.",
+a:"$\\approx10.1$ kW",
+sol:"Step 1 — work done against gravity: $mgh=1200\\times9.8\\times60=705\\,600$ J. Step 2 — work done against friction: $Fd=400\\times500=200\\,000$ J. Step 3 — since speed is CONSTANT, there is no change in kinetic energy, so ALL the engine's work goes into these two: total $=705\\,600+200\\,000=905\\,600$ J. Step 4 — power: $P=\\dfrac{905\\,600}{90}\\approx10\\,062$ W $\\approx10.1$ kW."}
+]};

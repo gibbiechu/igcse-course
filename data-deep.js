@@ -954,3 +954,338 @@ sol:"Step 1 — the log-transformed model is $\\log y=(\\log b)x+\\log a$, match
 a:"Crossing point $(4,6)$; $BD:\\;y=-\\tfrac34x+9$",
 sol:"Step 1 — key rhombus fact: diagonals bisect each other AND are perpendicular. So $BD$ crosses $AC$ exactly at the midpoint of $AC$: $\\left(\\dfrac{1+7}{2},\\dfrac{2+10}{2}\\right)=(4,6)$. Step 2 — find the gradient of $AC$: $m_{AC}=\\dfrac{10-2}{7-1}=\\dfrac{8}{6}=\\dfrac43$. Step 3 — since $BD \\perp AC$, its gradient is the negative reciprocal: $-\\dfrac34$. Step 4 — build the equation of $BD$ through $(4,6)$: $y-6=-\\tfrac34(x-4) \\Rightarrow y=-\\tfrac34x+3+6=-\\tfrac34x+9$."}
 ]};
+
+
+// ============================================================ ADD MATH CH 8: CIRCULAR MEASURE
+ADDMATH[7] = {
+title:"Circular Measure (Radians)",
+syl:"0606 §8 — Circular measure",
+yt:["what is a radian explained from zero","arc length and sector area radians","segment area formula derivation","circular measure IGCSE worked examples"],
+body:`
+<div class="scenario"><div class="schead">Real-life scenario — start here</div>
+<p>Your car's windscreen wiper is $40$ cm long and sweeps through an angle each pass. To design the wiper motor, engineers need to know exactly how much windscreen area it clears (a "sector" shape) and how far the tip travels (an "arc"). Degrees make the formulas for these ugly; there's a smarter unit — the <b>radian</b> — that makes them almost embarrassingly simple.</p></div>
+
+<h2>1. What is a radian, really?</h2>
+<div class="fig">
+<svg viewBox="0 0 300 260" xmlns="http://www.w3.org/2000/svg">
+<circle cx="150" cy="150" r="100" fill="none" stroke="#ccc" stroke-width="1.5"/>
+<line x1="150" y1="150" x2="250" y2="150" stroke="#5246D9" stroke-width="2.5"/>
+<line x1="150" y1="150" x2="200" y2="63" stroke="#5246D9" stroke-width="2.5"/>
+<path d="M 250 150 A 100 100 0 0 0 200 63" fill="none" stroke="#C2571B" stroke-width="4"/>
+<text x="200" y="150" font-size="12" fill="#5246D9">r</text>
+<text x="185" y="105" font-size="12" fill="#5246D9">r</text>
+<text x="235" y="105" font-size="13" fill="#C2571B" font-weight="bold">arc = r</text>
+<text x="160" y="130" font-size="14" fill="#1A2030" font-weight="bold">1 rad</text>
+</svg>
+<div class="figcap">Definition: <b>one radian</b> is the angle at the centre when the arc cut off is exactly the same length as the radius. It's a genuinely geometric definition — no arbitrary "360" involved.</div></div>
+<p>A full circle's circumference is $2\pi r$ — that's $2\pi$ "radius-lengths" of arc, so a full turn is $2\pi$ radians. Since a full turn is also $360°$:</p>
+$$2\pi \text{ rad} = 360° \qquad\Longrightarrow\qquad \pi \text{ rad} = 180°$$
+<div class="formula">
+Degrees → radians: multiply by $\dfrac{\pi}{180}$. &nbsp; Radians → degrees: multiply by $\dfrac{180}{\pi}$.
+</div>
+<div class="example"><div class="exhead">Worked example 1</div>
+<p>Convert $150°$ to radians (exact), and $2.4$ rad to degrees (1 d.p.).</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Degrees to radians:</span> $150 \times \dfrac{\pi}{180} = \dfrac{150\pi}{180} = \dfrac{5\pi}{6}$ (simplify the fraction first).</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Radians to degrees:</span> $2.4 \times \dfrac{180}{\pi} = \dfrac{432}{\pi} \approx 137.5°$.</span></div>
+</div></div>
+
+<h2>2. Arc length and sector area — why radians make them simple</h2>
+<div class="formula">
+Arc length: $$s = r\theta$$
+Sector area: $$A = \tfrac12 r^2\theta$$
+<b>($\theta$ MUST be in radians for these exact formulas — this is precisely why radians exist.)</b>
+</div>
+<p><b>Where $s=r\theta$ comes from:</b> a full turn ($\theta=2\pi$) gives arc length $s=r(2\pi)=2\pi r$ — exactly the circumference. The formula scales proportionally for any smaller angle, because arc length is directly proportional to the angle swept.</p>
+<div class="example"><div class="exhead">Worked example 2</div>
+<p>A sector of radius $10$ cm has arc length $14$ cm. Find $\theta$ and the sector area.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Rearrange $s=r\theta$ for $\theta$:</span> $$\theta = \frac{s}{r} = \frac{14}{10} = 1.4 \text{ rad}$$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Substitute directly into the area formula</span> (no unit conversion needed — $\theta$ is already in radians): $$A = \tfrac12(10)^2(1.4) = \tfrac12(100)(1.4) = 70 \text{ cm}^2$$</span></div>
+</div></div>
+
+<h2>3. Chords, segments, and the difference between "sector" and "segment"</h2>
+<div class="fig">
+<svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg">
+<circle cx="120" cy="110" r="80" fill="none" stroke="#ccc"/>
+<path d="M 120 110 L 120 30 A 80 80 0 0 1 190 150 Z" fill="#EEECFC" stroke="#5246D9" stroke-width="2"/>
+<text x="90" y="115" font-size="12" fill="#5246D9">sector</text>
+<text x="55" y="205" font-size="11.5" fill="#555">sector = pie-slice (2 straight edges + arc)</text>
+<circle cx="380" cy="110" r="80" fill="none" stroke="#ccc"/>
+<path d="M 380 30 A 80 80 0 0 1 450 150 Z" fill="#FBEFE6" stroke="#C2571B" stroke-width="2"/>
+<line x1="380" y1="30" x2="450" y2="150" stroke="#C2571B" stroke-width="2.5"/>
+<text x="395" y="115" font-size="12" fill="#C2571B">segment</text>
+<text x="305" y="205" font-size="11.5" fill="#555">segment = chord cuts off (curved cap only)</text>
+</svg>
+<div class="figcap">A <b>sector</b> keeps the two straight radii (pie-slice). A <b>segment</b> is what's left when you slice straight across with a chord instead — it has NO straight radius edges.</div></div>
+<div class="formula">
+Chord length: $$c = 2r\sin\left(\frac{\theta}{2}\right)$$
+Segment area = sector area $-$ triangle area: $$A_{\text{segment}} = \tfrac12r^2\theta - \tfrac12r^2\sin\theta = \tfrac12r^2(\theta-\sin\theta)$$
+</div>
+<p><b>Where the segment formula comes from:</b> take the pie-slice sector, then cut away the triangle formed by the two radii and the chord (area $\tfrac12r^2\sin\theta$, from the "two sides and included angle" formula) — what remains is exactly the curved-cap segment.</p>
+<div class="example"><div class="exhead">Worked example 3</div>
+<p>Find the area of the segment cut off by a chord subtending $1.8$ rad at the centre of a circle of radius $5$ cm.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Identify values:</span> $r=5$, $\theta=1.8$ rad.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Substitute into the segment formula</span> (calculator in radian mode!): $$A=\tfrac12(5)^2(1.8-\sin1.8) = 12.5(1.8-0.974)$$</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Finish the arithmetic:</span> $12.5 \times 0.826 \approx 10.3 \text{ cm}^2$</span></div>
+</div></div>
+<div class="mistake"><b>Common mistake:</b> leaving the calculator in DEGREE mode while $\theta$ is given in radians — $\sin(1.8)$ means "sine of 1.8 radians," completely different from $\sin(1.8°)$. Always check the mode before evaluating.</div>
+
+<h2>4. Perimeters — don't forget which edges you're adding</h2>
+<p>Sector perimeter $=2r+r\theta$ (two straight radii plus the arc). Segment perimeter $=$ chord $+$ arc only (no radii — a segment has no straight radius edges, as shown above).</p>
+`,
+quiz:[
+{lvl:'basic',q:"Find the arc length of a sector with $r=5$ cm and $\\theta=2$ rad.",
+a:"$10$ cm",
+sol:"Step 1 — apply $s=r\\theta$ directly since $\\theta$ is already in radians. Step 2: $s=5\\times2=10$ cm — the radian formula is a genuine one-liner, no conversion needed."},
+{lvl:'basic',q:"Convert $150°$ to radians (exact) and $2.4$ rad to degrees (1 d.p.).",
+a:"$\\dfrac{5\\pi}{6}$; $137.5°$",
+sol:"Step 1 — degrees to radians: multiply by $\\dfrac{\\pi}{180}$: $150\\times\\dfrac{\\pi}{180}=\\dfrac{5\\pi}{6}$ after simplifying. Step 2 — radians to degrees: multiply by $\\dfrac{180}{\\pi}$: $2.4\\times\\dfrac{180}{\\pi}=\\dfrac{432}{\\pi}\\approx137.5°$."},
+{lvl:'inter',q:"A sector of radius $10$ cm has arc length $14$ cm. Find $\\theta$ and the sector area.",
+a:"$\\theta=1.4$ rad; area $70$ cm²",
+sol:"Step 1 — rearrange $s=r\\theta$: $\\theta=\\dfrac{s}{r}=\\dfrac{14}{10}=1.4$ rad. Step 2 — substitute into $A=\\tfrac12r^2\\theta$: $A=\\tfrac12(100)(1.4)=70$ cm². Both formulas need $\\theta$ in radians, which step 1 already gives directly."},
+{lvl:'inter',q:"A sector has perimeter $20$ cm and radius $6$ cm. Find its angle and area.",
+a:"$\\theta=\\tfrac43$ rad; area $24$ cm²",
+sol:"Step 1 — sector perimeter is two radii plus the arc: $20=2r+r\\theta=2(6)+6\\theta=12+6\\theta$. Step 2 — solve: $6\\theta=8 \\Rightarrow \\theta=\\tfrac43$ rad. Step 3 — area: $A=\\tfrac12(36)\\left(\\tfrac43\\right)=24$ cm²."},
+{lvl:'inter',q:"Find the area of the segment cut off by a chord subtending $1.8$ rad at the centre of a circle of radius $5$ cm.",
+a:"$10.3$ cm² (3 s.f.)",
+sol:"Step 1 — use the segment formula: $A=\\tfrac12r^2(\\theta-\\sin\\theta)$. Step 2 — substitute $r=5,\\theta=1.8$ (radian mode!): $A=\\tfrac12(25)(1.8-\\sin1.8)=12.5(1.8-0.974)$. Step 3 — finish: $12.5\\times0.826\\approx10.3$ cm²."},
+{lvl:'adv',q:"For $r=4$, $\\theta=\\dfrac{\\pi}{3}$, find the perimeter of the segment (chord + arc) exactly where possible.",
+a:"$4+\\dfrac{4\\pi}{3}$ cm",
+sol:"Step 1 — chord length: $c=2r\\sin\\left(\\dfrac{\\theta}{2}\\right)=8\\sin\\left(\\dfrac{\\pi}{6}\\right)=8\\times\\tfrac12=4$ cm (exact, since $\\sin30°=\\tfrac12$ is a known value). Step 2 — arc length: $s=r\\theta=4\\times\\dfrac{\\pi}{3}=\\dfrac{4\\pi}{3}$ cm. Step 3 — segment perimeter is chord + arc (no radii): $4+\\dfrac{4\\pi}{3}\\approx8.19$ cm."},
+{lvl:'adv',q:"Two circles of radius $6$ cm intersect so that each passes through the other's centre. Find the exact area of the overlapping region.",
+a:"$24\\pi-18\\sqrt3\\approx44.2$ cm²",
+sol:"Step 1 — set up the geometry: centres are $6$ cm apart (since each circle passes through the other's centre) with radius also $6$ — this makes an equilateral-triangle configuration. Step 2 — find the angle subtended: half the chord triangle gives $\\cos(\\theta/2)=\\dfrac{3}{6}=\\tfrac12 \\Rightarrow \\theta/2=\\tfrac{\\pi}{3} \\Rightarrow \\theta=\\tfrac{2\\pi}{3}$ at each centre. Step 3 — the overlap region is made of TWO identical segments (one from each circle): $$A_{\\text{overlap}}=2\\times\\tfrac12r^2(\\theta-\\sin\\theta)=36\\left(\\tfrac{2\\pi}{3}-\\sin\\tfrac{2\\pi}{3}\\right)$$ Step 4 — substitute $\\sin\\tfrac{2\\pi}{3}=\\tfrac{\\sqrt3}{2}$: $$36\\left(\\tfrac{2\\pi}{3}-\\tfrac{\\sqrt3}{2}\\right)=24\\pi-18\\sqrt3\\approx44.2\\text{ cm}^2$$"}
+]};
+
+
+// ============================================================ ADD MATH CH 9: TRIGONOMETRY
+ADDMATH[8] = {
+title:"Trigonometry",
+syl:"0606 §9 — Trigonometry",
+yt:["trig identities explained from zero","solving trig equations all solutions","amplitude period sine graph explained","sec cosec cot explained simply"],
+body:`
+<div class="scenario"><div class="schead">Real-life scenario — start here</div>
+<p>The tide at Port Klang rises and falls roughly following $h(t)=3\\sin(30t)+5$, where $h$ is water depth (m) and $t$ is time in hours after midnight. A cargo ship needs at least $6$ m of depth to enter the port safely. <em>At what times of day is it safe to enter?</em> Answering that means <b>solving a trig equation</b> — and reading off amplitude, period and shift straight from the formula. That's this whole chapter.</p></div>
+
+<h2>1. The six ratios, and the three you get "for free"</h2>
+<p>You already know $\\sin,\\cos,\\tan$ from IGCSE Maths. Add Math introduces their <b>reciprocals</b>:</p>
+$$\\csc\\theta=\\frac{1}{\\sin\\theta} \\qquad \\sec\\theta=\\frac{1}{\\cos\\theta} \\qquad \\cot\\theta=\\frac{1}{\\tan\\theta}=\\frac{\\cos\\theta}{\\sin\\theta}$$
+<p>Nothing new to memorise here beyond "flip the fraction" — $\\sec$ is just $1/\\cos$, etc.</p>
+
+<h2>2. The CAST diagram — where each ratio is positive</h2>
+<div class="fig">
+<svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+<line x1="130" y1="20" x2="130" y2="240" stroke="#888"/><line x1="10" y1="130" x2="250" y2="130" stroke="#888"/>
+<circle cx="130" cy="130" r="100" fill="none" stroke="#ccc"/>
+<text x="185" y="80" font-size="16" fill="#1D7A4F" font-weight="bold">A</text>
+<text x="60" y="80" font-size="16" fill="#5246D9" font-weight="bold">S</text>
+<text x="60" y="190" font-size="16" fill="#C2571B" font-weight="bold">T</text>
+<text x="185" y="190" font-size="16" fill="#8A6410" font-weight="bold">C</text>
+<text x="170" y="70" font-size="10" fill="#555">(all +)</text>
+<text x="30" y="70" font-size="10" fill="#555">(sin +)</text>
+<text x="15" y="190" font-size="10" fill="#555">(tan +)</text>
+<text x="175" y="205" font-size="10" fill="#555">(cos +)</text>
+</svg>
+<div class="figcap">Going anticlockwise from quadrant 1: <b>A</b>ll positive, <b>S</b>in positive (others negative), <b>T</b>an positive, <b>C</b>os positive. Memory trick: "All Students Take Calculus."</div></div>
+<div class="example"><div class="exhead">Worked example 1 — using CAST to find ALL solutions</div>
+<p>Solve $\\cos x=0.5$ for $0°\\leq x\\leq 360°$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Find the principal value</span> using $\\cos^{-1}$: $\\cos^{-1}(0.5)=60°$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Ask: where else is cos positive?</span> From CAST, cos is positive in quadrants 1 AND 4.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Quadrant 1 solution</span> is the principal value itself: $x=60°$.</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Quadrant 4 solution:</span> reflect across the horizontal axis: $x=360°-60°=300°$.</span></div>
+</div>
+$$x=60°,\\;300°$$</div>
+<div class="example"><div class="exhead">Worked example 2 — negative ratio</div>
+<p>Solve $\\tan x=-1$ for $0°\\leq x\\leq360°$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Principal value</span> (ignore the sign first): $\\tan^{-1}(1)=45°$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Where is tan NEGATIVE?</span> From CAST, tan is positive in quadrants 1 and 3 — so negative in quadrants 2 and 4.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Quadrant 2:</span> $180°-45°=135°$. <span class="stlabel">Quadrant 4:</span> $360°-45°=315°$.</span></div>
+</div>
+$$x=135°,\\;315°$$</div>
+
+<h2>3. Trig identities — one triangle, endless consequences</h2>
+<div class="formula">
+$$\\sin^2\\theta+\\cos^2\\theta \\equiv 1 \\qquad \\tan\\theta \\equiv \\frac{\\sin\\theta}{\\cos\\theta}$$
+Dividing the first identity by $\\cos^2\\theta$: $$\\tan^2\\theta+1 \\equiv \\sec^2\\theta$$
+Dividing by $\\sin^2\\theta$ instead: $$1+\\cot^2\\theta \\equiv \\csc^2\\theta$$
+</div>
+<p>The very first identity is just Pythagoras' theorem applied to a right triangle inscribed in the unit circle — everything else in this box is an algebraic consequence of it.</p>
+<div class="example"><div class="exhead">Worked example 3 — proving an identity</div>
+<p>Prove that $(1-\\cos^2\\theta)(1+\\cot^2\\theta)\\equiv1$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Golden rule for proofs:</span> convert everything to $\\sin$ and $\\cos$ first — it almost always simplifies.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Rewrite each bracket:</span> $1-\\cos^2\\theta=\\sin^2\\theta$ (from the Pythagorean identity), and $1+\\cot^2\\theta=\\csc^2\\theta=\\dfrac{1}{\\sin^2\\theta}$.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Multiply:</span> $$\\sin^2\\theta \\times \\frac{1}{\\sin^2\\theta}=1 \\;\\checkmark$$</span></div>
+</div></div>
+
+<h2>4. Solving harder trig equations — extend the interval, or substitute</h2>
+<div class="mistake"><b>Common mistake — the #1 lost mark in this topic:</b> when solving $\\sin(2x)=k$, you must extend the search interval to match: if $0°\\leq x\\leq360°$ then $0°\\leq 2x\\leq720°$ — find ALL solutions for $2x$ in that doubled range FIRST, then divide everything by 2. Stopping at the first solution for $2x$ loses answers.</div>
+<div class="example"><div class="exhead">Worked example 4</div>
+<p>Solve $2\\sin(2x)=1$ for $0°\\leq x\\leq360°$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Isolate the trig function:</span> $\\sin(2x)=\\tfrac12$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Extend the interval for $2x$:</span> since $0°\\leq x\\leq360°$, we need $0°\\leq2x\\leq720°$ — TWO full turns.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Principal value:</span> $\\sin^{-1}(\\tfrac12)=30°$. Sin positive in quadrants 1,2 each turn: $2x=30°,\\,150°$, then add $360°$ for the second turn: $2x=390°,\\,510°$.</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Divide everything by 2:</span> $$x=15°,\\,75°,\\,195°,\\,255°$$</span></div>
+</div></div>
+<div class="example"><div class="exhead">Worked example 5 — identity turns it into a quadratic</div>
+<p>Solve $\\sec^2x-3\\tan x+1=0$ for $0°\\leq x\\leq360°$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Spot the identity link:</span> $\\sec^2x=1+\\tan^2x$. Substitute: $$1+\\tan^2x-3\\tan x+1=0 \\;\\Rightarrow\\; \\tan^2x-3\\tan x+2=0$$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">This is now an ordinary quadratic</span> — let $u=\\tan x$: $(u-1)(u-2)=0 \\Rightarrow u=1$ or $u=2$.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Solve $\\tan x=1$:</span> principal value $45°$; tan repeats every $180°$ (period), so also $45°+180°=225°$.</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Solve $\\tan x=2$:</span> principal value $\\tan^{-1}2\\approx63.4°$; plus $180°$: $243.4°$.</span></div>
+</div>
+$$x=45°,\\;63.4°,\\;225°,\\;243.4°$$</div>
+
+<h2>5. Graphs of trig functions — amplitude, period, shift</h2>
+<div class="formula">For $y=a\\sin(bx)+c$: <b>amplitude</b> $=|a|$ (how far above/below the midline) &nbsp;•&nbsp; <b>period</b> $=\\dfrac{360°}{b}$ (or $\\dfrac{2\\pi}{b}$ in radians) &nbsp;•&nbsp; <b>vertical shift</b> $=c$ (moves the midline up/down)</div>
+<div class="fig">
+<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+<line x1="20" y1="100" x2="480" y2="100" stroke="#888"/><line x1="20" y1="20" x2="20" y2="180" stroke="#888"/>
+<path d="M 20 100 Q 65 20 110 100 Q 155 180 200 100 Q 245 20 290 100 Q 335 180 380 100 Q 425 20 470 100" fill="none" stroke="#5246D9" stroke-width="3"/>
+<line x1="20" y1="60" x2="480" y2="60" stroke="#C2571B" stroke-dasharray="4 3"/>
+<text x="380" y="55" font-size="11.5" fill="#C2571B">max (midline + amplitude)</text>
+<text x="20" y="15" font-size="11.5" fill="#555">one full period ↔</text>
+</svg>
+<div class="figcap">$y=a\\sin(bx)+c$: amplitude $a$ stretches vertically, $b$ squeezes the period horizontally, $c$ slides the whole wave up or down.</div></div>
+<div class="example"><div class="exhead">Worked example 6</div>
+<p>State the amplitude and period of $y=3\\sin(2x)-1$, and its maximum value.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Read off directly:</span> $a=3 \\Rightarrow$ amplitude $3$. $b=2 \\Rightarrow$ period $=\\dfrac{360°}{2}=180°$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Maximum:</span> $\\sin$ maxes out at $1$, so max of $y$ is $3(1)-1=2$ (and minimum is $3(-1)-1=-4$).</span></div>
+</div></div>
+`,
+quiz:[
+{lvl:'basic',q:"Solve $\\cos x=0.5$ for $0°\\leq x\\leq360°$.",
+a:"$x=60°,\\,300°$",
+sol:"Step 1 — principal value: $\\cos^{-1}(0.5)=60°$. Step 2 — cos is positive in quadrants 1 and 4 (CAST diagram). Step 3 — quadrant 1 IS the principal value: $60°$. Step 4 — quadrant 4: $360°-60°=300°$."},
+{lvl:'basic',q:"Solve $\\tan x=-1$ for $0°\\leq x\\leq360°$.",
+a:"$x=135°,\\,315°$",
+sol:"Step 1 — principal value ignoring sign: $\\tan^{-1}(1)=45°$. Step 2 — tan is NEGATIVE in quadrants 2 and 4. Step 3 — quadrant 2: $180°-45°=135°$. Step 4 — quadrant 4: $360°-45°=315°$."},
+{lvl:'inter',q:"Prove that $(1-\\cos^2\\theta)(1+\\cot^2\\theta)\\equiv1$.",
+a:"Identity proven",
+sol:"Step 1 — convert everything to sin and cos. Step 2 — $1-\\cos^2\\theta=\\sin^2\\theta$ by the Pythagorean identity. Step 3 — $1+\\cot^2\\theta=\\csc^2\\theta=\\dfrac{1}{\\sin^2\\theta}$. Step 4 — multiply: $\\sin^2\\theta\\times\\dfrac{1}{\\sin^2\\theta}=1$ ✓."},
+{lvl:'inter',q:"Solve $2\\sin(2x)=1$ for $0°\\leq x\\leq360°$.",
+a:"$x=15°,\\,75°,\\,195°,\\,255°$",
+sol:"Step 1 — isolate: $\\sin(2x)=\\tfrac12$. Step 2 — extend the range: since $0°\\leq x\\leq360°$, we need $0°\\leq2x\\leq720°$ (two full turns). Step 3 — principal value $30°$; sin positive in quadrants 1,2: $2x=30°,150°$ in the first turn, and $2x=390°,510°$ in the second (add $360°$). Step 4 — divide everything by 2: $x=15°,75°,195°,255°$."},
+{lvl:'inter',q:"State the amplitude and period of $y=3\\sin(2x)-1$, and its maximum value.",
+a:"Amplitude $3$, period $180°$, max $2$",
+sol:"Step 1 — amplitude is $|a|=3$. Step 2 — period is $\\dfrac{360°}{b}=\\dfrac{360°}{2}=180°$. Step 3 — maximum: sin reaches at most $1$, so $y_{max}=3(1)-1=2$ (and minimum would be $3(-1)-1=-4$)."},
+{lvl:'adv',q:"Solve $\\sec^2x-3\\tan x+1=0$ for $0°\\leq x\\leq360°$.",
+a:"$x=45°,\\,63.4°,\\,225°,\\,243.4°$",
+sol:"Step 1 — use the identity $\\sec^2x=1+\\tan^2x$: $1+\\tan^2x-3\\tan x+1=0 \\Rightarrow \\tan^2x-3\\tan x+2=0$. Step 2 — factorise as a quadratic in $\\tan x$: $(\\tan x-1)(\\tan x-2)=0$. Step 3 — solve $\\tan x=1$: principal $45°$, plus period $180°$ gives $225°$. Step 4 — solve $\\tan x=2$: principal $\\approx63.4°$, plus $180°$ gives $243.4°$."},
+{lvl:'adv',q:"Solve $3\\sin x=2\\cos^2x$ for $0\\leq x\\leq2\\pi$ (radians).",
+a:"$x=\\dfrac{\\pi}{6}$ and $\\dfrac{5\\pi}{6}$",
+sol:"Step 1 — use the identity $\\cos^2x=1-\\sin^2x$ to get everything in terms of $\\sin x$: $3\\sin x=2(1-\\sin^2x)=2-2\\sin^2x$. Step 2 — rearrange to standard quadratic form: $2\\sin^2x+3\\sin x-2=0$. Step 3 — factorise: $(2\\sin x-1)(\\sin x+2)=0 \\Rightarrow \\sin x=\\tfrac12$ or $\\sin x=-2$. Step 4 — reject $\\sin x=-2$: sine can never be outside $[-1,1]$, so this root is impossible. Step 5 — solve $\\sin x=\\tfrac12$: principal value $\\dfrac{\\pi}{6}$; sin positive in quadrants 1,2: $x=\\dfrac{\\pi}{6}$ and $\\pi-\\dfrac{\\pi}{6}=\\dfrac{5\\pi}{6}$."}
+]};
+
+
+// ============================================================ ADD MATH CH 10: PERMUTATIONS & COMBINATIONS
+ADDMATH[9] = {
+title:"Permutations & Combinations",
+syl:"0606 §10 — Permutations and combinations",
+yt:["permutations vs combinations explained simply","factorial counting principle explained","nCr nPr formula derivation","counting with restrictions IGCSE"],
+body:`
+<div class="scenario"><div class="schead">Real-life scenario — start here</div>
+<p>Your school is picking a badminton doubles team for a tournament, choosing $2$ players from a squad of $8$. Does it matter which of the two chosen players you name first? No — "Ahmad and Wei Jie" is the same pairing as "Wei Jie and Ahmad." But if instead you were lining up all $8$ squad members for a team photo in a specific left-to-right order, then order absolutely matters — swapping two people gives a genuinely different photo. <b>This one distinction — does order matter or not — decides which formula in this whole chapter you use.</b></p></div>
+
+<h2>1. The fundamental counting principle</h2>
+<div class="formula">If one choice can be made in $m$ ways, and (independently) a second choice in $n$ ways, the two together can be made in $m\\times n$ ways.</div>
+<div class="fig">
+<svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg">
+<circle cx="40" cy="100" r="6" fill="#1A2030"/>
+<line x1="40" y1="100" x2="140" y2="40" stroke="#5246D9" stroke-width="2"/>
+<line x1="40" y1="100" x2="140" y2="100" stroke="#5246D9" stroke-width="2"/>
+<line x1="40" y1="100" x2="140" y2="160" stroke="#5246D9" stroke-width="2"/>
+<text x="145" y="44" font-size="11">A</text><text x="145" y="104" font-size="11">B</text><text x="145" y="164" font-size="11">C</text>
+<line x1="150" y1="40" x2="250" y2="20" stroke="#C2571B" stroke-width="1.5"/>
+<line x1="150" y1="40" x2="250" y2="60" stroke="#C2571B" stroke-width="1.5"/>
+<line x1="150" y1="100" x2="250" y2="80" stroke="#C2571B" stroke-width="1.5"/>
+<line x1="150" y1="100" x2="250" y2="120" stroke="#C2571B" stroke-width="1.5"/>
+<line x1="150" y1="160" x2="250" y2="140" stroke="#C2571B" stroke-width="1.5"/>
+<line x1="150" y1="160" x2="250" y2="180" stroke="#C2571B" stroke-width="1.5"/>
+<text x="255" y="100" font-size="12" fill="#1D7A4F" font-weight="bold">3 × 2 = 6 total paths</text>
+</svg>
+<div class="figcap">A tree diagram makes the multiplication principle visible: 3 branches, each splitting into 2, gives $3\\times2=6$ end-to-end routes.</div></div>
+
+<h2>2. Permutations — order matters</h2>
+<p>The number of ways to arrange ALL $n$ distinct items in a row is $n!$ ("$n$ factorial"): $n$ choices for the first slot, $n-1$ left for the second, and so on down to $1$:</p>
+$$n! = n\\times(n-1)\\times(n-2)\\times\\cdots\\times2\\times1$$
+<p>If you only want to arrange $r$ out of $n$ items (not all of them), the same logic gives $n$ choices, then $n-1$, stopping after $r$ factors:</p>
+$$^nP_r = \\frac{n!}{(n-r)!}$$
+<div class="example"><div class="exhead">Worked example 1</div>
+<p>How many arrangements of the letters of the word ORANGE are there? How many begin with a vowel?</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">All 6 letters are distinct</span> — arranging all of them: $6! = 720$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Restriction — vowel first.</span> Vowels available: O, A, E — 3 choices for slot 1.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Fill the rest freely:</span> the remaining $5$ letters can go in the remaining $5$ slots in $5!=120$ ways.</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Multiply</span> (fundamental counting principle): $3\\times120=360$.</span></div>
+</div></div>
+
+<h2>3. Combinations — order does NOT matter</h2>
+<p>Since every group of $r$ items can be internally reordered $r!$ different ways (all counted separately in $^nP_r$), divide that overcounting out:</p>
+$$^nC_r = \\frac{^nP_r}{r!} = \\frac{n!}{r!\\,(n-r)!}$$
+<div class="example"><div class="exhead">Worked example 2</div>
+<p>Evaluate $^5P_2$ and $^5C_2$, and explain why they differ.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">$^5P_2$:</span> $5\\times4=20$ — ordered pairs, e.g. (A,B) and (B,A) count separately.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">$^5C_2$:</span> $\\dfrac{20}{2!}=10$ — unordered pairs; (A,B) and (B,A) are now the same pair, so we divide by the $2!=2$ ways to order each pair.</span></div>
+</div></div>
+<div class="example"><div class="exhead">Worked example 3 — the badminton team</div>
+<p>A team of 5 is chosen from 6 boys and 5 girls. How many teams contain exactly 3 boys?</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">This is a combination</span> — a "team" has no internal order, so use $^nC_r$, not $^nP_r$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Choose the boys:</span> $^6C_3=\\dfrac{6!}{3!3!}=20$.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Choose the girls</span> (to make 5 total, need $5-3=2$ girls): $^5C_2=10$.</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Multiply</span> — the two choices are independent: $20\\times10=200$.</span></div>
+</div></div>
+<div class="mistake"><b>Common mistake:</b> using $^nP_r$ when the problem describes a "group," "team," "committee" or "selection" (order irrelevant), or using $^nC_r$ when it says "arrange," "line up," or "in a row" (order relevant). Read the question for these keywords before picking a formula.</div>
+
+<h2>4. Restrictions — "together" and "not together"</h2>
+<div class="example"><div class="exhead">Worked example 4</div>
+<p>In how many ways can 7 people sit in a row if two particular people must NOT sit together?</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Total unrestricted arrangements:</span> $7!=5040$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Count the OPPOSITE ("together") instead — it's easier:</span> glue the two people into one "block." Now you're arranging $6$ objects (the block + 5 others): $6!$ ways. But the two people inside the block can swap order: $\\times2!$. Total together: $6!\\times2!=1440$.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Subtract</span> (complement counting): $$\\text{not together} = \\text{total} - \\text{together} = 5040-1440=3600$$</span></div>
+</div></div>
+<div class="note"><b>Exam tip:</b> whenever a question says "at least," "at most," or "not," it's almost always faster to count the OPPOSITE case and subtract from the total, rather than adding up several separate cases directly.</div>
+
+<h2>5. Repeated items — divide out the identical swaps</h2>
+<p>If some items are identical, arrangements that only swap identical items aren't genuinely different — divide by the factorial of each repeat count.</p>
+<div class="example"><div class="exhead">Worked example 5</div>
+<p>How many arrangements of the letters of DIGITS are there? How many have the two I's separated?</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">6 letters, with I repeated twice:</span> $$\\frac{6!}{2!}=\\frac{720}{2}=360$$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Count "I's together" first</span> (complement trick again): glue the two I's into one block. Now arranging $5$ objects (block + 4 others): $5!=120$ — and crucially, NO extra $\\times2!$ here, because the two I's are identical, swapping them inside the block makes no visible difference.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Subtract:</span> $$\\text{separated} = 360-120=240$$</span></div>
+</div></div>
+`,
+quiz:[
+{lvl:'basic',q:"Evaluate $^5P_2$ and $^5C_2$.",
+a:"$20$ and $10$",
+sol:"Step 1 — $^5P_2=5\\times4=20$ (order matters, e.g. AB and BA count separately). Step 2 — $^5C_2=\\dfrac{20}{2!}=10$ (order doesn't matter, so we divide by the $2!$ ways each pair could be internally ordered)."},
+{lvl:'inter',q:"How many arrangements of the letters of the word ORANGE are there? How many begin with a vowel?",
+a:"$720$; $360$",
+sol:"Step 1 — 6 distinct letters, arrange all: $6!=720$. Step 2 — vowels available (O, A, E): 3 choices for the first slot. Step 3 — remaining 5 letters fill the remaining 5 slots: $5!=120$ ways. Step 4 — multiply (independent choices): $3\\times120=360$."},
+{lvl:'inter',q:"A team of 5 is chosen from 6 boys and 5 girls. How many teams contain exactly 3 boys?",
+a:"$200$",
+sol:"Step 1 — 'team' means order doesn't matter, so use combinations. Step 2 — choose 3 boys from 6: $^6C_3=20$. Step 3 — choose the remaining 2 spots from 5 girls: $^5C_2=10$. Step 4 — multiply independent choices: $20\\times10=200$."},
+{lvl:'inter',q:"How many 3-digit numbers greater than 500 can be formed from 2, 3, 5, 7, 8 without repetition?",
+a:"$36$",
+sol:"Step 1 — 'greater than 500' restricts the FIRST digit: it must be 5, 7 or 8 (not 2 or 3) — 3 choices. Step 2 — the remaining two positions are filled from the 4 leftover digits without repetition: $4\\times3=12$ ways. Step 3 — multiply: $3\\times12=36$."},
+{lvl:'adv',q:"In how many ways can 7 people sit in a row if two particular people must NOT sit together?",
+a:"$3600$",
+sol:"Step 1 — total unrestricted arrangements: $7!=5040$. Step 2 — count the complement ('together') instead: glue the pair into one block, giving 6 objects to arrange: $6!=720$, then multiply by $2!$ for the two internal orders of the pair: $720\\times2=1440$. Step 3 — subtract: not together $=5040-1440=3600$."},
+{lvl:'adv',q:"A committee of 4 is chosen from 9 people including Mr and Mrs Tan. How many committees include at most one of them?",
+a:"$105$",
+sol:"Step 1 — 'at most one' is fastest via the complement: total minus 'both included'. Step 2 — total ways to choose any 4 from 9: $^9C_4=126$. Step 3 — committees with BOTH Tans: fix both, choose the remaining 2 members from the other 7: $^7C_2=21$. Step 4 — subtract: $126-21=105$."},
+{lvl:'adv',q:"How many arrangements of the letters of DIGITS are there? How many have the two I's separated?",
+a:"$360$ total; $240$ separated",
+sol:"Step 1 — 6 letters with I repeated twice, so divide out the identical swap: $\\dfrac{6!}{2!}=360$. Step 2 — count 'I's together' via the block method: glue the two I's, giving 5 objects to arrange: $5!=120$ (no extra $\\times2!$ since the I's are identical — swapping them changes nothing visible). Step 3 — subtract for 'separated': $360-120=240$."}
+]};

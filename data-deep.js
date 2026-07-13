@@ -2170,3 +2170,207 @@ sol:"Step 1 (a) — useful work is the GPE gained by the load: $mgh=50\\times9.8
 a:"$\\approx10.1$ kW",
 sol:"Step 1 — work done against gravity: $mgh=1200\\times9.8\\times60=705\\,600$ J. Step 2 — work done against friction: $Fd=400\\times500=200\\,000$ J. Step 3 — since speed is CONSTANT, there is no change in kinetic energy, so ALL the engine's work goes into these two: total $=705\\,600+200\\,000=905\\,600$ J. Step 4 — power: $P=\\dfrac{905\\,600}{90}\\approx10\\,062$ W $\\approx10.1$ kW."}
 ]};
+
+
+// ============================================================ PHYSICS CH 5: PRESSURE
+PHYSICS[4] = {
+title:"Pressure",
+syl:"0625 §1.8 — Pressure",
+yt:["pressure explained from zero","liquid pressure depth formula explained","why dams are thicker at the base","manometer explained simply"],
+body:`
+<div class="scenario"><div class="schead">Real-life scenario — start here</div>
+<p>A stiletto heel and an elephant's foot both press down on the ground — but which one is more likely to punch through soft grass? Surprisingly, the stiletto: a $600$ N woman standing on a heel of just $1\\text{ cm}^2$ produces a pressure of MILLIONS of pascals, far more than an elephant's several-tonne weight spread over its huge, wide feet. Pressure isn't just about how much force you apply — it's about how CONCENTRATED that force is. This chapter is about that relationship, and how it plays out in liquids too.</p></div>
+
+<h2>1. Pressure — force concentrated over an area</h2>
+<div class="formula">$$p=\\frac{F}{A} \\qquad(\\text{unit: pascal, Pa} = \\text{N/m}^2)$$</div>
+<div class="example"><div class="exhead">Worked example 1 — the scenario, solved</div>
+<p>A woman of weight $600$ N stands on one heel of area $1\\text{ cm}^2$. Find the pressure in Pa.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Convert area to $\\text{m}^2$</span> (SI units — this step is essential): $1\\text{ cm}^2=1\\times10^{-4}\\text{ m}^2$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Apply the formula:</span> $$p=\\frac{600}{1\\times10^{-4}}=6\\,000\\,000\\text{ Pa}=6\\times10^6\\text{ Pa}$$</span></div>
+</div>
+<p>This is why heels can damage soft floors and elephants can't — the SAME kind of force, over a vastly smaller area, gives a vastly bigger pressure.</p></div>
+<div class="example"><div class="exhead">Worked example 2 — the reverse application</div>
+<p>Explain why a sharp knife cuts more easily than a blunt one, using the pressure equation.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Identify what changes:</span> a sharp edge has a MUCH smaller contact area $A$ than a blunt edge, for a similar applied force $F$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Apply $p=F/A$:</span> smaller $A$ (denominator) with similar $F$ gives a much larger $p$ — large enough to break through the material's surface, where a blunt edge (small $p$, same $F$ spread wide) can't.</span></div>
+</div></div>
+<div class="mistake"><b>Common mistake:</b> forgetting to convert cm² to m² before substituting — a factor-of-10,000 error, since $1\\text{ cm}^2=1\\times10^{-4}\\text{ m}^2$ (NOT $1\\times10^{-2}$, a common slip).</div>
+
+<h2>2. Pressure in liquids — depends only on depth and density</h2>
+<div class="formula">$$p=\\rho gh$$ liquid density $\\rho$, gravitational field strength $g$, DEPTH $h$ below the surface.</div>
+<div class="fig">
+<svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
+<rect x="60" y="20" width="180" height="180" fill="#EEECFC" stroke="#5246D9" stroke-width="2"/>
+<line x1="60" y1="70" x2="240" y2="70" stroke="#5246D9" stroke-dasharray="3 2"/>
+<line x1="60" y1="130" x2="240" y2="130" stroke="#5246D9" stroke-dasharray="3 2"/>
+<circle cx="150" cy="70" r="4" fill="#C2571B"/>
+<circle cx="150" cy="130" r="4" fill="#C2571B"/>
+<circle cx="150" cy="190" r="4" fill="#C2571B"/>
+<text x="245" y="75" font-size="11">shallow: low p</text>
+<text x="245" y="135" font-size="11">deeper: more p</text>
+<text x="245" y="195" font-size="11">deepest: most p</text>
+</svg>
+<div class="figcap">Pressure grows with depth, regardless of the container's shape or width — only $h$ (and the liquid) matters, which is why a dam must be built thickest at its base.</div></div>
+<div class="example"><div class="exhead">Worked example 3</div>
+<p>Calculate the pressure due to a $0.76$ m column of mercury ($\\rho=13\\,600\\text{ kg/m}^3$).</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Substitute directly:</span> $$p=\\rho gh=13\\,600\\times9.8\\times0.76\\approx101\\,300\\text{ Pa}$$</span></div>
+</div>
+<p>That number IS standard atmospheric pressure — which is exactly why old mercury barometers used a $76$ cm column: the atmosphere pushing on an open mercury reservoir can support a column of exactly this height, no more, no less.</p></div>
+<div class="example"><div class="exhead">Worked example 4 — why dams are thick at the base</div>
+<p>Why is a dam built thicker at its base than at its top?</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Recall the formula:</span> $p=\\rho gh$ — pressure depends on the DEPTH of water above that point.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Compare base to top:</span> at the base, $h$ (the depth of water above) is at its GREATEST, so $p$ is greatest there too. The dam wall must be strongest exactly where the pressure pushing on it is highest.</span></div>
+</div></div>
+
+<h2>3. Adding atmospheric pressure — total pressure at depth</h2>
+<div class="formula">$$p_{\\text{total}} = p_{\\text{atmosphere}} + \\rho gh$$ (the atmosphere presses on the open surface too, and pressures simply add)</div>
+<div class="example"><div class="exhead">Worked example 5</div>
+<p>A rectangular tank $2$ m deep is full of oil ($\\rho=800\\text{ kg/m}^3$). Find the pressure due to the oil at the bottom, and the total pressure (atmospheric $=1.0\\times10^5$ Pa).</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Find the oil's own contribution:</span> $p=\\rho gh=800\\times9.8\\times2=15\\,680$ Pa.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Add atmospheric pressure</span> (pushing on the open surface above): $$100\\,000+15\\,680\\approx115\\,700\\text{ Pa}$$</span></div>
+</div></div>
+
+<h2>4. The manometer — measuring gas pressure with a liquid column</h2>
+<div class="example"><div class="exhead">Worked example 6</div>
+<p>A U-tube manometer containing water ($\\rho=1000\\text{ kg/m}^3$) is connected to a gas supply. The water on the open side stands $15$ cm higher. Atmospheric pressure is $1.00\\times10^5$ Pa. Find the gas pressure.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Interpret the height difference:</span> the open side being HIGHER means the gas is pushing the water DOWN on its own side — i.e. the gas pressure exceeds atmospheric.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Add the extra column's pressure to atmospheric:</span> $$p_{\\text{gas}} = p_{\\text{atm}}+\\rho gh = 100\\,000+1000\\times9.8\\times0.15$$</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Finish the arithmetic:</span> $100\\,000+1470=101\\,470\\approx1.015\\times10^5$ Pa.</span></div>
+</div></div>
+<div class="note"><b>Exam tip:</b> in manometer problems, always work out FIRST whether the gas pressure should be above or below atmospheric by looking at which side of the tube stands higher — then add or subtract the $\\rho gh$ term accordingly.</div>
+`,
+quiz:[
+{lvl:'basic',q:"A force of $60$ N acts on $0.02\\text{ m}^2$. Find the pressure.",
+a:"$3000$ Pa",
+sol:"Step 1 — apply $p=\\dfrac{F}{A}$. Step 2: $p=\\dfrac{60}{0.02}=3000$ Pa."},
+{lvl:'inter',q:"A woman of weight $600$ N stands on one heel of area $1\\text{ cm}^2$. Find the pressure in Pa.",
+a:"$6\\times10^6$ Pa",
+sol:"Step 1 — convert area to m²: $1\\text{ cm}^2=1\\times10^{-4}\\text{ m}^2$. Step 2 — apply $p=\\dfrac{F}{A}=\\dfrac{600}{1\\times10^{-4}}=6\\,000\\,000$ Pa."},
+{lvl:'inter',q:"Calculate the pressure due to a $0.76$ m column of mercury ($\\rho=13\\,600\\text{ kg/m}^3$).",
+a:"$\\approx1.0\\times10^5$ Pa",
+sol:"Step 1 — apply $p=\\rho gh$ directly. Step 2: $13\\,600\\times9.8\\times0.76\\approx101\\,300$ Pa — this IS standard atmospheric pressure, which is why barometers historically used a 76 cm mercury column."},
+{lvl:'inter',q:"Why is a dam built thicker at its base than at its top?",
+a:"Liquid pressure increases with depth ($p=\\rho gh$), so the base must withstand more",
+sol:"Step 1 — recall $p=\\rho gh$: pressure depends on the DEPTH of liquid above the point in question. Step 2 — at the base of the dam, the depth of water above is greatest, so the pressure pushing on the wall is greatest there too — the structure must be strongest exactly where the pressure is highest."},
+{lvl:'inter',q:"Explain why a sharp knife cuts more easily than a blunt one, using the pressure equation.",
+a:"Smaller contact area → larger pressure for the same force",
+sol:"Step 1 — apply $p=\\dfrac{F}{A}$: pressure depends inversely on contact area. Step 2 — a sharp edge concentrates the same applied force $F$ onto a tiny area $A$, producing a much larger pressure than a blunt edge would with the same force — large enough to break through the material's surface."},
+{lvl:'adv',q:"A rectangular tank $2$ m deep is full of oil ($\\rho=800\\text{ kg/m}^3$). Find the pressure due to the oil at the bottom, and the total pressure (atmospheric $=1.0\\times10^5$ Pa).",
+a:"$15\\,680$ Pa; $\\approx1.16\\times10^5$ Pa",
+sol:"Step 1 — find the oil's contribution: $p=\\rho gh=800\\times9.8\\times2=15\\,680$ Pa. Step 2 — add atmospheric pressure, since it also pushes on the open surface: $100\\,000+15\\,680\\approx115\\,700$ Pa."},
+{lvl:'adv',q:"A U-tube manometer containing water ($\\rho=1000\\text{ kg/m}^3$) is connected to a gas supply. The water on the open side stands $15$ cm higher. Atmospheric pressure is $1.00\\times10^5$ Pa. Find the gas pressure.",
+a:"$1.015\\times10^5$ Pa",
+sol:"Step 1 — interpret the height difference: the open side sitting HIGHER means the gas is pushing water down on its own side, so the gas pressure is ABOVE atmospheric. Step 2 — add the extra column's pressure: $p_{\\text{gas}}=p_{\\text{atm}}+\\rho gh=100\\,000+1000\\times9.8\\times0.15$. Step 3 — finish: $100\\,000+1470=101\\,470\\approx1.015\\times10^5$ Pa."}
+]};
+
+
+// ============================================================ PHYSICS CH 6: THERMAL PHYSICS
+PHYSICS[5] = {
+title:"Thermal Physics",
+syl:"0625 §2 — Thermal physics (kinetic model, properties, transfer)",
+yt:["kinetic theory of matter explained","specific heat capacity explained from zero","boyle's law explained simply","conduction convection radiation explained"],
+body:`
+<div class="scenario"><div class="schead">Real-life scenario — start here</div>
+<p>In Malaysia's heat and humidity, sweating is your body's cooling system — but WHY does it actually cool you down? And why does a pressure cooker (common for cooking rendang) speed up cooking by trapping steam under pressure? Both questions are answered by the <b>kinetic model of matter</b>: temperature is really just a measure of how fast particles are jiggling around, and this one idea explains an enormous range of everyday thermal effects.</p></div>
+
+<h2>1. The kinetic model — temperature is particle motion</h2>
+<p>In a gas, particles move freely at high speed in random directions, colliding with each other and the container walls. <b>Temperature is a measure of the AVERAGE kinetic energy of these particles</b> — hotter means faster, on average.</p>
+<div class="formula">Kelvin scale: $$T(\\text{K}) = T(°\\text{C})+273$$ Kelvin is the "absolute" scale — $0$ K (absolute zero) is the theoretical point where particles have the minimum possible kinetic energy.</div>
+<div class="example"><div class="exhead">Worked example 1</div>
+<p>Convert $27°$C to kelvin.</p>
+<div class="steps"><div class="st"><span class="n">1</span><span>$T=27+273=300$ K.</span></div></div></div>
+
+<h2>2. Gas pressure — a kinetic explanation</h2>
+<div class="fig">
+<svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+<rect x="40" y="30" width="150" height="130" fill="none" stroke="#5246D9" stroke-width="2.5"/>
+<circle cx="80" cy="60" r="4" fill="#C2571B"/><circle cx="140" cy="90" r="4" fill="#C2571B"/><circle cx="100" cy="130" r="4" fill="#C2571B"/>
+<text x="55" y="175" font-size="11" fill="#555">cool: slow, infrequent hits</text>
+<rect x="230" y="30" width="150" height="130" fill="none" stroke="#C2571B" stroke-width="2.5"/>
+<circle cx="260" cy="50" r="4" fill="#C2571B"/><circle cx="330" cy="70" r="4" fill="#C2571B"/><circle cx="280" cy="110" r="4" fill="#C2571B"/><circle cx="350" cy="140" r="4" fill="#C2571B"/><circle cx="260" cy="145" r="4" fill="#C2571B"/>
+<text x="245" y="175" font-size="11" fill="#555">hot: fast, frequent HARD hits</text>
+</svg>
+<div class="figcap">Heating a gas makes particles move faster: they hit the container walls both MORE OFTEN and HARDER — both effects push pressure up.</div></div>
+<div class="example"><div class="exhead">Worked example 2</div>
+<p>Use the particle model to explain why gas pressure increases when a sealed gas is heated at constant volume.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Link heat to particle speed:</span> heating raises the average kinetic energy of the gas particles, so they move faster.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Link speed to collisions:</span> faster particles hit the container walls both more FREQUENTLY and with more FORCE per collision.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Link collisions to pressure:</span> pressure $=$ force$/$area — more frequent, harder impacts mean more total force on the walls, so pressure rises.</span></div>
+</div></div>
+
+<h2>3. Boyle's law — squeezing a gas at constant temperature</h2>
+<div class="formula">$$p_1V_1 = p_2V_2 \\quad(\\text{constant temperature})$$</div>
+<div class="example"><div class="exhead">Worked example 3</div>
+<p>A gas has volume $300\\text{ cm}^3$ at $100$ kPa. It is compressed to $120\\text{ cm}^3$ at constant temperature. Find the new pressure.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Apply Boyle's law:</span> $p_1V_1=p_2V_2 \\Rightarrow 100\\times300=p_2\\times120$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Solve:</span> $p_2=\\dfrac{30\\,000}{120}=250$ kPa.</span></div>
+</div>
+<p><b>Why it works:</b> squeezing particles into a smaller volume means they hit the walls more often (less distance to travel between collisions), even though their speed (temperature) hasn't changed — more frequent collisions means higher pressure.</p></div>
+
+<h2>4. Specific heat capacity — how much a substance resists warming up</h2>
+<div class="formula">$$E=mc\\Delta\\theta$$ where $c$ is the specific heat capacity (J/(kg·°C)) — the energy needed to raise 1 kg of the substance by 1°C.</div>
+<div class="example"><div class="exhead">Worked example 4</div>
+<p>A $0.5$ kg aluminium block ($c=900$ J/(kg·°C)) is heated with $13\\,500$ J. Find the temperature rise.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Rearrange the formula for $\\Delta\\theta$:</span> $\\Delta\\theta=\\dfrac{E}{mc}$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Substitute:</span> $\\Delta\\theta=\\dfrac{13\\,500}{0.5\\times900}=\\dfrac{13\\,500}{450}=30°$C.</span></div>
+</div></div>
+<div class="example"><div class="exhead">Worked example 5 — heat exchange between two substances</div>
+<p>A $0.2$ kg copper block ($c=390$ J/(kg·°C)) at $95°$C is dropped into $0.5$ kg of water ($c=4200$ J/(kg·°C)) at $20°$C. Ignoring losses, find the final temperature.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Heat lost by the hot object = heat gained by the cool one</span> (energy conservation, no losses): $$0.2\\times390\\times(95-T)=0.5\\times4200\\times(T-20)$$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Simplify each side:</span> $78(95-T)=2100(T-20) \\Rightarrow 7410-78T=2100T-42\\,000$</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Collect $T$ terms:</span> $7410+42\\,000=2100T+78T \\Rightarrow 49\\,410=2178T$</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Solve:</span> $T=\\dfrac{49\\,410}{2178}\\approx22.7°$C.</span></div>
+</div>
+<p>Notice the final temperature is much closer to water's starting temperature ($20°$C) than copper's ($95°$C) — water's LARGE specific heat capacity means it barely warms while releasing far more thermal "resistance" against the copper's rapid cooling.</p></div>
+
+<h2>5. Evaporation — cooling without boiling</h2>
+<div class="example"><div class="exhead">Worked example 6 — the scenario, explained</div>
+<p>Explain why sweating cools you down.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Not all liquid particles move at the same speed</span> — there's a whole range, some fast, some slow.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Evaporation is selective:</span> only the FASTEST (most energetic) particles have enough energy to escape the liquid surface into the air as vapour.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Removing the fastest particles</span> lowers the AVERAGE kinetic energy of what's left behind — and average kinetic energy IS temperature. So the remaining sweat (and the skin beneath it) cools down.</span></div>
+</div></div>
+
+<h2>6. Heat transfer — conduction, convection, radiation</h2>
+<div class="example"><div class="exhead">Worked example 7</div>
+<p>Why are the heating elements of a kettle at the bottom, and the freezer compartment of a fridge at the top?</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Kettle (heating from below):</span> water heated at the bottom expands slightly, becomes LESS dense, and rises; cooler, denser water sinks to take its place and gets heated in turn — this circulation (convection current) heats the whole volume efficiently.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Fridge (cooling from above):</span> air cooled near the freezer at the top becomes denser and SINKS, displacing warmer air upward to be cooled next — the same convection principle, just running to cool instead of heat.</span></div>
+</div>
+<p>Both designs deliberately place the temperature-changing element where convection currents will do the most work automatically.</p></div>
+`,
+quiz:[
+{lvl:'basic',q:"Convert $27°$C to kelvin.",
+a:"$300$ K",
+sol:"Step 1 — apply the conversion $T(\\text{K})=T(°\\text{C})+273$. Step 2: $27+273=300$ K."},
+{lvl:'inter',q:"A $0.5$ kg aluminium block ($c=900$ J/(kg·°C)) is heated with $13\\,500$ J. Find the temperature rise.",
+a:"$30°$C",
+sol:"Step 1 — rearrange $E=mc\\Delta\\theta$ for $\\Delta\\theta$: $\\Delta\\theta=\\dfrac{E}{mc}$. Step 2 — substitute: $\\dfrac{13\\,500}{0.5\\times900}=\\dfrac{13\\,500}{450}=30°$C."},
+{lvl:'inter',q:"A gas has volume $300\\text{ cm}^3$ at $100$ kPa. It is compressed to $120\\text{ cm}^3$ at constant temperature. Find the new pressure.",
+a:"$250$ kPa",
+sol:"Step 1 — apply Boyle's law: $p_1V_1=p_2V_2$. Step 2 — substitute: $100\\times300=p_2\\times120$. Step 3 — solve: $p_2=\\dfrac{30\\,000}{120}=250$ kPa. Smaller volume means more frequent particle collisions with the walls, hence higher pressure."},
+{lvl:'inter',q:"Explain why sweating cools you down.",
+a:"Evaporation removes the most energetic particles, lowering average KE (temperature) of what remains",
+sol:"Step 1 — liquid particles have a range of speeds, not all identical. Step 2 — only the fastest, most energetic particles have enough energy to escape the surface as vapour (evaporation). Step 3 — removing these fastest particles lowers the AVERAGE kinetic energy — and hence the temperature — of the sweat and skin left behind."},
+{lvl:'inter',q:"Why are the heating elements of a kettle at the bottom, and the freezer compartment of a fridge at the top?",
+a:"Convection: hot fluid rises, cold fluid sinks",
+sol:"Step 1 — kettle: water heated at the bottom expands, becomes less dense, and rises, while cooler denser water sinks to be heated next — this circulation (convection) heats the whole tank. Step 2 — fridge: air cooled at the top becomes denser and sinks, pushing warmer air up to be cooled — the same convection principle used for cooling instead of heating."},
+{lvl:'adv',q:"Use the particle model to explain why gas pressure increases when a sealed gas is heated at constant volume.",
+a:"Faster particles hit walls harder and more often → more force per area",
+sol:"Step 1 — heating raises the average kinetic energy of the gas particles, so they move faster. Step 2 — faster particles collide with the container walls both more frequently and with greater force per collision. Step 3 — since pressure $=$ force$/$area, this increase in total force on the walls (same area, since volume is constant) means pressure rises."},
+{lvl:'adv',q:"A $0.2$ kg copper block ($c=390$ J/(kg·°C)) at $95°$C is dropped into $0.5$ kg of water ($c=4200$ J/(kg·°C)) at $20°$C. Ignoring losses, find the final temperature.",
+a:"$\\approx22.7°$C",
+sol:"Step 1 — set heat lost by copper equal to heat gained by water: $0.2\\times390\\times(95-T)=0.5\\times4200\\times(T-20)$. Step 2 — simplify: $78(95-T)=2100(T-20) \\Rightarrow 7410-78T=2100T-42\\,000$. Step 3 — collect terms: $49\\,410=2178T$. Step 4 — solve: $T\\approx22.7°$C. Water's large specific heat capacity means it barely warms compared to how much copper cools."}
+]};

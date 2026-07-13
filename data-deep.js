@@ -1728,3 +1728,128 @@ sol:"Step 1 — integrate acceleration to get velocity: $v=3t^2-4t+c_1$; using $
 a:"(a) $t=\\tfrac12\\ln3\\approx0.549$ s (b) $a=-8$ m/s² (c) $s=4-2\\ln3\\approx1.80$ m",
 sol:"Step 1 (a) — set $v=0$: $12e^{-2t}=4 \\Rightarrow e^{-2t}=\\tfrac13 \\Rightarrow t=\\tfrac12\\ln3$ (taking logs, Chapter 6). Step 2 (b) — differentiate: $a=-24e^{-2t}$; at this $t$, $e^{-2t}=\\tfrac13$, so $a=-24\\times\\tfrac13=-8$ m/s². Step 3 (c) — integrate $v$: $s=-6e^{-2t}-4t+c$; using $s=0$ at $t=0$ gives $c=6$. Step 4 — evaluate at $t=\\tfrac12\\ln3$: $s=-6(\\tfrac13)-4(\\tfrac12\\ln3)+6=-2-2\\ln3+6=4-2\\ln3\\approx1.80$ m."}
 ]};
+
+
+// ============================================================ ADD MATH CH 15: VECTORS
+ADDMATH[14] = {
+title:"Vectors in Two Dimensions",
+syl:"0606 §13 — Vectors in two dimensions",
+yt:["what is a vector explained from zero","unit vector magnitude explained","collinear points vectors proof","vector collision problem explained"],
+body:`
+<div class="scenario"><div class="schead">Real-life scenario — start here</div>
+<p>A ferry crosses the Penang Strait from Butterworth. Its own engine gives it a heading and speed — but the sea current also pushes it sideways. The ferry's <em>actual</em> path over the water is the <b>combination</b> of both effects. Speed alone (a single number, a <b>scalar</b>) can't describe this — you need both a size AND a direction together. That combined quantity is a <b>vector</b>, and this chapter is about doing arithmetic with them.</p></div>
+
+<h2>1. What is a vector?</h2>
+<p>A <b>vector</b> has both magnitude (size) and direction; a <b>scalar</b> has magnitude only. "The wind is blowing at 20 km/h" is a scalar (speed); "the wind is blowing at 20 km/h from the north-west" is a vector (velocity).</p>
+<div class="formula">Column form: $\\begin{pmatrix}x\\\\y\\end{pmatrix}$ &nbsp;&nbsp; $\\mathbf{i}$-$\\mathbf{j}$ form: $x\\mathbf{i}+y\\mathbf{j}$, where $\\mathbf{i}=\\begin{pmatrix}1\\\\0\\end{pmatrix}$ and $\\mathbf{j}=\\begin{pmatrix}0\\\\1\\end{pmatrix}$ are unit "step" vectors along each axis.</div>
+<div class="fig">
+<svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
+<line x1="30" y1="190" x2="270" y2="190" stroke="#888"/><line x1="30" y1="20" x2="30" y2="200" stroke="#888"/>
+<line x1="30" y1="190" x2="210" y2="60" stroke="#5246D9" stroke-width="3" marker-end="url(#kv)"/>
+<line x1="30" y1="190" x2="210" y2="190" stroke="#C2571B" stroke-dasharray="4 3"/>
+<line x1="210" y1="190" x2="210" y2="60" stroke="#C2571B" stroke-dasharray="4 3"/>
+<text x="105" y="205" font-size="12" fill="#C2571B">x (horiz. component)</text>
+<text x="220" y="130" font-size="12" fill="#C2571B">y (vert. component)</text>
+<text x="130" y="110" font-size="13" fill="#5246D9" font-weight="bold">v = xi + yj</text>
+<defs><marker id="kv" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5246D9"/></marker></defs>
+</svg>
+<div class="figcap">A vector's arrow can always be split into an $\\mathbf{i}$-step (horizontal) plus a $\\mathbf{j}$-step (vertical) — this decomposition is what makes vector arithmetic just component-by-component ordinary arithmetic.</div></div>
+
+<h2>2. Magnitude — Pythagoras, one more time</h2>
+<div class="formula">$$|x\\mathbf{i}+y\\mathbf{j}| = \\sqrt{x^2+y^2}$$</div>
+<div class="example"><div class="exhead">Worked example 1</div>
+<p>Find the magnitude of $3\\mathbf{i}+4\\mathbf{j}$.</p>
+<div class="steps"><div class="st"><span class="n">1</span><span>$|v|=\\sqrt{3^2+4^2}=\\sqrt{9+16}=\\sqrt{25}=5$ — the classic 3-4-5 right triangle.</span></div></div></div>
+
+<h2>3. Unit vectors — direction only, size stripped away</h2>
+<div class="formula">$$\\hat{v} = \\frac{v}{|v|}$$ — dividing a vector by its own magnitude leaves a vector of length exactly 1, pointing the same way.</div>
+<div class="example"><div class="exhead">Worked example 2</div>
+<p>Find the unit vector in the direction of $5\\mathbf{i}-12\\mathbf{j}$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Find the magnitude first:</span> $|v|=\\sqrt{25+144}=\\sqrt{169}=13$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Divide every component by it:</span> $$\\hat{v}=\\frac{5}{13}\\mathbf{i}-\\frac{12}{13}\\mathbf{j}$$</span></div>
+</div></div>
+
+<h2>4. Position vectors and displacement between two points</h2>
+<div class="formula">$$\\overrightarrow{AB} = \\overrightarrow{OB}-\\overrightarrow{OA} = \\mathbf{b}-\\mathbf{a}$$"end minus start"</div>
+
+<h2>5. Parallel vectors and collinear points</h2>
+<div class="formula">Two vectors are <b>parallel</b> if and only if one is a scalar multiple of the other: $\\mathbf{u} = k\\mathbf{v}$ for some scalar $k$.</div>
+<div class="example"><div class="exhead">Worked example 3</div>
+<p>$\\mathbf{p}=2\\mathbf{i}+\\lambda\\mathbf{j}$ and $\\mathbf{q}=6\\mathbf{i}+9\\mathbf{j}$ are parallel. Find $\\lambda$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Set $\\mathbf{p}=k\\mathbf{q}$</span> and match the $\\mathbf{i}$-components: $2=6k \\Rightarrow k=\\tfrac13$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Use the SAME $k$ for the $\\mathbf{j}$-components:</span> $\\lambda=9k=9\\times\\tfrac13=3$.</span></div>
+</div></div>
+<p><b>Collinear points</b> ($A$, $B$, $C$ all on ONE straight line) are proven by showing $\\overrightarrow{AB}$ is parallel to $\\overrightarrow{BC}$ AND that they share the common point $B$.</p>
+<div class="example"><div class="exhead">Worked example 4</div>
+<p>$A(1,2)$, $B(4,8)$, $C(6,12)$. Show that $A$, $B$, $C$ are collinear.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Find both displacement vectors</span> (end minus start): $\\overrightarrow{AB}=(4-1)\\mathbf{i}+(8-2)\\mathbf{j}=3\\mathbf{i}+6\\mathbf{j}$; $\\overrightarrow{BC}=(6-4)\\mathbf{i}+(12-8)\\mathbf{j}=2\\mathbf{i}+4\\mathbf{j}$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Check for a scalar multiple:</span> $3\\mathbf{i}+6\\mathbf{j}=\\tfrac32(2\\mathbf{i}+4\\mathbf{j})$ — yes, $\\overrightarrow{AB}=\\tfrac32\\overrightarrow{BC}$, so they're parallel.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Both vectors share the point $B$</span> — parallel plus a shared point means $A$, $B$, $C$ all lie on one line: collinear.</span></div>
+</div></div>
+
+<h2>6. Vectors and motion — position at time $t$</h2>
+<div class="formula">$$\\mathbf{r}(t) = \\mathbf{a}+t\\mathbf{v}$$ starting position $\\mathbf{a}$, plus $t$ lots of the (constant) velocity vector $\\mathbf{v}$.</div>
+<div class="example"><div class="exhead">Worked example 5</div>
+<p>A particle starts at $3\\mathbf{i}-\\mathbf{j}$ and moves with velocity $2\\mathbf{i}+5\\mathbf{j}$ (m, s). Find its position vector after 4 s and its distance from the origin then.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Substitute into $\\mathbf{r}=\\mathbf{a}+t\\mathbf{v}$</span> with $t=4$: $$\\mathbf{r}=(3+2(4))\\mathbf{i}+(-1+5(4))\\mathbf{j}=11\\mathbf{i}+19\\mathbf{j}$$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Distance from origin is the magnitude:</span> $\\sqrt{11^2+19^2}=\\sqrt{121+361}=\\sqrt{482}\\approx22.0$ m.</span></div>
+</div></div>
+
+<div class="fig">
+<svg viewBox="0 0 460 200" xmlns="http://www.w3.org/2000/svg">
+<line x1="30" y1="170" x2="440" y2="170" stroke="#888"/><line x1="30" y1="20" x2="30" y2="190" stroke="#888"/>
+<line x1="60" y1="150" x2="200" y2="90" stroke="#5246D9" stroke-width="3" marker-end="url(#kv2)"/>
+<line x1="380" y1="40" x2="240" y2="100" stroke="#C2571B" stroke-width="3" marker-end="url(#kv2)"/>
+<circle cx="200" cy="90" r="4" fill="#1D7A4F"/><circle cx="240" cy="100" r="4" fill="#1D7A4F"/>
+<text x="80" y="140" font-size="11.5" fill="#5246D9">ship A's path</text>
+<text x="330" y="65" font-size="11.5" fill="#C2571B">ship B's path</text>
+<text x="200" y="75" font-size="11" fill="#1D7A4F">paths CROSS — but do the ships arrive at the SAME time?</text>
+<defs><marker id="kv2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1A2030"/></marker></defs>
+</svg>
+<div class="figcap">Two paths crossing on paper is NOT enough for a collision — both ships' $\\mathbf{i}$ AND $\\mathbf{j}$ components must match at the exact SAME value of $t$.</div></div>
+<div class="example"><div class="exhead">Worked example 6 — collision problem</div>
+<p>At noon, ship $A$ is at $(2\\mathbf{i}+3\\mathbf{j})$ km moving with velocity $(4\\mathbf{i}+\\mathbf{j})$ km/h; ship $B$ is at $(10\\mathbf{i}-\\mathbf{j})$ km with velocity $(2\\mathbf{i}+2\\mathbf{j})$ km/h. Show they collide, and find the time and place.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Write each position vector as a function of $t$:</span> $$\\mathbf{r}_A=(2+4t)\\mathbf{i}+(3+t)\\mathbf{j} \\qquad \\mathbf{r}_B=(10+2t)\\mathbf{i}+(-1+2t)\\mathbf{j}$$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Equate the $\\mathbf{i}$-components</span> to find a candidate collision time: $2+4t=10+2t \\Rightarrow 2t=8 \\Rightarrow t=4$.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Check the $\\mathbf{j}$-components AT THAT SAME $t$</span> — this step is compulsory, not optional: $3+4=7$ (ship $A$) and $-1+2(4)=7$ (ship $B$). Both equal 7 ✓.</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Since BOTH components match at the same $t$,</span> a genuine collision occurs at $t=4$ h (4 pm), at position $\\mathbf{r}=18\\mathbf{i}+7\\mathbf{j}$ km.</span></div>
+</div></div>
+<div class="mistake"><b>Common mistake:</b> solving only the $\\mathbf{i}$-equation and declaring "collision" — you MUST verify the $\\mathbf{j}$-components also match at that same $t$. If they don't, the paths cross on paper but the ships pass through that point at different times — no collision.</div>
+
+<h2>7. Dividing a line in a given ratio</h2>
+<div class="example"><div class="exhead">Worked example 7</div>
+<p>$\\overrightarrow{OA}=\\mathbf{a}$, $\\overrightarrow{OB}=\\mathbf{b}$. $P$ divides $AB$ such that $AP:PB=2:1$. Find $\\overrightarrow{OP}$ in terms of $\\mathbf{a}$ and $\\mathbf{b}$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Build a route to $P$ via $A$:</span> $\\overrightarrow{OP}=\\overrightarrow{OA}+\\overrightarrow{AP}$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">$AP$ is a fraction of the whole $\\overrightarrow{AB}$:</span> since $AP:PB=2:1$, $P$ is $\\tfrac23$ of the way from $A$ to $B$, so $\\overrightarrow{AP}=\\tfrac23\\overrightarrow{AB}=\\tfrac23(\\mathbf{b}-\\mathbf{a})$.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Combine:</span> $$\\overrightarrow{OP}=\\mathbf{a}+\\tfrac23(\\mathbf{b}-\\mathbf{a})=\\tfrac13\\mathbf{a}+\\tfrac23\\mathbf{b}=\\frac{\\mathbf{a}+2\\mathbf{b}}{3}$$</span></div>
+</div></div>
+`,
+quiz:[
+{lvl:'basic',q:"Find the magnitude of $3\\mathbf{i}+4\\mathbf{j}$.",
+a:"$5$",
+sol:"Step 1 — apply the magnitude formula (Pythagoras): $|v|=\\sqrt{3^2+4^2}=\\sqrt{9+16}=\\sqrt{25}$. Step 2 — simplify: $5$ — the classic 3-4-5 right triangle."},
+{lvl:'inter',q:"Find the unit vector in the direction of $5\\mathbf{i}-12\\mathbf{j}$.",
+a:"$\\dfrac{5\\mathbf{i}-12\\mathbf{j}}{13}$",
+sol:"Step 1 — find the magnitude: $|v|=\\sqrt{25+144}=\\sqrt{169}=13$. Step 2 — divide EVERY component by the magnitude to get a length-1 vector pointing the same way: $\\hat{v}=\\dfrac{5}{13}\\mathbf{i}-\\dfrac{12}{13}\\mathbf{j}$."},
+{lvl:'inter',q:"$A(1,2)$, $B(4,8)$, $C(6,12)$. Show that $A$, $B$, $C$ are collinear.",
+a:"$\\overrightarrow{AB}=(3,6)$, $\\overrightarrow{BC}=(2,4)$; $\\overrightarrow{AB}=1.5\\overrightarrow{BC}$ → collinear",
+sol:"Step 1 — find both displacement vectors (end minus start): $\\overrightarrow{AB}=3\\mathbf{i}+6\\mathbf{j}$; $\\overrightarrow{BC}=2\\mathbf{i}+4\\mathbf{j}$. Step 2 — check for a scalar multiple: $\\overrightarrow{AB}=\\tfrac32\\overrightarrow{BC}$, confirming they're parallel. Step 3 — since they share point $B$, parallel + shared point means $A,B,C$ all lie on one straight line."},
+{lvl:'inter',q:"$\\mathbf{p}=2\\mathbf{i}+\\lambda\\mathbf{j}$ and $\\mathbf{q}=6\\mathbf{i}+9\\mathbf{j}$ are parallel. Find $\\lambda$.",
+a:"$\\lambda=3$",
+sol:"Step 1 — parallel means $\\mathbf{p}=k\\mathbf{q}$ for some scalar $k$. Step 2 — match the $\\mathbf{i}$-components: $2=6k \\Rightarrow k=\\tfrac13$. Step 3 — apply the SAME $k$ to the $\\mathbf{j}$-components: $\\lambda=9k=9\\times\\tfrac13=3$."},
+{lvl:'inter',q:"A particle starts at $3\\mathbf{i}-\\mathbf{j}$ and moves with velocity $2\\mathbf{i}+5\\mathbf{j}$ (m, s). Find its position vector after 4 s and its distance from the origin then.",
+a:"$\\mathbf{r}=11\\mathbf{i}+19\\mathbf{j}$; distance $\\sqrt{482}\\approx22.0$ m",
+sol:"Step 1 — apply $\\mathbf{r}=\\mathbf{a}+t\\mathbf{v}$ with $t=4$: $\\mathbf{r}=(3+8)\\mathbf{i}+(-1+20)\\mathbf{j}=11\\mathbf{i}+19\\mathbf{j}$. Step 2 — distance from the origin is the magnitude of $\\mathbf{r}$: $\\sqrt{11^2+19^2}=\\sqrt{121+361}=\\sqrt{482}\\approx22.0$ m."},
+{lvl:'adv',q:"$\\overrightarrow{OA}=\\mathbf{a}$, $\\overrightarrow{OB}=\\mathbf{b}$. $P$ divides $AB$ such that $AP:PB=2:1$. Find $\\overrightarrow{OP}$ in terms of $\\mathbf{a}$ and $\\mathbf{b}$.",
+a:"$\\overrightarrow{OP}=\\dfrac{\\mathbf{a}+2\\mathbf{b}}{3}$",
+sol:"Step 1 — route to $P$ via $A$: $\\overrightarrow{OP}=\\overrightarrow{OA}+\\overrightarrow{AP}$. Step 2 — since $AP:PB=2:1$, $P$ is $\\tfrac23$ of the way from $A$ to $B$: $\\overrightarrow{AP}=\\tfrac23\\overrightarrow{AB}=\\tfrac23(\\mathbf{b}-\\mathbf{a})$. Step 3 — combine and simplify: $\\overrightarrow{OP}=\\mathbf{a}+\\tfrac23(\\mathbf{b}-\\mathbf{a})=\\tfrac13\\mathbf{a}+\\tfrac23\\mathbf{b}=\\dfrac{\\mathbf{a}+2\\mathbf{b}}{3}$."},
+{lvl:'adv',q:"At noon, ship $A$ is at $(2\\mathbf{i}+3\\mathbf{j})$ km moving with velocity $(4\\mathbf{i}+\\mathbf{j})$ km/h; ship $B$ is at $(10\\mathbf{i}-\\mathbf{j})$ km with velocity $(2\\mathbf{i}+2\\mathbf{j})$ km/h. Show they collide, and find the time and place.",
+a:"Collide at 4 pm at $(18\\mathbf{i}+7\\mathbf{j})$ km",
+sol:"Step 1 — write position as a function of $t$ for each ship: $\\mathbf{r}_A=(2+4t)\\mathbf{i}+(3+t)\\mathbf{j}$; $\\mathbf{r}_B=(10+2t)\\mathbf{i}+(-1+2t)\\mathbf{j}$. Step 2 — equate $\\mathbf{i}$-components: $2+4t=10+2t \\Rightarrow t=4$. Step 3 — CHECK the $\\mathbf{j}$-components at this same $t$ (compulsory step): $3+4=7$ and $-1+2(4)=7$ — both match ✓. Step 4 — since both components agree at the same $t$, a genuine collision occurs at $t=4$ h (4 pm) at position $18\\mathbf{i}+7\\mathbf{j}$ km."}
+]};

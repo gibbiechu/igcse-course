@@ -6,6 +6,9 @@
 <title>IGCSE Zero→Hero · Add Math 0606 + Physics 0625</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
 <style>
 :root{
   --paper:#F5F6F2; --panel:#FFFFFF; --ink:#1A2030; --ink-soft:#5A6172;
@@ -114,6 +117,13 @@ mark.hl{background:#FFF3B0;padding:0 2px}
   .grid2{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.highlightQ{animation:none}}
+.scenario{background:var(--math-soft);border:1px solid var(--line);border-left:4px solid var(--math);border-radius:10px;padding:16px 18px;margin:16px 0}
+.scenario .schead{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--math);margin-bottom:8px;font-weight:700}
+.mistake{background:#FBE9E5;border:1px solid var(--flag);border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.92rem}
+.steps{margin:12px 0}
+.steps .st{display:flex;gap:10px;align-items:flex-start;background:var(--paper);border-radius:8px;padding:10px 12px;margin-bottom:8px;font-size:.92rem}
+.steps .st .n{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-family:var(--mono);font-size:.72rem;display:flex;align-items:center;justify-content:center;font-weight:700}
+.steps .st .stlabel{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:700}
 </style>
 </head>
 <body>
@@ -137,6 +147,7 @@ mark.hl{background:#FFF3B0;padding:0 2px}
 <script src="data-addmath.js"></script>
 <script src="data-physics.js"></script>
 <script src="data-extra.js"></script>
+<script src="data-deep.js"></script>
 <script>
 const SUBJ = {
   math: {label:"Additional Mathematics", code:"Cambridge IGCSE 0606", color:"var(--math)", chapters: ADDMATH},
@@ -255,6 +266,9 @@ function go(view){
   else if(view==='flags')main.innerHTML=renderFlags();
   else{const [s,ci]=view.split('-');main.innerHTML=renderChapter(s,+ci);last=view;store.set('igcse_last',view);}
   setActive(view);updateFlagCount();window.scrollTo({top:0});
+  if(window.renderMathInElement){
+    renderMathInElement(main,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});
+  }
 }
 function jumpTo(s,ci,qi){
   go(s+'-'+ci);

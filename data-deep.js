@@ -716,3 +716,241 @@ sol:"Step 1 — substitute and collect: $x^2-x+2=3x+k \\Rightarrow x^2-4x+(2-k)=
 a:"$k=\\pm\\dfrac{3\\sqrt2}{2}$",
 sol:"Step 1 — isolate $y$: $y=k-x$. Step 2 — substitute into the curve equation: $$x^2+2(k-x)^2=3$$ Step 3 — expand $(k-x)^2=k^2-2kx+x^2$, so $2(k-x)^2=2k^2-4kx+2x^2$: $$x^2+2k^2-4kx+2x^2=3 \\Rightarrow 3x^2-4kx+(2k^2-3)=0$$ Step 4 — tangent condition: $D=0$ with $a=3,\\,b=-4k,\\,c=2k^2-3$: $$(-4k)^2-4(3)(2k^2-3)=0 \\Rightarrow 16k^2-24k^2+36=0 \\Rightarrow -8k^2+36=0$$ Step 5 — solve: $k^2=\\tfrac{36}{8}=4.5 \\Rightarrow k=\\pm\\sqrt{4.5}=\\pm\\dfrac{3\\sqrt2}{2}$."}
 ]};
+
+
+// ============================================================ ADD MATH CH 6: LOGARITHMS & EXPONENTIALS
+ADDMATH[5] = {
+title:"Logarithmic & Exponential Functions",
+syl:"0606 §6 — Logarithmic and exponential functions",
+yt:["what is a logarithm explained from zero","laws of logarithms proof","solving exponential equations with logs","change of base formula explained"],
+body:`
+<div class="scenario"><div class="schead">Real-life scenario — start here</div>
+<p>You put RM1000 into a fixed deposit account paying $4\%$ compound interest per year. After $t$ years your savings are $$A = 1000(1.04)^t$$ This is an <b>exponential function</b> — the variable $t$ is in the exponent. Two natural questions: how much after 10 years (easy — just substitute $t=10$)? And: <em>how many years until it doubles to RM2000?</em> That second question needs you to solve $2000=1000(1.04)^t$ for $t$ — and $t$ is trapped in an exponent. <b>Logarithms are the tool built to free it.</b></p></div>
+
+<h2>1. Exponential functions — growth and decay</h2>
+$$y = a^x, \qquad a > 0,\; a \neq 1$$
+<div class="fig">
+<svg viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg">
+<line x1="20" y1="185" x2="500" y2="185" stroke="#888"/>
+<line x1="260" y1="15" x2="260" y2="195" stroke="#888"/>
+<path d="M 260 180 Q 350 175 400 130 Q 450 80 480 25" fill="none" stroke="#5246D9" stroke-width="3"/>
+<path d="M 260 180 Q 200 175 130 130 Q 90 90 60 30" fill="none" stroke="#C2571B" stroke-width="3"/>
+<text x="340" y="60" font-size="12.5" fill="#5246D9">y = 2ˣ (a &gt; 1: growth)</text>
+<text x="65" y="65" font-size="12.5" fill="#C2571B">y = (½)ˣ (0&lt;a&lt;1: decay)</text>
+<text x="245" y="170" font-size="11" fill="#1A2030">(0, 1)</text>
+</svg>
+<div class="figcap">Every exponential $a^x$ passes through $(0,1)$ since $a^0=1$ for any $a$. If $a>1$: grows forever, approaches $0$ but never touches it as $x\to-\infty$. If $0<a<1$: decays toward $0$ instead.</div></div>
+<p>Notice both curves have the $x$-axis as an <b>asymptote</b> — they get arbitrarily close to $y=0$ but never actually reach it, because $a^x$ can never equal exactly zero for any finite $x$.</p>
+
+<h2>2. What is a logarithm? The inverse question</h2>
+<p>A logarithm answers: "to what power must I raise the base to get this number?"</p>
+$$\log_a y = x \quad\Longleftrightarrow\quad a^x = y$$
+<p>Example: $\log_2 8 = 3$ because $2^3=8$. Read $\log_2 8$ literally as "the power of 2 that gives 8."</p>
+<div class="example"><div class="exhead">Worked example 1 — converting between forms</div>
+<p>Write $10^3=1000$ in log form, and $\log_2\!\left(\tfrac18\right)$ as a power statement, then evaluate it.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">$10^3=1000$ in log form:</span> the base stays the base, the exponent becomes the answer: $\log_{10}1000=3$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">$\log_2\left(\tfrac18\right)=x$ means</span> $2^x=\tfrac18=2^{-3}$, so $x=-3$.</span></div>
+</div></div>
+<p>Because $\log_a$ and $(\;)^a$ undo each other, $y=\log_a x$ is literally the <b>inverse function</b> of $y=a^x$ from Chapter 1 — its graph is the mirror image in the line $y=x$.</p>
+<div class="fig">
+<svg viewBox="0 0 400 260" xmlns="http://www.w3.org/2000/svg">
+<line x1="20" y1="230" x2="380" y2="230" stroke="#888"/>
+<line x1="60" y1="20" x2="60" y2="250" stroke="#888"/>
+<line x1="30" y1="250" x2="380" y2="0" stroke="#aaa" stroke-dasharray="4 3"/>
+<path d="M 60 210 Q 130 205 180 150 Q 230 90 260 40" fill="none" stroke="#5246D9" stroke-width="3"/>
+<path d="M 210 60 Q 155 65 120 120 Q 90 180 80 220" fill="none" stroke="#C2571B" stroke-width="3"/>
+<text x="230" y="40" font-size="12" fill="#5246D9">y = 2ˣ</text>
+<text x="215" y="55" font-size="12" fill="#C2571B">y = log₂x</text>
+<text x="290" y="20" font-size="11" fill="#999">y = x</text>
+</svg>
+<div class="figcap">Reflecting $y=2^x$ in the line $y=x$ gives $y=\log_2 x$ — exactly as any function reflects to give its inverse (Chapter 1).</div></div>
+
+<h2>3. The three laws of logarithms</h2>
+<p>These come directly from the index laws you already know, since a log IS an exponent in disguise:</p>
+<div class="formula">
+<b>Product law:</b> $$\log_a(xy) = \log_a x + \log_a y$$
+<b>Quotient law:</b> $$\log_a\!\left(\frac{x}{y}\right) = \log_a x - \log_a y$$
+<b>Power law:</b> $$\log_a(x^n) = n\log_a x$$
+</div>
+<p><b>Where the product law comes from:</b> if $\log_a x = p$ and $\log_a y = q$, then $x=a^p$ and $y=a^q$, so $xy = a^p \cdot a^q = a^{p+q}$ (index law: multiplying powers adds exponents). Taking $\log_a$ of both sides: $\log_a(xy) = p+q = \log_a x + \log_a y$. The other two laws follow the same way from the matching index laws.</p>
+<div class="mistake"><b>Common mistake:</b> $\log_a(x+y) \neq \log_a x + \log_a y$. The product law needs a <em>product</em> $xy$ inside, not a sum. There is no rule for splitting up $\log_a(x+y)$ at all.</div>
+<div class="example"><div class="exhead">Worked example 2</div>
+<p>Given $\log_a 2=p$ and $\log_a 3=q$, express $\log_a(12a)$ in terms of $p$ and $q$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Break the number into prime factors first</span> — this is always the way in: $12a = 2^2 \times 3 \times a$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Apply the product law</span> to split the log of a product into a sum of logs: $$\log_a(12a) = \log_a(2^2) + \log_a 3 + \log_a a$$</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Apply the power law</span> to $\log_a(2^2)$: $= 2\log_a2$. And recall $\log_a a = 1$ (since $a^1=a$).</span></div>
+</div>
+$$\log_a(12a) = 2p + q + 1$$</div>
+
+<h2>4. Solving exponential equations — take logs of both sides</h2>
+<div class="example"><div class="exhead">Worked example 3 — different bases, can't equate exponents directly</div>
+<p>Solve $5^{x-1}=3^x$, giving $x$ to 3 s.f.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Take $\ln$ (or $\log$) of both sides</span> — logs let us bring exponents down as multipliers: $$(x-1)\ln5 = x\ln3$$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Expand the left side:</span> $x\ln5-\ln5=x\ln3$</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Collect all $x$-terms on one side:</span> $x\ln5-x\ln3=\ln5 \Rightarrow x(\ln5-\ln3)=\ln5$</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Divide to isolate $x$:</span> $$x=\frac{\ln5}{\ln5-\ln3}=\frac{1.609}{0.511}\approx3.15$$</span></div>
+</div></div>
+<p><b>Scenario solved:</b> for the RM1000 doubling to RM2000 at 4%: $1000(1.04)^t=2000 \Rightarrow 1.04^t=2 \Rightarrow t=\dfrac{\ln2}{\ln1.04}\approx17.7$ years.</p>
+
+<h2>5. Solving log equations — combine, then exponentiate</h2>
+<div class="example"><div class="exhead">Worked example 4</div>
+<p>Solve $\log_2(x+3)+\log_2(x-4)=3$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Combine using the product law</span> (sum of logs, same base → log of a product): $$\log_2[(x+3)(x-4)]=3$$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Undo the log by exponentiating both sides</span> with base 2: $$(x+3)(x-4)=2^3=8$$</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Expand and solve the quadratic:</span> $x^2-x-12=8 \Rightarrow x^2-x-20=0 \Rightarrow (x-5)(x+4)=0 \Rightarrow x=5$ or $x=-4$</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Check BOTH roots in the original — this step is compulsory:</span> logs are only defined for positive arguments. At $x=-4$: $x-4=-8<0$, so $\log_2(-8)$ doesn't exist — <b>reject</b>. At $x=5$: both $x+3=8>0$ and $x-4=1>0$ ✓.</span></div>
+</div>
+$$x=5 \text{ only}$$</div>
+<div class="mistake"><b>Common mistake:</b> skipping the domain check. Log equations routinely produce an extra "solution" from the algebra that is mathematically invalid once you remember logs need positive arguments — always substitute back into the ORIGINAL log expressions, not just the final polynomial.</div>
+
+<h2>6. Quadratics in disguise</h2>
+<p>Spotting the pattern $a^{2x} = (a^x)^2$ turns some exponential equations into ordinary quadratics via a substitution.</p>
+<div class="example"><div class="exhead">Worked example 5</div>
+<p>Solve $3^{2x}-10\cdot3^x+9=0$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Spot the disguise:</span> $3^{2x}=(3^x)^2$. Let $u=3^x$: $$u^2-10u+9=0$$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Solve the quadratic in $u$:</span> $(u-1)(u-9)=0 \Rightarrow u=1$ or $u=9$</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Convert back to $x$</span> using $u=3^x$: $3^x=1 \Rightarrow x=0$ (since $3^0=1$); $3^x=9=3^2 \Rightarrow x=2$.</span></div>
+</div></div>
+
+<h2>7. Change of base — mixing different bases</h2>
+<div class="formula">$$\log_a b = \frac{\log_c b}{\log_c a}\quad\text{for any convenient base }c\text{ (often }10\text{ or }e\text{)}$$</div>
+<p>Use this whenever an equation mixes logs of different bases that don't simplify nicely into each other.</p>
+`,
+quiz:[
+{lvl:'basic',q:"Write $10^3=1000$ and $2^{-3}=\\tfrac18$ in log form.",
+a:"$\\log_{10}1000=3$; $\\log_2\\left(\\tfrac18\\right)=-3$",
+sol:"Step 1 — recall the definition: $a^x=y \\Leftrightarrow \\log_a y=x$ — the log IS the exponent. Step 2 — apply to $10^3=1000$: base stays $10$, exponent $3$ becomes the answer: $\\log_{10}1000=3$. Step 3 — apply to $2^{-3}=\\tfrac18$: $\\log_2\\left(\\tfrac18\\right)=-3$."},
+{lvl:'basic',q:"Evaluate without a calculator: $\\log_2 32 + \\log_3\\left(\\tfrac19\\right) - \\log_5 5$.",
+a:"$2$",
+sol:"Step 1 — evaluate each term as 'what power gives this number': $\\log_2 32=5$ since $2^5=32$. Step 2: $\\log_3\\left(\\tfrac19\\right)=-2$ since $3^{-2}=\\tfrac19$. Step 3: $\\log_5 5=1$ since $5^1=5$. Step 4 — combine: $5+(-2)-1=2$."},
+{lvl:'inter',q:"Solve $5^{x-1}=3^x$, giving $x$ to 3 s.f.",
+a:"$x \\approx 3.15$",
+sol:"Step 1 — take $\\ln$ of both sides to bring exponents down: $(x-1)\\ln5=x\\ln3$. Step 2 — expand: $x\\ln5-\\ln5=x\\ln3$. Step 3 — collect $x$-terms on one side: $x(\\ln5-\\ln3)=\\ln5$. Step 4 — divide: $x=\\dfrac{\\ln5}{\\ln5-\\ln3}=\\dfrac{1.609}{0.511}\\approx3.15$."},
+{lvl:'inter',q:"Solve $3^{2x}-10\\cdot3^x+9=0$.",
+a:"$x=0$ or $x=2$",
+sol:"Step 1 — recognise $3^{2x}=(3^x)^2$ and substitute $u=3^x$: $u^2-10u+9=0$. Step 2 — factorise: $(u-1)(u-9)=0 \\Rightarrow u=1$ or $u=9$. Step 3 — convert back: $3^x=1 \\Rightarrow x=0$; $3^x=9=3^2 \\Rightarrow x=2$."},
+{lvl:'inter',q:"Given $\\log_a2=p$ and $\\log_a3=q$, express $\\log_a(12a)$ in terms of $p$ and $q$.",
+a:"$2p+q+1$",
+sol:"Step 1 — factorise the number inside: $12a=2^2\\times3\\times a$. Step 2 — apply the product law to split into a sum: $\\log_a(12a)=\\log_a(2^2)+\\log_a3+\\log_a a$. Step 3 — apply the power law to the first term: $\\log_a(2^2)=2\\log_a2=2p$. Step 4 — recall $\\log_a a=1$ always. Step 5 — combine: $2p+q+1$."},
+{lvl:'adv',q:"Solve $\\log_2(x+3)+\\log_2(x-4)=3$.",
+a:"$x=5$",
+sol:"Step 1 — combine using the product law: $\\log_2[(x+3)(x-4)]=3$. Step 2 — exponentiate both sides with base 2 to remove the log: $(x+3)(x-4)=2^3=8$. Step 3 — expand and solve: $x^2-x-12=8 \\Rightarrow x^2-x-20=0 \\Rightarrow (x-5)(x+4)=0 \\Rightarrow x=5$ or $x=-4$. Step 4 — domain check both roots in the ORIGINAL log expressions: at $x=-4$, $x-4=-8<0$, undefined — reject. At $x=5$, both arguments positive ✓. Final answer $x=5$ only."},
+{lvl:'adv',q:"Solve $\\log_3x-\\log_9x=2$.",
+a:"$x=81$",
+sol:"Step 1 — the bases don't match, so use change of base to express $\\log_9x$ in base 3: $\\log_9x=\\dfrac{\\log_3x}{\\log_39}=\\dfrac{\\log_3x}{2}$ (since $9=3^2$, $\\log_39=2$). Step 2 — let $u=\\log_3x$: the equation becomes $u-\\dfrac{u}{2}=2$. Step 3 — simplify: $\\dfrac{u}{2}=2 \\Rightarrow u=4$. Step 4 — convert back: $\\log_3x=4 \\Rightarrow x=3^4=81$."}
+]};
+
+
+// ============================================================ ADD MATH CH 7: STRAIGHT LINE GRAPHS
+ADDMATH[6] = {
+title:"Straight Line Graphs",
+syl:"0606 §7 — Straight line graphs",
+yt:["gradient distance midpoint formula explained","perpendicular bisector explained step by step","linear law log graphs explained","shoelace formula area of triangle"],
+body:`
+<div class="scenario"><div class="schead">Real-life scenario — start here</div>
+<p>A durian orchard owner near Bentong is fencing a plot marked by GPS corner posts $A(1,2)$, $B$, $C(7,10)$ and $D$ on a grid (units of 10 m). He needs to know: how long is each fence side, where should the gate go (exactly halfway along $AC$), are two fence lines at right angles for a square corner, and what's the total land area (for tax purposes)? Every one of those questions is answered by coordinate geometry — the algebra of points, lines and distances on a grid.</p></div>
+
+<h2>1. The three basic formulas — all built from Pythagoras</h2>
+<div class="fig">
+<svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+<line x1="30" y1="190" x2="370" y2="190" stroke="#888"/><line x1="30" y1="20" x2="30" y2="200" stroke="#888"/>
+<circle cx="80" cy="150" r="5" fill="#5246D9"/><text x="55" y="175" font-size="12">A(x₁,y₁)</text>
+<circle cx="300" cy="50" r="5" fill="#5246D9"/><text x="280" y="35" font-size="12">B(x₂,y₂)</text>
+<line x1="80" y1="150" x2="300" y2="50" stroke="#5246D9" stroke-width="2.5"/>
+<line x1="80" y1="150" x2="300" y2="150" stroke="#C2571B" stroke-dasharray="4 3"/>
+<line x1="300" y1="150" x2="300" y2="50" stroke="#C2571B" stroke-dasharray="4 3"/>
+<text x="170" y="168" font-size="12" fill="#C2571B">run = x₂−x₁</text>
+<text x="308" y="105" font-size="12" fill="#C2571B">rise = y₂−y₁</text>
+<circle cx="190" cy="100" r="4" fill="#1D7A4F"/><text x="196" y="98" font-size="11" fill="#1D7A4F">midpoint</text>
+</svg>
+<div class="figcap">Distance is the hypotenuse of the rise/run right triangle (Pythagoras); gradient is rise ÷ run; midpoint just averages the coordinates.</div></div>
+<div class="formula">
+<b>Gradient:</b> $$m = \frac{y_2-y_1}{x_2-x_1}$$
+<b>Distance:</b> $$d = \sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$$
+<b>Midpoint:</b> $$\left(\frac{x_1+x_2}{2},\;\frac{y_1+y_2}{2}\right)$$
+</div>
+<p>Distance is literally Pythagoras' theorem applied to the horizontal and vertical gaps between two points; midpoint is just "average the $x$'s, average the $y$'s."</p>
+
+<h2>2. Equation of a line, and the parallel/perpendicular rules</h2>
+<div class="formula">
+Point + gradient form: $$y - y_1 = m(x-x_1)$$
+Parallel lines: <b>same gradient</b> ($m_1=m_2$). Perpendicular lines: gradients <b>multiply to $-1$</b> ($m_1m_2=-1$, i.e. $m_2=-\dfrac{1}{m_1}$).
+</div>
+<div class="example"><div class="exhead">Worked example 1 — perpendicular bisector (finding the gate)</div>
+<p>$A(-2,1)$, $B(4,9)$. Find the equation of the perpendicular bisector of $AB$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Find the midpoint</span> (the bisector must pass through here): $$\left(\frac{-2+4}{2},\frac{1+9}{2}\right)=(1,5)$$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Find the gradient of $AB$:</span> $$m_{AB}=\frac{9-1}{4-(-2)}=\frac{8}{6}=\frac43$$</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Take the negative reciprocal</span> for the perpendicular gradient: $m=-\dfrac{3}{4}$.</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Build the equation</span> through the midpoint with this gradient: $$y-5=-\tfrac34(x-1)$$</span></div>
+<div class="st"><span class="n">5</span><span><span class="stlabel">Clear fractions</span> by multiplying by 4: $4y-20=-3x+3 \Rightarrow 3x+4y=23$.</span></div>
+</div></div>
+<div class="mistake"><b>Common mistake:</b> forgetting to flip AND negate for the perpendicular gradient. If $m_{AB}=\tfrac43$, the perpendicular is $-\tfrac34$ (flip the fraction upside down, THEN change the sign) — not $-\tfrac43$ and not $\tfrac34$.</div>
+
+<h2>3. Area of a triangle from coordinates — the shoelace formula</h2>
+<div class="formula">$$\text{Area}=\frac12\big|x_1y_2+x_2y_3+x_3y_1-y_1x_2-y_2x_3-y_3x_1\big|$$</div>
+<div class="example"><div class="exhead">Worked example 2</div>
+<p>$P(2,3)$, $Q(6,1)$, $R(4,7)$. Find the area of triangle $PQR$.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Write out both diagonal sums</span> (multiply each $x$ by the NEXT point's $y$, going around):<br>Sum 1: $x_Py_Q+x_Qy_R+x_Ry_P = 2(1)+6(7)+4(3) = 2+42+12=56$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Sum 2</span> (each $y$ times the next point's $x$): $y_Px_Q+y_Qx_R+y_Rx_P = 3(6)+1(4)+7(2)=18+4+14=36$</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Subtract, halve, take absolute value:</span> $$\text{Area}=\tfrac12|56-36|=\tfrac12(20)=10 \text{ units}^2$$</span></div>
+</div></div>
+
+<h2>4. Linear law — turning curves into straight lines</h2>
+<div class="scenario"><div class="schead">A second scenario</div>
+<p>A science-fair student measures how the extension $y$ (cm) of a spring depends on the number of marbles $x$ loaded onto it, suspecting $y=ax^n$ for some constants $a,n$. Raw $(x,y)$ data plotted directly gives a curve — curves are hard to read constants off. The trick: transform the data so it plots as a <em>straight</em> line instead.</p></div>
+<div class="example"><div class="exhead">Worked example 3 — power law $y=ax^n$</div>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Take $\log$ of both sides</span> of $y=ax^n$: $$\log y = \log(ax^n) = \log a + \log(x^n) = n\log x + \log a$$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Compare to $Y=mX+c$:</span> plotting $\log y$ (vertical) against $\log x$ (horizontal) gives a straight line with gradient $=n$ and vertical intercept $=\log a$.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Read off from an actual line:</span> suppose the plotted line has gradient $1.5$ and intercept $0.30$. Then $n=1.5$ directly, and $\log a=0.30 \Rightarrow a=10^{0.30}\approx 2.0$.</span></div>
+</div></div>
+<div class="example"><div class="exhead">Worked example 4 — exponential law $y=ab^x$</div>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Take logs:</span> $\log y=\log a+\log(b^x)=x\log b+\log a$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Compare to $Y=mX+c$:</span> plot $\log y$ against $x$ (NOT $\log x$ this time!) — gradient is $\log b$, intercept is $\log a$.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Numbers:</span> gradient $0.48 \Rightarrow \log b=0.48 \Rightarrow b=10^{0.48}\approx3.0$. Intercept $0.70 \Rightarrow \log a=0.70 \Rightarrow a=10^{0.70}\approx5.0$.</span></div>
+</div></div>
+<div class="mistake"><b>Common mistake:</b> mixing up the two models. $y=ax^n$ needs $\log y$ <em>vs</em> $\log x$ (both axes logged). $y=ab^x$ needs $\log y$ <em>vs</em> plain $x$ (only the $y$-axis logged). Always check which variable sits in the exponent before deciding what to plot.</div>
+<div class="fig">
+<svg viewBox="0 0 480 200" xmlns="http://www.w3.org/2000/svg">
+<line x1="20" y1="170" x2="220" y2="170" stroke="#888"/><line x1="20" y1="20" x2="20" y2="180" stroke="#888"/>
+<path d="M 20 165 Q 100 160 220 40" fill="none" stroke="#C2571B" stroke-width="3"/>
+<text x="60" y="30" font-size="11.5" fill="#C2571B">raw data: y = axⁿ (curve)</text>
+<line x1="280" y1="170" x2="460" y2="170" stroke="#888"/><line x1="280" y1="20" x2="280" y2="180" stroke="#888"/>
+<line x1="290" y1="150" x2="450" y2="45" stroke="#5246D9" stroke-width="3"/>
+<text x="300" y="35" font-size="11.5" fill="#5246D9">log y vs log x: STRAIGHT</text>
+<text x="365" y="185" font-size="10.5" fill="#555">log x</text>
+<text x="120" y="185" font-size="10.5" fill="#555">x</text>
+</svg>
+<div class="figcap">The logging transform doesn't change the underlying data — it just re-draws the SAME relationship on different axes so it becomes readable as a straight line: gradient and intercept can now be measured directly with a ruler.</div></div>
+`,
+quiz:[
+{lvl:'basic',q:"Find the gradient and $y$-intercept of $3y=6x-9$.",
+a:"$m=2$, intercept $-3$",
+sol:"Step 1 — rearrange into $y=mx+c$ form by dividing every term by 3: $y=2x-3$. Step 2 — compare directly: gradient $m=2$, $y$-intercept $c=-3$."},
+{lvl:'inter',q:"Line $L$ passes through $(3,-1)$ parallel to $2x+5y=7$. Find its equation.",
+a:"$2x+5y=1$",
+sol:"Step 1 — find the gradient of the given line by rearranging to $y=mx+c$: $5y=-2x+7 \\Rightarrow y=-\\tfrac25x+\\tfrac75$, so $m=-\\tfrac25$. Step 2 — parallel lines share gradient, so $L$ also has $m=-\\tfrac25$. Step 3 — build the equation through $(3,-1)$: $y+1=-\\tfrac25(x-3)$. Step 4 — clear fractions (×5): $5y+5=-2x+6 \\Rightarrow 2x+5y=1$."},
+{lvl:'inter',q:"$A(-2,1)$, $B(4,9)$. Find the equation of the perpendicular bisector of $AB$.",
+a:"$3x+4y=23$",
+sol:"Step 1 — midpoint of $AB$: $\\left(\\dfrac{-2+4}{2},\\dfrac{1+9}{2}\\right)=(1,5)$. Step 2 — gradient of $AB$: $m_{AB}=\\dfrac{9-1}{4-(-2)}=\\dfrac{8}{6}=\\dfrac43$. Step 3 — perpendicular gradient (negative reciprocal): $-\\dfrac34$. Step 4 — equation through the midpoint: $y-5=-\\tfrac34(x-1)$. Step 5 — clear fractions (×4): $4y-20=-3x+3 \\Rightarrow 3x+4y=23$."},
+{lvl:'inter',q:"$P(2,3)$, $Q(6,1)$, $R(4,7)$. Find the area of triangle $PQR$.",
+a:"$10$ units²",
+sol:"Step 1 — apply the shoelace formula. Sum 1 (each $x$ times next $y$): $2(1)+6(7)+4(3)=2+42+12=56$. Step 2 — Sum 2 (each $y$ times next $x$): $3(6)+1(4)+7(2)=18+4+14=36$. Step 3 — Area $=\\tfrac12|56-36|=\\tfrac12(20)=10$ units²."},
+{lvl:'inter',q:"Data fits $y=ax^n$. Plotting $\\log y$ against $\\log x$ gives a straight line with gradient $1.5$ and intercept $0.30$. Find $a$ and $n$.",
+a:"$n=1.5$, $a\\approx2.0$",
+sol:"Step 1 — recall the log-transformed model: $\\log y=n\\log x+\\log a$, which matches $Y=mX+c$ with $Y=\\log y$, $X=\\log x$. Step 2 — the gradient directly IS $n$: $n=1.5$. Step 3 — the intercept IS $\\log a$: $\\log a=0.30$. Step 4 — undo the log: $a=10^{0.30}\\approx2.0$."},
+{lvl:'adv',q:"Data fits $y=ab^x$. The line of $\\log y$ vs $x$ has gradient $0.48$ and intercept $0.70$. Find $a$ and $b$.",
+a:"$a\\approx5.0$, $b\\approx3.0$",
+sol:"Step 1 — the log-transformed model is $\\log y=(\\log b)x+\\log a$, matching $Y=mX+c$ with $Y=\\log y$, $X=x$ (note: $x$ itself, NOT $\\log x$, because the base of this model, not $x$, is what determines the shape). Step 2 — the gradient IS $\\log b$: $\\log b=0.48 \\Rightarrow b=10^{0.48}\\approx3.0$. Step 3 — the intercept IS $\\log a$: $\\log a=0.70 \\Rightarrow a=10^{0.70}\\approx5.0$."},
+{lvl:'adv',q:"$ABCD$ is a rhombus with $A(1,2)$ and $C(7,10)$. $B$ lies on the line $y=x+1$. Find the coordinates where diagonal $BD$ crosses $AC$, and the equation of $BD$.",
+a:"Crossing point $(4,6)$; $BD:\\;y=-\\tfrac34x+9$",
+sol:"Step 1 — key rhombus fact: diagonals bisect each other AND are perpendicular. So $BD$ crosses $AC$ exactly at the midpoint of $AC$: $\\left(\\dfrac{1+7}{2},\\dfrac{2+10}{2}\\right)=(4,6)$. Step 2 — find the gradient of $AC$: $m_{AC}=\\dfrac{10-2}{7-1}=\\dfrac{8}{6}=\\dfrac43$. Step 3 — since $BD \\perp AC$, its gradient is the negative reciprocal: $-\\dfrac34$. Step 4 — build the equation of $BD$ through $(4,6)$: $y-6=-\\tfrac34(x-4) \\Rightarrow y=-\\tfrac34x+3+6=-\\tfrac34x+9$."}
+]};

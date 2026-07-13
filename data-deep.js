@@ -2374,3 +2374,336 @@ sol:"Step 1 — heating raises the average kinetic energy of the gas particles, 
 a:"$\\approx22.7°$C",
 sol:"Step 1 — set heat lost by copper equal to heat gained by water: $0.2\\times390\\times(95-T)=0.5\\times4200\\times(T-20)$. Step 2 — simplify: $78(95-T)=2100(T-20) \\Rightarrow 7410-78T=2100T-42\\,000$. Step 3 — collect terms: $49\\,410=2178T$. Step 4 — solve: $T\\approx22.7°$C. Water's large specific heat capacity means it barely warms compared to how much copper cools."}
 ]};
+
+
+// ============================================================ PHYSICS CH 7: WAVES & SOUND
+PHYSICS[6] = {
+title:"Waves & Sound",
+syl:"0625 §3.1, §3.4 — General properties of waves; sound",
+yt:["transverse and longitudinal waves explained","wave speed frequency wavelength equation","echo speed of sound experiment explained","refraction wave speed wavelength frequency"],
+body:`
+<div class="scenario"><div class="schead">Real-life scenario — start here</div>
+<p>Inside the vast limestone chamber of Batu Caves, a single clap produces a lingering echo — the sound wave travels out, bounces off the far cave wall, and returns to your ear a fraction of a second later. Timing this delay is actually a real technique for measuring the speed of sound (and, with radar and sonar, for measuring distances to aircraft and submarines). This chapter is about waves — the vibrations that carry energy from place to place — and sound is one specific, very familiar example.</p></div>
+
+<h2>1. Describing a wave — the key vocabulary</h2>
+<div class="fig">
+<svg viewBox="0 0 480 180" xmlns="http://www.w3.org/2000/svg">
+<line x1="20" y1="90" x2="460" y2="90" stroke="#888" stroke-dasharray="3 3"/>
+<path d="M 20 90 Q 60 20 100 90 Q 140 160 180 90 Q 220 20 260 90 Q 300 160 340 90 Q 380 20 420 90" fill="none" stroke="#5246D9" stroke-width="3"/>
+<line x1="60" y1="90" x2="60" y2="20" stroke="#C2571B" stroke-width="1.5" marker-end="url(#kw)"/>
+<text x="65" y="50" font-size="11" fill="#C2571B">amplitude</text>
+<line x1="100" y1="105" x2="180" y2="105" stroke="#1D7A4F" stroke-width="1.5"/>
+<text x="110" y="120" font-size="11" fill="#1D7A4F">wavelength λ</text>
+<defs><marker id="kw" markerWidth="8" markerHeight="8" refX="3" refY="6" orient="auto"><path d="M0,6 L6,6 L3,0 Z" fill="#C2571B"/></marker></defs>
+</svg>
+<div class="figcap"><b>Wavelength</b> ($\\lambda$): distance between two identical points on consecutive cycles (e.g. crest to crest). <b>Amplitude</b>: maximum displacement from the rest position (relates to energy, NOT speed).</div></div>
+<div class="formula">
+Period $T$ (seconds per cycle) and frequency $f$ (cycles per second, Hz) are reciprocals: $$f=\\frac{1}{T}$$
+Wave speed equation: $$v=f\\lambda$$
+</div>
+<div class="example"><div class="exhead">Worked example 1</div>
+<p>A wave completes 5 cycles per second. State its frequency and period.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Frequency is defined directly</span> by "cycles per second": $f=5$ Hz.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Period is the reciprocal:</span> $T=\\dfrac{1}{f}=\\dfrac{1}{5}=0.2$ s.</span></div>
+</div></div>
+
+<h2>2. Transverse vs. longitudinal waves</h2>
+<div class="fig">
+<svg viewBox="0 0 480 160" xmlns="http://www.w3.org/2000/svg">
+<path d="M 20 80 Q 60 30 100 80 Q 140 130 180 80" fill="none" stroke="#5246D9" stroke-width="3"/>
+<text x="30" y="20" font-size="12" fill="#5246D9">transverse (e.g. light): vibration ⊥ to travel</text>
+<line x1="240" y1="80" x2="460" y2="80" stroke="#888"/>
+<g fill="#C2571B">
+<rect x="250" y="70" width="6" height="20"/><rect x="270" y="70" width="6" height="20"/>
+<rect x="310" y="70" width="10" height="20"/>
+<rect x="360" y="70" width="6" height="20"/><rect x="380" y="70" width="6" height="20"/>
+</g>
+<text x="240" y="20" font-size="12" fill="#C2571B">longitudinal (e.g. sound): compressions ∥ to travel</text>
+</svg>
+<div class="figcap">Transverse: particles vibrate PERPENDICULAR to the direction of travel (light, water ripples). Longitudinal: particles vibrate PARALLEL to travel, bunching into compressions and spreading into rarefactions (sound).</div></div>
+<div class="example"><div class="exhead">Worked example 2</div>
+<p>State two differences between transverse and longitudinal waves, giving one example of each.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Direction of vibration:</span> transverse waves vibrate perpendicular (at right angles) to the direction of energy travel (example: light); longitudinal waves vibrate parallel to the direction of travel, forming compressions and rarefactions (example: sound).</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Medium requirement:</span> all electromagnetic (transverse) waves can travel through a vacuum; sound (longitudinal) cannot — it needs particles to compress and pass the vibration along.</span></div>
+</div></div>
+
+<h2>3. Applying $v=f\\lambda$</h2>
+<div class="example"><div class="exhead">Worked example 3</div>
+<p>A wave has frequency $50$ Hz and wavelength $6.6$ m. Find its speed.</p>
+<div class="steps"><div class="st"><span class="n">1</span><span>$v=f\\lambda=50\\times6.6=330$ m/s — recognisable as roughly the speed of sound in air.</span></div></div></div>
+<div class="example"><div class="exhead">Worked example 4</div>
+<p>A sound wave has period $0.002$ s. Find its frequency, and state whether a human can hear it.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Find frequency from period:</span> $f=\\dfrac1T=\\dfrac{1}{0.002}=500$ Hz.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Compare to the human hearing range</span> ($20$ Hz to $20\\,000$ Hz): $500$ Hz sits comfortably within it — audible.</span></div>
+</div></div>
+
+<h2>4. Measuring the speed of sound with an echo</h2>
+<div class="example"><div class="exhead">Worked example 5 — the scenario, solved</div>
+<p>A student claps $100$ m from a wall and hears the echo $0.6$ s later. Find the speed of sound.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Recognise the ROUND TRIP:</span> the sound travels TO the wall and BACK before it's heard — total distance is $2\\times100=200$ m, not just $100$ m.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Apply speed $=$ distance$/$time:</span> $$v=\\frac{200}{0.6}\\approx333\\text{ m/s}$$</span></div>
+</div></div>
+<div class="mistake"><b>Common mistake:</b> forgetting the factor of $2$ for the round trip — using $100$ m instead of $200$ m gives exactly half the correct speed. Any echo problem (sound, radar, sonar) involves a there-AND-back journey.</div>
+
+<h2>5. Refraction — waves changing speed at a boundary</h2>
+<div class="example"><div class="exhead">Worked example 6</div>
+<p>When light passes from air into glass, what happens to its speed, wavelength, and frequency?</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Frequency is fixed by the SOURCE</span> — it cannot change just because the wave enters a new medium: frequency stays the SAME.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Speed decreases</span> in the denser medium (glass) compared to air.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Use $v=f\\lambda$ to deduce wavelength's fate:</span> since $f$ is fixed and $v$ has decreased, $\\lambda$ must decrease too (to keep the equation balanced).</span></div>
+</div>
+<p>This speed change between media is exactly what causes the wave to bend at the boundary — the phenomenon called refraction.</p></div>
+
+<h2>6. Radar and sonar — the same echo idea, very different speeds</h2>
+<div class="example"><div class="exhead">Worked example 7</div>
+<p>A radar pulse (EM wave, $3\\times10^8$ m/s) reflects off an aircraft and returns in $4\\times10^{-4}$ s. Later, sonar ($1500$ m/s in water) returns from a submarine in the same $4\\times10^{-4}$ s. Find both distances and explain the huge difference.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Both are round-trip echoes — divide by 2:</span> $$\\text{distance}=\\frac{vt}{2}$$</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Radar (aircraft):</span> $\\dfrac{3\\times10^8\\times4\\times10^{-4}}{2}=60\\,000$ m $=60$ km.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Sonar (submarine):</span> $\\dfrac{1500\\times4\\times10^{-4}}{2}=0.3$ m.</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">Explain the gap:</span> radio waves travel roughly $200\\,000$ times faster than sound in water — the SAME echo time therefore corresponds to a vastly larger distance for radar than for sonar.</span></div>
+</div></div>
+`,
+quiz:[
+{lvl:'basic',q:"A wave completes 5 cycles per second. State its frequency and period.",
+a:"$5$ Hz; $0.2$ s",
+sol:"Step 1 — frequency is defined directly as cycles per second: $f=5$ Hz. Step 2 — period is the reciprocal: $T=\\dfrac1f=0.2$ s."},
+{lvl:'inter',q:"A wave has frequency $50$ Hz and wavelength $6.6$ m. Find its speed.",
+a:"$330$ m/s",
+sol:"Step 1 — apply the wave speed equation $v=f\\lambda$. Step 2: $v=50\\times6.6=330$ m/s."},
+{lvl:'inter',q:"State two differences between transverse and longitudinal waves, giving one example of each.",
+a:"Transverse: vibration perpendicular to travel (light). Longitudinal: parallel, with compressions/rarefactions (sound)",
+sol:"Step 1 — direction of vibration: transverse waves oscillate perpendicular to the direction of travel (example: light); longitudinal waves oscillate parallel to it, forming compressions and rarefactions (example: sound). Step 2 — medium requirement: transverse EM waves can cross a vacuum; longitudinal sound waves need a medium of particles to compress."},
+{lvl:'inter',q:"A student claps $100$ m from a wall and hears the echo $0.6$ s later. Find the speed of sound.",
+a:"$333$ m/s",
+sol:"Step 1 — recognise the round trip: the sound travels to the wall AND back, a total of $2\\times100=200$ m. Step 2 — apply speed $=$ distance/time: $\\dfrac{200}{0.6}\\approx333$ m/s."},
+{lvl:'inter',q:"A sound wave has period $0.002$ s. Find its frequency, and state whether a human can hear it.",
+a:"$500$ Hz; yes",
+sol:"Step 1 — find frequency from period: $f=\\dfrac1T=\\dfrac{1}{0.002}=500$ Hz. Step 2 — compare to the human hearing range ($20$ Hz–$20\\,000$ Hz): $500$ Hz falls comfortably inside it, so it is audible."},
+{lvl:'adv',q:"When light passes from air into glass, what happens to its speed, wavelength, and frequency?",
+a:"Speed decreases, wavelength decreases, frequency unchanged",
+sol:"Step 1 — frequency is set entirely by the source and cannot change when entering a new medium. Step 2 — speed decreases in the denser medium (glass). Step 3 — using $v=f\\lambda$ with $f$ fixed and $v$ decreased, $\\lambda$ must decrease proportionally too. This speed change is what causes refraction (bending toward the normal)."},
+{lvl:'adv',q:"A radar pulse (EM wave, $3\\times10^8$ m/s) reflects off an aircraft and returns in $4\\times10^{-4}$ s. Later, sonar ($1500$ m/s in water) returns from a submarine in the same $4\\times10^{-4}$ s. Find both distances and explain the huge difference.",
+a:"Aircraft $60$ km; submarine $0.3$ m",
+sol:"Step 1 — both are round-trip echoes, so distance $=\\dfrac{vt}{2}$. Step 2 — radar: $\\dfrac{3\\times10^8\\times4\\times10^{-4}}{2}=60\\,000$ m $=60$ km. Step 3 — sonar: $\\dfrac{1500\\times4\\times10^{-4}}{2}=0.3$ m. Step 4 — explanation: radio waves travel about $200\\,000\\times$ faster than sound in water, so identical echo TIMES correspond to wildly different DISTANCES."}
+]};
+
+
+// ============================================================ PHYSICS CH 8: LIGHT & THE EM SPECTRUM
+PHYSICS[7] = {
+title:"Light & the Electromagnetic Spectrum",
+syl:"0625 §3.2, §3.3 — Light; electromagnetic spectrum",
+yt:["refraction refractive index explained from zero","total internal reflection critical angle explained","optical fibres explained physics","electromagnetic spectrum explained simply"],
+body:`
+<div class="scenario"><div class="schead">Real-life scenario — start here</div>
+<p>Your Unifi fibre broadband carries internet data as pulses of light down a hair-thin glass fibre, bouncing off the INSIDE of the glass wall over and over — even around bends — without leaking any light out. This is <b>total internal reflection</b>, and understanding exactly when and why it happens (not just "light bounces") is the core of this chapter.</p></div>
+
+<h2>1. Reflection — the simple law</h2>
+<div class="formula">Angle of incidence $=$ angle of reflection (both measured from the <b>normal</b> — the imaginary line perpendicular to the surface).</div>
+<div class="mistake"><b>Common mistake:</b> angles in optics are ALWAYS measured from the normal, never from the surface itself. Measuring from the surface by mistake gives the complement of the correct angle.</div>
+
+<h2>2. Refraction — bending at a boundary</h2>
+<div class="fig">
+<svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
+<line x1="20" y1="110" x2="300" y2="110" stroke="#888" stroke-width="2"/>
+<line x1="160" y1="30" x2="160" y2="190" stroke="#999" stroke-dasharray="3 3"/>
+<text x="165" y="30" font-size="10" fill="#999">normal</text>
+<line x1="80" y1="50" x2="160" y2="110" stroke="#5246D9" stroke-width="2.5" marker-end="url(#kl)"/>
+<text x="70" y="45" font-size="11" fill="#5246D9">incident ray</text>
+<line x1="160" y1="110" x2="210" y2="180" stroke="#C2571B" stroke-width="2.5" marker-end="url(#kl)"/>
+<text x="195" y="195" font-size="11" fill="#C2571B">refracted ray</text>
+<text x="60" y="105" font-size="20" fill="#EEECFC">AIR</text>
+<text x="60" y="160" font-size="20" fill="#FBEFE6">GLASS</text>
+<defs><marker id="kl" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1A2030"/></marker></defs>
+</svg>
+<div class="figcap">Light bends TOWARD the normal when entering a denser medium (like glass) — it slows down but its frequency stays fixed.</div></div>
+<div class="formula">Refractive index (relates angles OR speeds — same $n$ both ways): $$n=\\frac{\\sin i}{\\sin r} = \\frac{c}{v}$$where $c$ = speed in the first (usually less dense) medium, $v$ = speed in the second.</div>
+<div class="example"><div class="exhead">Worked example 1</div>
+<p>Light hits a glass block at $45°$ and refracts at $28°$. Find the refractive index.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Apply the angle form directly:</span> $$n=\\frac{\\sin45°}{\\sin28°}=\\frac{0.707}{0.469}\\approx1.51$$</span></div>
+</div></div>
+
+<h2>3. The critical angle and total internal reflection</h2>
+<p>Going the OTHER way (glass to air, denser to less dense), refraction bends the ray AWAY from the normal. As the angle inside the glass increases, the refracted ray bends further and further away from the normal — until, at the <b>critical angle</b> $c$, the refracted ray grazes along the surface itself ($90°$). Beyond that angle, the light can't escape at all — it reflects entirely back inside instead.</p>
+<div class="formula">$$\\sin c = \\frac{1}{n}$$</div>
+<div class="fig">
+<svg viewBox="0 0 460 160" xmlns="http://www.w3.org/2000/svg">
+<rect x="20" y="60" width="420" height="60" fill="#EEECFC" stroke="#5246D9" stroke-width="2"/>
+<line x1="30" y1="90" x2="90" y2="60" stroke="#5246D9" stroke-width="2" marker-end="url(#kl2)"/>
+<line x1="90" y1="60" x2="150" y2="90" stroke="#5246D9" stroke-width="2" marker-end="url(#kl2)"/>
+<line x1="150" y1="90" x2="210" y2="120" stroke="#5246D9" stroke-width="2" marker-end="url(#kl2)"/>
+<line x1="210" y1="120" x2="270" y2="90" stroke="#5246D9" stroke-width="2" marker-end="url(#kl2)"/>
+<line x1="270" y1="90" x2="330" y2="60" stroke="#5246D9" stroke-width="2" marker-end="url(#kl2)"/>
+<text x="60" y="45" font-size="11" fill="#555">angle exceeds critical angle at EVERY bounce</text>
+<defs><marker id="kl2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5246D9"/></marker></defs>
+</svg>
+<div class="figcap">Inside an optical fibre, light hits the wall at an angle greater than the critical angle every time — so it totally internally reflects, zig-zagging along (even around gentle bends) without escaping.</div></div>
+<div class="example"><div class="exhead">Worked example 2</div>
+<p>The refractive index of water is $1.33$. Find the critical angle.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Apply the critical angle formula:</span> $\\sin c=\\dfrac1n=\\dfrac{1}{1.33}=0.752$.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Take $\\sin^{-1}$:</span> $c=\\sin^{-1}(0.752)\\approx48.8°$.</span></div>
+</div>
+<p>Above this angle, light travelling inside water that hits the surface totally internally reflects instead of escaping — this is why looking up from underwater, you only see the sky through a narrow circular "window" directly above.</p></div>
+<div class="example"><div class="exhead">Worked example 3 — the scenario, explained</div>
+<p>Explain how an optical fibre carries light around bends.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Light enters the fibre</span> and travels toward the internal glass-air boundary (the fibre's wall).</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">The fibre's geometry ensures the ray always strikes this wall at an angle GREATER than the critical angle,</span> so it undergoes total internal reflection — no light energy escapes, all of it bounces back inside.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">This repeats at every bounce,</span> letting the light zig-zag down the fibre (even through gentle bends) while carrying its encoded data pulse intact.</span></div>
+</div></div>
+
+<h2>4. Converging lenses — a quick qualitative case</h2>
+<div class="example"><div class="exhead">Worked example 4</div>
+<p>An object is placed $5$ cm from a converging lens of focal length $10$ cm. Describe the image.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Compare object distance to focal length:</span> $5$ cm $< 10$ cm — the object is INSIDE the focal length.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Recall what happens in this case:</span> the lens can't converge the diverging rays back to a real focus; instead they continue diverging after the lens, and appear (to an eye on the far side) to come from a larger point behind the object.</span></div>
+</div>
+<p>Result: virtual, upright, magnified image — this is exactly the magnifying-glass arrangement.</p></div>
+
+<h2>5. The electromagnetic spectrum</h2>
+<div class="formula">Radio $\\to$ microwaves $\\to$ infrared $\\to$ visible light $\\to$ ultraviolet $\\to$ X-rays $\\to$ gamma rays — increasing FREQUENCY (and energy), decreasing WAVELENGTH, left to right. ALL travel at the same speed ($3\\times10^8$ m/s) through a vacuum.</div>
+<div class="example"><div class="exhead">Worked example 5</div>
+<p>Name the EM wave used for (a) mobile phone signals, (b) sterilising surgical instruments, (c) TV remote controls, and state one danger of ultraviolet.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span>(a) <b>Microwaves</b> — penetrate the atmosphere well and carry phone/satellite signals.</span></div>
+<div class="st"><span class="n">2</span><span>(b) <b>Gamma rays</b> — high enough energy to kill microorganisms without heating the instrument.</span></div>
+<div class="st"><span class="n">3</span><span>(c) <b>Infrared</b> — carries short-range coded pulses to remote-controlled devices.</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">UV danger:</span> high enough frequency to damage living cells — causes sunburn, skin cancer, and eye damage (cataracts) with excess exposure.</span></div>
+</div></div>
+`,
+quiz:[
+{lvl:'basic',q:"A ray hits a plane mirror at $35°$ to the normal. What is the angle of reflection?",
+a:"$35°$",
+sol:"Step 1 — apply the law of reflection: angle of incidence equals angle of reflection, both from the normal. Step 2: angle of reflection $=35°$."},
+{lvl:'inter',q:"Light hits a glass block at $45°$ and refracts at $28°$. Find the refractive index.",
+a:"$n\\approx1.51$",
+sol:"Step 1 — apply $n=\\dfrac{\\sin i}{\\sin r}$. Step 2: $n=\\dfrac{\\sin45°}{\\sin28°}=\\dfrac{0.707}{0.469}\\approx1.51$. Angles are always measured from the normal, not the surface."},
+{lvl:'inter',q:"The refractive index of water is $1.33$. Find the critical angle.",
+a:"$c\\approx48.8°$",
+sol:"Step 1 — apply $\\sin c=\\dfrac1n$: $\\sin c=\\dfrac{1}{1.33}=0.752$. Step 2 — take the inverse sine: $c=\\sin^{-1}(0.752)\\approx48.8°$. Above this angle, light inside water totally internally reflects at the surface."},
+{lvl:'inter',q:"Explain how an optical fibre carries light around bends.",
+a:"Repeated total internal reflection",
+sol:"Step 1 — light entering the fibre strikes the internal glass wall at an angle greater than the critical angle (by the fibre's design). Step 2 — at this angle, light totally internally reflects — no energy escapes through the wall. Step 3 — this repeats at every bounce, letting light zig-zag down the fibre, even around gentle curves."},
+{lvl:'inter',q:"An object is placed $5$ cm from a converging lens of focal length $10$ cm. Describe the image.",
+a:"Virtual, upright, magnified (magnifying glass arrangement)",
+sol:"Step 1 — compare: the object distance ($5$ cm) is LESS than the focal length ($10$ cm), so the object sits inside the focal length. Step 2 — in this case, rays diverge after passing through the lens rather than converging to a real image. Step 3 — an eye viewing from the far side sees a virtual, upright, magnified image — the magnifying-glass configuration."},
+{lvl:'adv',q:"Name the EM wave used for (a) mobile phone signals, (b) sterilising surgical instruments, (c) TV remote controls, and state one danger of ultraviolet.",
+a:"(a) microwaves (b) gamma rays (c) infrared; UV causes skin cancer/eye damage",
+sol:"Step 1 (a) — microwaves penetrate the atmosphere effectively and carry phone/satellite signals. Step 2 (b) — gamma rays have enough energy to destroy microorganisms, used for sterilising equipment. Step 3 (c) — infrared carries short-range coded pulses for remote controls. Step 4 — UV danger: its high frequency/energy can damage living cells, causing sunburn, skin cancer, and eye damage such as cataracts."},
+{lvl:'adv',q:"Light travels at $3.0\\times10^8$ m/s in air and $2.0\\times10^8$ m/s in a plastic. Find the refractive index, the critical angle, and whether a ray hitting the inside surface at $45°$ escapes.",
+a:"$n=1.5$; $c\\approx41.8°$; no — it totally internally reflects",
+sol:"Step 1 — find $n$ using the speed form: $n=\\dfrac{c}{v}=\\dfrac{3\\times10^8}{2\\times10^8}=1.5$. Step 2 — find the critical angle: $\\sin c=\\dfrac{1}{1.5} \\Rightarrow c=\\sin^{-1}(0.667)\\approx41.8°$. Step 3 — compare the given angle to the critical angle: $45°>41.8°$, so the ray EXCEEDS the critical angle — it totally internally reflects and does NOT escape. This is exactly the condition that makes optical fibres work."}
+]};
+
+
+// ============================================================ PHYSICS CH 9: ELECTRICITY
+PHYSICS[8] = {
+title:"Electricity",
+syl:"0625 §4.1–4.4 — Static, current, circuits, safety",
+yt:["current voltage resistance explained from zero","series and parallel circuits explained","electrical power and energy cost explained","fuse and earth wire safety explained"],
+body:`
+<div class="scenario"><div class="schead">Real-life scenario — start here</div>
+<p>Your family's TNB electricity bill charges by the kilowatt-hour — and every appliance in the house (kettle, air-conditioner, washing machine) draws current according to the SAME rules of circuits you'll learn here. Understanding resistance, series/parallel wiring, and power lets you calculate exactly how much running the air-con overnight actually costs — and why a washing machine's earth wire and fuse together can save your life if something goes wrong internally.</p></div>
+
+<h2>1. Charge and current</h2>
+<div class="formula">$$I=\\frac{Q}{t}$$ current (amperes, A) $=$ charge (coulombs, C) per second.</div>
+<div class="example"><div class="exhead">Worked example 1</div>
+<p>A charge of $240$ C flows through a lamp in $2$ minutes. Find the current.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Convert to seconds:</span> $2$ min $=120$ s.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Apply the formula:</span> $I=\\dfrac{240}{120}=2$ A.</span></div>
+</div></div>
+
+<h2>2. Resistance — Ohm's law</h2>
+<div class="formula">$$V=IR$$</div>
+<div class="example"><div class="exhead">Worked example 2</div>
+<p>A $6$ V battery drives $2$ A through a lamp. Find the lamp's resistance.</p>
+<div class="steps"><div class="st"><span class="n">1</span><span>Rearrange: $R=\\dfrac{V}{I}=\\dfrac{6}{2}=3\\ \\Omega$.</span></div></div></div>
+
+<h2>3. Series and parallel circuits</h2>
+<div class="fig">
+<svg viewBox="0 0 460 170" xmlns="http://www.w3.org/2000/svg">
+<line x1="20" y1="60" x2="90" y2="60" stroke="#5246D9" stroke-width="2.5"/>
+<rect x="90" y="45" width="50" height="30" fill="none" stroke="#5246D9" stroke-width="2.5"/>
+<line x1="140" y1="60" x2="200" y2="60" stroke="#5246D9" stroke-width="2.5"/>
+<rect x="200" y="45" width="50" height="30" fill="none" stroke="#5246D9" stroke-width="2.5"/>
+<line x1="250" y1="60" x2="280" y2="60" stroke="#5246D9" stroke-width="2.5"/>
+<text x="60" y="105" font-size="12" fill="#5246D9">series: same current everywhere, R adds</text>
+<line x1="330" y1="30" x2="330" y2="130" stroke="#C2571B" stroke-width="2.5"/>
+<line x1="330" y1="50" x2="380" y2="50" stroke="#C2571B" stroke-width="2.5"/>
+<rect x="380" y="35" width="40" height="30" fill="none" stroke="#C2571B" stroke-width="2.5"/>
+<line x1="420" y1="50" x2="450" y2="50" stroke="#C2571B" stroke-width="2.5"/>
+<line x1="330" y1="110" x2="380" y2="110" stroke="#C2571B" stroke-width="2.5"/>
+<rect x="380" y="95" width="40" height="30" fill="none" stroke="#C2571B" stroke-width="2.5"/>
+<line x1="420" y1="110" x2="450" y2="110" stroke="#C2571B" stroke-width="2.5"/>
+<line x1="450" y1="50" x2="450" y2="110" stroke="#C2571B" stroke-width="2.5"/>
+<text x="320" y="155" font-size="12" fill="#C2571B">parallel: same voltage per branch</text>
+</svg>
+<div class="figcap">Series: one path, current is identical everywhere, resistances simply ADD. Parallel: multiple paths, each branch sees the FULL supply voltage, and total resistance is always LESS than the smallest branch.</div></div>
+<div class="formula">Series: $$R_{\\text{total}}=R_1+R_2+\\cdots$$ Parallel: $$\\frac{1}{R_{\\text{total}}}=\\frac{1}{R_1}+\\frac{1}{R_2}+\\cdots$$</div>
+<div class="example"><div class="exhead">Worked example 3</div>
+<p>Two resistors, $3\\ \\Omega$ and $6\\ \\Omega$, are connected in parallel to a $6$ V supply. Find the total resistance and total current from the supply.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Apply the parallel formula:</span> $\\dfrac{1}{R}=\\dfrac13+\\dfrac16=\\dfrac26+\\dfrac16=\\dfrac36=\\dfrac12 \\Rightarrow R=2\\ \\Omega$ — smaller than either branch alone, as always in parallel.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Find the total current:</span> $I=\\dfrac{V}{R}=\\dfrac{6}{2}=3$ A.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Sense-check with branch currents</span> (each branch sees the full 6 V): $I_3=\\dfrac63=2$ A, $I_6=\\dfrac66=1$ A; total $2+1=3$ A ✓ matches.</span></div>
+</div></div>
+
+<h2>4. Electrical power, energy, and cost</h2>
+<div class="formula">$$P=VI \\qquad E=Pt \\qquad \\text{cost} = \\text{energy (kWh)}\\times\\text{tariff rate}$$</div>
+<div class="example"><div class="exhead">Worked example 4 — the scenario, in numbers</div>
+<p>An electric heater rated $2$ kW runs for $3$ hours daily. If electricity costs RM$0.50$ per kWh, find the weekly cost.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Find daily energy</span> (kW $\\times$ hours gives kWh directly — no further conversion needed): $2\\times3=6$ kWh.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Scale up to a week:</span> $6\\times7=42$ kWh.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">Multiply by the tariff:</span> $42\\times0.50=\\text{RM}21$.</span></div>
+</div></div>
+<div class="example"><div class="exhead">Worked example 5 — choosing a fuse</div>
+<p>A $2.5$ kW kettle runs on $230$ V. Find the current and choose a suitable fuse ($3$ A, $5$ A, or $13$ A).</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Rearrange $P=VI$ for current:</span> $I=\\dfrac{P}{V}=\\dfrac{2500}{230}\\approx10.9$ A.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">Choose the fuse rated just ABOVE the working current:</span> a $5$ A fuse would blow immediately (below the working current); a $13$ A fuse sits comfortably above $10.9$ A while still protecting against a genuine fault. Answer: $13$ A.</span></div>
+</div></div>
+<div class="mistake"><b>Common mistake:</b> picking the fuse with the SMALLEST rating that's still "safe-sounding" — a fuse rated below the appliance's normal working current will blow constantly during normal use. The fuse must sit just above normal operating current, not as low as possible.</div>
+
+<h2>5. Safety — earth wire and fuse working together</h2>
+<div class="example"><div class="exhead">Worked example 6</div>
+<p>Explain how the earth wire and fuse together protect a user if the live wire touches the metal casing of a washing machine.</p>
+<div class="steps">
+<div class="st"><span class="n">1</span><span><span class="stlabel">Normally the casing is earthed</span> — connected via the earth wire to the ground, at zero potential.</span></div>
+<div class="st"><span class="n">2</span><span><span class="stlabel">If a fault sends live current to the casing,</span> the earth wire offers a path of very LOW resistance back to the ground — MUCH lower than the resistance of a person who might touch the casing.</span></div>
+<div class="st"><span class="n">3</span><span><span class="stlabel">This low resistance allows a very LARGE current to flow</span> — far exceeding the fuse's rating.</span></div>
+<div class="st"><span class="n">4</span><span><span class="stlabel">The surge melts the fuse wire,</span> breaking the circuit and disconnecting the live supply before a dangerous shock can occur.</span></div>
+</div></div>
+`,
+quiz:[
+{lvl:'basic',q:"A $6$ V battery drives $2$ A through a lamp. Find the lamp's resistance.",
+a:"$3\\ \\Omega$",
+sol:"Step 1 — rearrange Ohm's law: $R=\\dfrac{V}{I}$. Step 2: $R=\\dfrac{6}{2}=3\\ \\Omega$."},
+{lvl:'inter',q:"A charge of $240$ C flows through a lamp in $2$ minutes. Find the current.",
+a:"$2$ A",
+sol:"Step 1 — convert time to seconds: $2$ min $=120$ s. Step 2 — apply $I=\\dfrac{Q}{t}=\\dfrac{240}{120}=2$ A."},
+{lvl:'inter',q:"Two resistors, $3\\ \\Omega$ and $6\\ \\Omega$, are connected in parallel to a $6$ V supply. Find the total resistance and total current from the supply.",
+a:"$2\\ \\Omega$; $3$ A",
+sol:"Step 1 — apply the parallel resistance formula: $\\dfrac1R=\\dfrac13+\\dfrac16=\\dfrac12 \\Rightarrow R=2\\ \\Omega$ (less than the smallest branch, as always). Step 2 — find total current: $I=\\dfrac{V}{R}=\\dfrac{6}{2}=3$ A. Step 3 — check via branch currents: $\\dfrac63+\\dfrac66=2+1=3$ A ✓."},
+{lvl:'inter',q:"A $2.5$ kW kettle runs on $230$ V. Find the current and choose a suitable fuse ($3$ A, $5$ A, or $13$ A).",
+a:"$I\\approx10.9$ A → $13$ A fuse",
+sol:"Step 1 — rearrange $P=VI$: $I=\\dfrac{P}{V}=\\dfrac{2500}{230}\\approx10.9$ A. Step 2 — the fuse must be rated just ABOVE the working current, not below (which would blow immediately) and not excessively above (which wouldn't protect the cable): choose $13$ A."},
+{lvl:'inter',q:"An electric heater rated $2$ kW runs for $3$ hours daily. If electricity costs RM$0.50$ per kWh, find the weekly cost.",
+a:"RM$21$",
+sol:"Step 1 — daily energy: $2\\text{ kW}\\times3\\text{ h}=6$ kWh. Step 2 — weekly energy: $6\\times7=42$ kWh. Step 3 — cost: $42\\times0.50=\\text{RM}21$."},
+{lvl:'adv',q:"Explain how the earth wire and fuse together protect a user if the live wire touches the metal casing of a washing machine.",
+a:"Earth wire gives a low-resistance path → large current → fuse melts → circuit disconnected",
+sol:"Step 1 — normally the metal casing is connected to earth (ground) via the earth wire. Step 2 — if the live wire faults onto the casing, the earth wire provides a path of much LOWER resistance than a person would offer, so most current flows harmlessly through it rather than through anyone touching the casing. Step 3 — this large current exceeds the fuse's rated value. Step 4 — the fuse wire melts, breaking the circuit and disconnecting the live supply before a dangerous shock can occur."},
+{lvl:'adv',q:"A $12$ V battery connects to a $2\\ \\Omega$ resistor in series with a parallel pair ($3\\ \\Omega$ and $6\\ \\Omega$). Find the current through EACH resistor.",
+a:"$2\\ \\Omega$: $3$ A; $3\\ \\Omega$: $2$ A; $6\\ \\Omega$: $1$ A",
+sol:"Step 1 — combine the parallel pair first: $\\dfrac1R=\\dfrac13+\\dfrac16=\\dfrac12 \\Rightarrow R=2\\ \\Omega$. Step 2 — add the series resistor: total $=2+2=4\\ \\Omega$. Step 3 — find supply current (this ALL flows through the series resistor, since it's the only path there): $I=\\dfrac{12}{4}=3$ A. Step 4 — find the p.d. across the parallel pair: $V=IR_{\\text{pair}}=3\\times2=6$ V (same across BOTH branches). Step 5 — find each branch current: $I_3=\\dfrac63=2$ A, $I_6=\\dfrac66=1$ A. Check: $2+1=3$ A matches the supply current ✓."}
+]};
